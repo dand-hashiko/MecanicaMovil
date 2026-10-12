@@ -494,3 +494,136 @@ document.addEventListener('DOMContentLoaded', () => {
     document.body.removeChild(textArea);
   }
 })();
+
+// ==========================================================================
+// MULTI-BRAND INTERACTIVE CAROUSEL: AUTO-SCROLL & ARROW NAVIGATION
+// ==========================================================================
+document.addEventListener('DOMContentLoaded', () => {
+  const track = document.getElementById('brands-track');
+  const prevBtn = document.getElementById('carousel-prev');
+  const nextBtn = document.getElementById('carousel-next');
+
+  if (!track) return;
+
+  let isUserInteracting = false;
+  let resumeTimeout = null;
+  const scrollStep = 1; // Velocidad de avance fluido
+
+  function continuousScroll() {
+    if (!isUserInteracting) {
+      track.scrollLeft += scrollStep;
+      // Reseteo al inicio del segundo set para un bucle continuo imperceptible
+      if (track.scrollLeft >= track.scrollWidth / 2) {
+        track.scrollLeft = 0;
+      }
+    }
+    requestAnimationFrame(continuousScroll);
+  }
+
+  requestAnimationFrame(continuousScroll);
+
+  // Pausa mientras el cursor o dedo interactúa
+  track.addEventListener('mouseenter', () => isUserInteracting = true);
+  track.addEventListener('mouseleave', () => isUserInteracting = false);
+  track.addEventListener('touchstart', () => isUserInteracting = true, { passive: true });
+  track.addEventListener('touchend', () => {
+    clearTimeout(resumeTimeout);
+    resumeTimeout = setTimeout(() => isUserInteracting = false, 1500);
+  });
+
+  // Flecha Izquierda (Retroceder)
+  if (prevBtn) {
+    prevBtn.addEventListener('click', () => {
+      isUserInteracting = true;
+      track.scrollBy({ left: -280, behavior: 'smooth' });
+      clearTimeout(resumeTimeout);
+      resumeTimeout = setTimeout(() => isUserInteracting = false, 2500);
+    });
+  }
+
+  // Flecha Derecha (Avanzar)
+  if (nextBtn) {
+    nextBtn.addEventListener('click', () => {
+      isUserInteracting = true;
+      track.scrollBy({ left: 280, behavior: 'smooth' });
+      clearTimeout(resumeTimeout);
+      resumeTimeout = setTimeout(() => isUserInteracting = false, 2500);
+    });
+  }
+});
+
+// ==========================================================================
+// FLUJO DE GEOLOCALIZACIÓN Y CONFIRMACIÓN PARA ASISTENCIA WHATSAPP
+// ==========================================================================
+document.addEventListener('DOMContentLoaded', () => {
+  const requestLocationBtn = document.getElementById('btn-request-location') || 
+                             document.querySelector('.btn-request-location') || 
+                             Array.from(document.querySelectorAll('a, button')).find(el => el.textContent && el.textContent.includes('SOLICITAR TALLER EN MI UBICACIÓN'));
+  const modal = document.getElementById('location-modal');
+  const locationInput = document.getElementById('location-input');
+  const cancelBtn = document.getElementById('cancel-location-btn');
+  const sendBtn = document.getElementById('send-location-whatsapp-btn');
+  const targetPhone = "56953797437";
+
+  let mapLink = "";
+
+  if (requestLocationBtn && modal) {
+    requestLocationBtn.addEventListener('click', (e) => {
+      e.preventDefault();
+      
+      // Feedback visual inicial
+      const originalText = requestLocationBtn.innerHTML;
+      requestLocationBtn.innerHTML = "⏳ Obteniendo ubicación...";
+
+      if ("geolocation" in navigator) {
+        navigator.geolocation.getCurrentPosition(
+          (position) => {
+            requestLocationBtn.innerHTML = originalText;
+            const lat = position.coords.latitude;
+            const lng = position.coords.longitude;
+            mapLink = `https://maps.google.com/?q=${lat},${lng}`;
+            locationInput.value = `Mi ubicación actual (detectada por GPS):\n${mapLink}\n(Puedes agregar aquí referencias de calle o comuna)`;
+            modal.style.display = 'flex';
+          },
+          (error) => {
+            requestLocationBtn.innerHTML = originalText;
+            mapLink = "";
+            locationInput.value = "No se pudo obtener el GPS automáticamente. Escribe aquí tu comuna y dirección exacta:";
+            modal.style.display = 'flex';
+          },
+          { enableHighAccuracy: true, timeout: 8000 }
+        );
+      } else {
+        requestLocationBtn.innerHTML = originalText;
+        mapLink = "";
+        locationInput.value = "Escribe aquí tu comuna y dirección exacta:";
+        modal.style.display = 'flex';
+      }
+    });
+
+    if (cancelBtn) {
+      cancelBtn.addEventListener('click', () => {
+        modal.style.display = 'none';
+      });
+    }
+
+    if (modal) {
+      modal.addEventListener('click', (e) => {
+        if (e.target === modal) {
+          modal.style.display = 'none';
+        }
+      });
+    }
+
+    if (sendBtn) {
+      sendBtn.addEventListener('click', () => {
+        const details = encodeURIComponent(locationInput.value.trim());
+        const message = `Hola Taller Móvil Pro, necesito asistencia técnica en mi ubicación:%0A%0A${details}`;
+        const whatsappUrl = `https://wa.me/${targetPhone}?text=${message}`;
+        window.open(whatsappUrl, '_blank');
+        modal.style.display = 'none';
+      });
+    }
+  }
+});
+

@@ -43,6 +43,31 @@
       border: none !important;
     }
 
+    /* Asegurar que no existan bordes sólidos y degradado superior en formulario */
+    #contacto,
+    .lead-form-section,
+    .contact-section {
+      border-top: none !important;
+      box-shadow: none !important;
+      position: relative;
+    }
+
+    /* Capa de degradado superior que disuelve el corte rígido */
+    #contacto::before,
+    .lead-form-section::before,
+    .contact-section::before {
+      content: '' !important;
+      display: block !important;
+      position: absolute !important;
+      top: 0 !important;
+      left: 0 !important;
+      right: 0 !important;
+      height: 90px !important;
+      background: linear-gradient(180deg, #0D0D0D 0%, rgba(13, 13, 13, 0) 100%) !important;
+      z-index: 4 !important;
+      pointer-events: none !important;
+    }
+
     /* Explicitly strip top and bottom divider lines from this section */
     #cobertura,
     .coverage-section,
@@ -293,59 +318,194 @@
       </div>
     </section>
 
-    <!-- MULTI-BRAND INFINITE CAROUSEL (PARQUE AUTOMOTRIZ CHILE) -->
-    <section class="brands-marquee-section" aria-label="Marcas automotrices atendidas">
-      <div class="brands-header">
-        <span class="brands-eyebrow">COBERTURA MULTIMARCA // PARQUE AUTOMOTRIZ CHILE</span>
-        <h3 class="brands-title">SERVICIO ESPECIALIZADO EN LAS PRINCIPALES MARCAS</h3>
+    <!-- MULTI-BRAND INTERACTIVE CAROUSEL (PARQUE AUTOMOTRIZ CHILE) -->
+    <section class="brands-marquee-section" id="marcas" aria-label="Marcas atendidas">
+      <div class="brands-header" style="text-align: center; margin-bottom: 28px; padding: 0 16px;">
+        <span style="color: #FF9900; font-size: 11px; letter-spacing: 2px; text-transform: uppercase; font-family: monospace; font-weight: 700; display: block; margin-bottom: 6px;">
+          COBERTURA MULTIMARCA // PARQUE AUTOMOTRIZ CHILE
+        </span>
+        <h3 style="color: #FFFFFF; font-size: clamp(18px, 2.5vw, 24px); font-weight: 800; letter-spacing: 0.5px; text-transform: uppercase; margin: 0; font-family: sans-serif;">
+          SERVICIO ESPECIALIZADO EN LAS PRINCIPALES MARCAS
+        </h3>
       </div>
 
-      <div class="marquee-wrapper">
-        <div class="marquee-track">
-          <!-- SET 1 (20 Chilean Market Brands) -->
-          <div class="brand-item"><img src="https://raw.githubusercontent.com/filippofilip95/car-logos-dataset/master/logos/optimized/toyota.png" alt="Toyota" loading="lazy"></div>
-          <div class="brand-item"><img src="https://raw.githubusercontent.com/filippofilip95/car-logos-dataset/master/logos/optimized/chevrolet.png" alt="Chevrolet" loading="lazy"></div>
-          <div class="brand-item"><img src="https://raw.githubusercontent.com/filippofilip95/car-logos-dataset/master/logos/optimized/hyundai.png" alt="Hyundai" loading="lazy"></div>
-          <div class="brand-item"><img src="https://raw.githubusercontent.com/filippofilip95/car-logos-dataset/master/logos/optimized/nissan.png" alt="Nissan" loading="lazy"></div>
-          <div class="brand-item"><img src="https://raw.githubusercontent.com/filippofilip95/car-logos-dataset/master/logos/optimized/kia.png" alt="Kia" loading="lazy"></div>
-          <div class="brand-item"><img src="https://raw.githubusercontent.com/filippofilip95/car-logos-dataset/master/logos/optimized/suzuki.png" alt="Suzuki" loading="lazy"></div>
-          <div class="brand-item"><img src="https://raw.githubusercontent.com/filippofilip95/car-logos-dataset/master/logos/optimized/ford.png" alt="Ford" loading="lazy"></div>
-          <div class="brand-item"><img src="https://raw.githubusercontent.com/filippofilip95/car-logos-dataset/master/logos/optimized/mitsubishi.png" alt="Mitsubishi" loading="lazy"></div>
-          <div class="brand-item"><img src="https://raw.githubusercontent.com/filippofilip95/car-logos-dataset/master/logos/optimized/peugeot.png" alt="Peugeot" loading="lazy"></div>
-          <div class="brand-item"><img src="https://raw.githubusercontent.com/filippofilip95/car-logos-dataset/master/logos/optimized/volkswagen.png" alt="Volkswagen" loading="lazy"></div>
-          <div class="brand-item"><img src="https://raw.githubusercontent.com/filippofilip95/car-logos-dataset/master/logos/optimized/mazda.png" alt="Mazda" loading="lazy"></div>
-          <div class="brand-item"><img src="https://raw.githubusercontent.com/filippofilip95/car-logos-dataset/master/logos/optimized/citroen.png" alt="Citroën" loading="lazy"></div>
-          <div class="brand-item"><img src="https://raw.githubusercontent.com/filippofilip95/car-logos-dataset/master/logos/optimized/mercedes-benz.png" alt="Mercedes-Benz" loading="lazy"></div>
-          <div class="brand-item"><img src="https://raw.githubusercontent.com/filippofilip95/car-logos-dataset/master/logos/optimized/scania.png" alt="Scania" loading="lazy"></div>
-          <div class="brand-item"><img src="https://raw.githubusercontent.com/filippofilip95/car-logos-dataset/master/logos/optimized/volvo.png" alt="Volvo" loading="lazy"></div>
-          <div class="brand-item"><img src="https://raw.githubusercontent.com/filippofilip95/car-logos-dataset/master/logos/optimized/chery.png" alt="Chery" loading="lazy"></div>
-          <div class="brand-item"><img src="https://raw.githubusercontent.com/filippofilip95/car-logos-dataset/master/logos/optimized/great-wall.png" alt="Great Wall" loading="lazy"></div>
-          <div class="brand-item"><img src="https://raw.githubusercontent.com/filippofilip95/car-logos-dataset/master/logos/optimized/mg.png" alt="MG" loading="lazy"></div>
-          <div class="brand-item"><img src="https://raw.githubusercontent.com/filippofilip95/car-logos-dataset/master/logos/optimized/fiat.png" alt="Fiat" loading="lazy"></div>
-          <div class="brand-item"><img src="https://raw.githubusercontent.com/filippofilip95/car-logos-dataset/master/logos/optimized/honda.png" alt="Honda" loading="lazy"></div>
+      <div class="brands-carousel-container" style="position: relative; width: 100%; overflow: hidden; display: flex; align-items: center;">
+        <!-- Botón Flecha Izquierda -->
+        <button id="carousel-prev" class="carousel-arrow left-arrow" aria-label="Retroceder marcas">
+          &#10094;
+        </button>
 
-          <!-- SET 2 (Exact Duplicate to enable smooth CSS infinite scrolling) -->
-          <div class="brand-item" aria-hidden="true"><img src="https://raw.githubusercontent.com/filippofilip95/car-logos-dataset/master/logos/optimized/toyota.png" alt="" loading="lazy"></div>
-          <div class="brand-item" aria-hidden="true"><img src="https://raw.githubusercontent.com/filippofilip95/car-logos-dataset/master/logos/optimized/chevrolet.png" alt="" loading="lazy"></div>
-          <div class="brand-item" aria-hidden="true"><img src="https://raw.githubusercontent.com/filippofilip95/car-logos-dataset/master/logos/optimized/hyundai.png" alt="" loading="lazy"></div>
-          <div class="brand-item" aria-hidden="true"><img src="https://raw.githubusercontent.com/filippofilip95/car-logos-dataset/master/logos/optimized/nissan.png" alt="" loading="lazy"></div>
-          <div class="brand-item" aria-hidden="true"><img src="https://raw.githubusercontent.com/filippofilip95/car-logos-dataset/master/logos/optimized/kia.png" alt="" loading="lazy"></div>
-          <div class="brand-item" aria-hidden="true"><img src="https://raw.githubusercontent.com/filippofilip95/car-logos-dataset/master/logos/optimized/suzuki.png" alt="" loading="lazy"></div>
-          <div class="brand-item" aria-hidden="true"><img src="https://raw.githubusercontent.com/filippofilip95/car-logos-dataset/master/logos/optimized/ford.png" alt="" loading="lazy"></div>
-          <div class="brand-item" aria-hidden="true"><img src="https://raw.githubusercontent.com/filippofilip95/car-logos-dataset/master/logos/optimized/mitsubishi.png" alt="" loading="lazy"></div>
-          <div class="brand-item" aria-hidden="true"><img src="https://raw.githubusercontent.com/filippofilip95/car-logos-dataset/master/logos/optimized/peugeot.png" alt="" loading="lazy"></div>
-          <div class="brand-item" aria-hidden="true"><img src="https://raw.githubusercontent.com/filippofilip95/car-logos-dataset/master/logos/optimized/volkswagen.png" alt="" loading="lazy"></div>
-          <div class="brand-item" aria-hidden="true"><img src="https://raw.githubusercontent.com/filippofilip95/car-logos-dataset/master/logos/optimized/mazda.png" alt="" loading="lazy"></div>
-          <div class="brand-item" aria-hidden="true"><img src="https://raw.githubusercontent.com/filippofilip95/car-logos-dataset/master/logos/optimized/citroen.png" alt="" loading="lazy"></div>
-          <div class="brand-item" aria-hidden="true"><img src="https://raw.githubusercontent.com/filippofilip95/car-logos-dataset/master/logos/optimized/mercedes-benz.png" alt="" loading="lazy"></div>
-          <div class="brand-item" aria-hidden="true"><img src="https://raw.githubusercontent.com/filippofilip95/car-logos-dataset/master/logos/optimized/scania.png" alt="" loading="lazy"></div>
-          <div class="brand-item" aria-hidden="true"><img src="https://raw.githubusercontent.com/filippofilip95/car-logos-dataset/master/logos/optimized/volvo.png" alt="" loading="lazy"></div>
-          <div class="brand-item" aria-hidden="true"><img src="https://raw.githubusercontent.com/filippofilip95/car-logos-dataset/master/logos/optimized/chery.png" alt="" loading="lazy"></div>
-          <div class="brand-item" aria-hidden="true"><img src="https://raw.githubusercontent.com/filippofilip95/car-logos-dataset/master/logos/optimized/great-wall.png" alt="" loading="lazy"></div>
-          <div class="brand-item" aria-hidden="true"><img src="https://raw.githubusercontent.com/filippofilip95/car-logos-dataset/master/logos/optimized/mg.png" alt="" loading="lazy"></div>
-          <div class="brand-item" aria-hidden="true"><img src="https://raw.githubusercontent.com/filippofilip95/car-logos-dataset/master/logos/optimized/fiat.png" alt="" loading="lazy"></div>
-          <div class="brand-item" aria-hidden="true"><img src="https://raw.githubusercontent.com/filippofilip95/car-logos-dataset/master/logos/optimized/honda.png" alt="" loading="lazy"></div>
+        <!-- Pista de logos con auto-scroll y desplazamiento manual -->
+        <div class="brands-scroll-track" id="brands-track">
+          <!-- SET 1 (Marcas presentes en Chile) -->
+          <div class="brand-item">
+            <img src="https://raw.githubusercontent.com/filippofilip95/car-logos-dataset/master/logos/optimized/toyota.png" alt="Toyota" loading="lazy">
+            <span class="brand-name">TOYOTA</span>
+          </div>
+          <div class="brand-item">
+            <img src="https://raw.githubusercontent.com/filippofilip95/car-logos-dataset/master/logos/optimized/chevrolet.png" alt="Chevrolet" loading="lazy">
+            <span class="brand-name">CHEVROLET</span>
+          </div>
+          <div class="brand-item">
+            <img src="https://raw.githubusercontent.com/filippofilip95/car-logos-dataset/master/logos/optimized/hyundai.png" alt="Hyundai" loading="lazy">
+            <span class="brand-name">HYUNDAI</span>
+          </div>
+          <div class="brand-item">
+            <img src="https://raw.githubusercontent.com/filippofilip95/car-logos-dataset/master/logos/optimized/nissan.png" alt="Nissan" loading="lazy">
+            <span class="brand-name">NISSAN</span>
+          </div>
+          <div class="brand-item">
+            <img src="https://raw.githubusercontent.com/filippofilip95/car-logos-dataset/master/logos/optimized/kia.png" alt="Kia" loading="lazy">
+            <span class="brand-name">KIA</span>
+          </div>
+          <div class="brand-item">
+            <img src="https://raw.githubusercontent.com/filippofilip95/car-logos-dataset/master/logos/optimized/suzuki.png" alt="Suzuki" loading="lazy">
+            <span class="brand-name">SUZUKI</span>
+          </div>
+          <div class="brand-item">
+            <img src="https://raw.githubusercontent.com/filippofilip95/car-logos-dataset/master/logos/optimized/ford.png" alt="Ford" loading="lazy">
+            <span class="brand-name">FORD</span>
+          </div>
+          <div class="brand-item">
+            <img src="https://raw.githubusercontent.com/filippofilip95/car-logos-dataset/master/logos/optimized/mitsubishi.png" alt="Mitsubishi" loading="lazy">
+            <span class="brand-name">MITSUBISHI</span>
+          </div>
+          <div class="brand-item">
+            <img src="https://raw.githubusercontent.com/filippofilip95/car-logos-dataset/master/logos/optimized/peugeot.png" alt="Peugeot" loading="lazy">
+            <span class="brand-name">PEUGEOT</span>
+          </div>
+          <div class="brand-item">
+            <img src="https://raw.githubusercontent.com/filippofilip95/car-logos-dataset/master/logos/optimized/volkswagen.png" alt="Volkswagen" loading="lazy">
+            <span class="brand-name">VOLKSWAGEN</span>
+          </div>
+          <div class="brand-item">
+            <img src="https://raw.githubusercontent.com/filippofilip95/car-logos-dataset/master/logos/optimized/mazda.png" alt="Mazda" loading="lazy">
+            <span class="brand-name">MAZDA</span>
+          </div>
+          <div class="brand-item">
+            <img src="https://raw.githubusercontent.com/filippofilip95/car-logos-dataset/master/logos/optimized/citroen.png" alt="Citroën" loading="lazy">
+            <span class="brand-name">CITROËN</span>
+          </div>
+          <div class="brand-item">
+            <img src="https://raw.githubusercontent.com/filippofilip95/car-logos-dataset/master/logos/optimized/mercedes-benz.png" alt="Mercedes-Benz" loading="lazy">
+            <span class="brand-name">MERCEDES</span>
+          </div>
+          <div class="brand-item">
+            <img src="https://raw.githubusercontent.com/filippofilip95/car-logos-dataset/master/logos/optimized/scania.png" alt="Scania" loading="lazy">
+            <span class="brand-name">SCANIA</span>
+          </div>
+          <div class="brand-item">
+            <img src="https://raw.githubusercontent.com/filippofilip95/car-logos-dataset/master/logos/optimized/volvo.png" alt="Volvo" loading="lazy">
+            <span class="brand-name">VOLVO</span>
+          </div>
+          <div class="brand-item">
+            <img src="https://raw.githubusercontent.com/filippofilip95/car-logos-dataset/master/logos/optimized/chery.png" alt="Chery" loading="lazy">
+            <span class="brand-name">CHERY</span>
+          </div>
+          <div class="brand-item">
+            <img src="https://raw.githubusercontent.com/filippofilip95/car-logos-dataset/master/logos/optimized/great-wall.png" alt="Great Wall" loading="lazy">
+            <span class="brand-name">GREAT WALL</span>
+          </div>
+          <div class="brand-item">
+            <img src="https://raw.githubusercontent.com/filippofilip95/car-logos-dataset/master/logos/optimized/mg.png" alt="MG" loading="lazy">
+            <span class="brand-name">MG</span>
+          </div>
+          <div class="brand-item">
+            <img src="https://raw.githubusercontent.com/filippofilip95/car-logos-dataset/master/logos/optimized/fiat.png" alt="Fiat" loading="lazy">
+            <span class="brand-name">FIAT</span>
+          </div>
+          <div class="brand-item">
+            <img src="https://raw.githubusercontent.com/filippofilip95/car-logos-dataset/master/logos/optimized/honda.png" alt="Honda" loading="lazy">
+            <span class="brand-name">HONDA</span>
+          </div>
+
+          <!-- SET 2 (Duplicado exacto para efecto de bucle infinito) -->
+          <div class="brand-item" aria-hidden="true">
+            <img src="https://raw.githubusercontent.com/filippofilip95/car-logos-dataset/master/logos/optimized/toyota.png" alt="" loading="lazy">
+            <span class="brand-name">TOYOTA</span>
+          </div>
+          <div class="brand-item" aria-hidden="true">
+            <img src="https://raw.githubusercontent.com/filippofilip95/car-logos-dataset/master/logos/optimized/chevrolet.png" alt="" loading="lazy">
+            <span class="brand-name">CHEVROLET</span>
+          </div>
+          <div class="brand-item" aria-hidden="true">
+            <img src="https://raw.githubusercontent.com/filippofilip95/car-logos-dataset/master/logos/optimized/hyundai.png" alt="" loading="lazy">
+            <span class="brand-name">HYUNDAI</span>
+          </div>
+          <div class="brand-item" aria-hidden="true">
+            <img src="https://raw.githubusercontent.com/filippofilip95/car-logos-dataset/master/logos/optimized/nissan.png" alt="" loading="lazy">
+            <span class="brand-name">NISSAN</span>
+          </div>
+          <div class="brand-item" aria-hidden="true">
+            <img src="https://raw.githubusercontent.com/filippofilip95/car-logos-dataset/master/logos/optimized/kia.png" alt="" loading="lazy">
+            <span class="brand-name">KIA</span>
+          </div>
+          <div class="brand-item" aria-hidden="true">
+            <img src="https://raw.githubusercontent.com/filippofilip95/car-logos-dataset/master/logos/optimized/suzuki.png" alt="" loading="lazy">
+            <span class="brand-name">SUZUKI</span>
+          </div>
+          <div class="brand-item" aria-hidden="true">
+            <img src="https://raw.githubusercontent.com/filippofilip95/car-logos-dataset/master/logos/optimized/ford.png" alt="" loading="lazy">
+            <span class="brand-name">FORD</span>
+          </div>
+          <div class="brand-item" aria-hidden="true">
+            <img src="https://raw.githubusercontent.com/filippofilip95/car-logos-dataset/master/logos/optimized/mitsubishi.png" alt="" loading="lazy">
+            <span class="brand-name">MITSUBISHI</span>
+          </div>
+          <div class="brand-item" aria-hidden="true">
+            <img src="https://raw.githubusercontent.com/filippofilip95/car-logos-dataset/master/logos/optimized/peugeot.png" alt="" loading="lazy">
+            <span class="brand-name">PEUGEOT</span>
+          </div>
+          <div class="brand-item" aria-hidden="true">
+            <img src="https://raw.githubusercontent.com/filippofilip95/car-logos-dataset/master/logos/optimized/volkswagen.png" alt="" loading="lazy">
+            <span class="brand-name">VOLKSWAGEN</span>
+          </div>
+          <div class="brand-item" aria-hidden="true">
+            <img src="https://raw.githubusercontent.com/filippofilip95/car-logos-dataset/master/logos/optimized/mazda.png" alt="" loading="lazy">
+            <span class="brand-name">MAZDA</span>
+          </div>
+          <div class="brand-item" aria-hidden="true">
+            <img src="https://raw.githubusercontent.com/filippofilip95/car-logos-dataset/master/logos/optimized/citroen.png" alt="" loading="lazy">
+            <span class="brand-name">CITROËN</span>
+          </div>
+          <div class="brand-item" aria-hidden="true">
+            <img src="https://raw.githubusercontent.com/filippofilip95/car-logos-dataset/master/logos/optimized/mercedes-benz.png" alt="" loading="lazy">
+            <span class="brand-name">MERCEDES</span>
+          </div>
+          <div class="brand-item" aria-hidden="true">
+            <img src="https://raw.githubusercontent.com/filippofilip95/car-logos-dataset/master/logos/optimized/scania.png" alt="" loading="lazy">
+            <span class="brand-name">SCANIA</span>
+          </div>
+          <div class="brand-item" aria-hidden="true">
+            <img src="https://raw.githubusercontent.com/filippofilip95/car-logos-dataset/master/logos/optimized/volvo.png" alt="" loading="lazy">
+            <span class="brand-name">VOLVO</span>
+          </div>
+          <div class="brand-item" aria-hidden="true">
+            <img src="https://raw.githubusercontent.com/filippofilip95/car-logos-dataset/master/logos/optimized/chery.png" alt="" loading="lazy">
+            <span class="brand-name">CHERY</span>
+          </div>
+          <div class="brand-item" aria-hidden="true">
+            <img src="https://raw.githubusercontent.com/filippofilip95/car-logos-dataset/master/logos/optimized/great-wall.png" alt="" loading="lazy">
+            <span class="brand-name">GREAT WALL</span>
+          </div>
+          <div class="brand-item" aria-hidden="true">
+            <img src="https://raw.githubusercontent.com/filippofilip95/car-logos-dataset/master/logos/optimized/mg.png" alt="" loading="lazy">
+            <span class="brand-name">MG</span>
+          </div>
+          <div class="brand-item" aria-hidden="true">
+            <img src="https://raw.githubusercontent.com/filippofilip95/car-logos-dataset/master/logos/optimized/fiat.png" alt="" loading="lazy">
+            <span class="brand-name">FIAT</span>
+          </div>
+          <div class="brand-item" aria-hidden="true">
+            <img src="https://raw.githubusercontent.com/filippofilip95/car-logos-dataset/master/logos/optimized/honda.png" alt="" loading="lazy">
+            <span class="brand-name">HONDA</span>
+          </div>
         </div>
+
+        <!-- Botón Flecha Derecha -->
+        <button id="carousel-next" class="carousel-arrow right-arrow" aria-label="Avanzar marcas">
+          &#10095;
+        </button>
       </div>
     </section>
 
@@ -605,8 +765,7 @@
           </p>
 
           <div class="banner-actions">
-            <a href="https://wa.me/56953797437?text=Hola%2C%20tengo%20un%20veh%C3%ADculo%20o%20m%C3%A1quina%20detenida%20en%20terreno%20y%20necesito%20asistencia"
-              target="_blank" rel="noopener noreferrer" class="btn btn-amber btn-lg">
+            <a href="#location-modal" class="btn btn-amber btn-lg btn-request-location" id="btn-request-location">
               <svg decoding="async" height="24" class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"
                 stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
                 <path
@@ -642,12 +801,16 @@
                 <span class="tech-coords">SOPORTE ÁGIL</span>
               </div>
 
-              <div class="image-wrapper vertical-wrapper">
-                <img height="1125" width="900" decoding="async"
-                  src="cambiar por esta.jpg"
-                  alt="Flota de camiones y transporte pesado atendida por servicio técnico mecánico en terreno"
-                  class="workflow-img process-image-fleet" loading="lazy">
-                <div class="img-overlay-industrial"></div>
+              <div class="protocol-image-container image-wrapper vertical-wrapper" style="position: relative; width: 100%; height: 100%; min-height: 480px; overflow: hidden; border-radius: 4px;">
+                <!-- RESTORED IMG -->
+                <img src="camiones scania.jpg" 
+                     alt="Flota de camiones y transporte pesado atendida por servicio técnico mecánico en terreno" 
+                     class="protocol-bg-image workflow-img process-image-fleet" 
+                     style="width: 100%; height: 100%; object-fit: cover; display: block; filter: grayscale(0.2) brightness(0.75);" 
+                     loading="lazy">
+                
+                <!-- Dark edge-fading gradient to merge seamlessly into the dark interface -->
+                <div class="image-gradient-overlay img-overlay-industrial" style="position: absolute; inset: 0; background: linear-gradient(180deg, rgba(13, 13, 13, 0.4) 0%, rgba(13, 13, 13, 0.1) 40%, rgba(13, 13, 13, 0.7) 100%); pointer-events: none;"></div>
                 <div class="step-progress-badge">
                   <span class="step-badge-num">4</span>
                   <span class="step-badge-text">PASOS PARA SOLUCIONAR TU PROBLEMA</span>
@@ -750,55 +913,46 @@
 
         <!-- Balanced 2-Column Grid Architecture (1fr 2fr) -->
         <div class="coverage-layout">
-          <!-- Left Column (Technical Vehicle Card) -->
+          <!-- Left Column (Coverage Card Reestructurada con Porsche y textos armónicos) -->
           <div class="coverage-visual">
-            <div class="coverage-tech-card industrial-frame">
-              <div class="frame-corner corner-tl" aria-hidden="true"></div>
-              <div class="frame-corner corner-tr" aria-hidden="true"></div>
-              <div class="frame-corner corner-bl" aria-hidden="true"></div>
-              <div class="frame-corner corner-br" aria-hidden="true"></div>
-
-              <div class="frame-badge-top">
-                <span class="tech-tag">ZONA METROPOLITANA // MAPEO ACTIVO</span>
-                <span class="tech-coords">SANTIAGO & PROVINCIAS</span>
+            <div class="coverage-card" style="height: 100%; display: flex; flex-direction: column; justify-content: space-between; background-color: #171717; border: 1px solid #282828; border-radius: 6px; padding: 22px; box-sizing: border-box;">
+              
+              <!-- Recuadro superior limpio en una sola línea -->
+              <div style="background-color: #121212; border: 1px solid #FF9900; border-radius: 4px; padding: 10px 14px; margin-bottom: 14px; text-align: center;">
+                <span style="color: #FF9900; font-family: monospace; font-size: 12px; font-weight: 800; letter-spacing: 1px; text-transform: uppercase;">
+                  COBERTURA 100% // 52 COMUNAS HABILITADAS
+                </span>
               </div>
 
-              <div class="coverage-image-wrapper">
-                <img height="562" width="900" decoding="async"
-                  src="https://images.unsplash.com/photo-1503376780353-7e6692767b70?auto=format&fit=crop&w=900&q=80"
-                  alt="Detalle de precisión de motor automotriz y componentes mecánicos" class="coverage-img"
-                  loading="lazy"
-                  onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1486006920555-c77dce18193b?auto=format&fit=crop&w=900&q=80';">
-                <div class="img-overlay-industrial"></div>
-                <div class="coverage-badge-hero">
-                  <span class="badge-hero-amber">COBERTURA 100% // 52 COMUNAS HABILITADAS</span>
-                  <span class="badge-hero-sub">UNIDAD DE ASISTENCIA EN RUTA | RADIO RM Y PROVINCIAS RURALES</span>
+              <!-- Foto del auto -->
+              <div class="coverage-image-wrapper" style="width: 100%; height: 210px; overflow: hidden; border-radius: 4px; margin-bottom: 20px;">
+                <!-- QUITAR CAMIONES. COLOCAR LA FOTO DEL AUTO NEGRO AQUÍ -->
+                <img src="auto.JPG" 
+                     alt="Cobertura técnica en terreno" 
+                     style="width: 100% !important; height: 100% !important; object-fit: cover !important; display: block !important;">
+              </div>
+
+              <!-- Contenido inferior: solo los 2 bloques conservados -->
+              <div style="display: flex; flex-direction: column; gap: 24px; flex-grow: 1; justify-content: space-around;">
+                <div>
+                  <h4 style="color: #FF9900; font-size: 12px; font-family: monospace; letter-spacing: 1px; margin: 0 0 6px 0; text-transform: uppercase;">
+                    ■ LOGÍSTICA MÓVIL DIRECTA A DESTINO
+                  </h4>
+                  <p style="color: #CCCCCC; font-size: 13px; line-height: 1.5; margin: 0;">
+                    Equipamiento técnico autónomo con capacidad de intervención y diagnóstico in situ.
+                  </p>
+                </div>
+
+                <div>
+                  <h4 style="color: #FF9900; font-size: 12px; font-family: monospace; letter-spacing: 1px; margin: 0 0 6px 0; text-transform: uppercase;">
+                    ■ DISPONIBILIDAD OPERATIVA INMEDIATA
+                  </h4>
+                  <p style="color: #CCCCCC; font-size: 13px; line-height: 1.5; margin: 0;">
+                    Rutas diarias programadas y atención para emergencias técnicas mecánicas en terreno.
+                  </p>
                 </div>
               </div>
 
-              <div class="coverage-specs-body">
-                <div class="spec-row">
-                  <span class="spec-bullet">■</span>
-                  <div class="spec-info">
-                    <span class="spec-label">LOGÍSTICA MÓVIL DIRECTA A DESTINO</span>
-                    <span class="spec-sub">Equipamiento técnico autónomo para atención en sitio</span>
-                  </div>
-                </div>
-                <div class="spec-row">
-                  <span class="spec-bullet">■</span>
-                  <div class="spec-info">
-                    <span class="spec-label">ALCANCE URBANO Y RURAL COMPLETO</span>
-                    <span class="spec-sub">Santiago, Cordillera, Chacabuco, Maipo, Melipilla y Talagante</span>
-                  </div>
-                </div>
-              </div>
-
-              <div class="frame-meta-bottom">
-                <div class="meta-unit">
-                  <span class="unit-title">ESTADO OPERATIVO</span>
-                  <span class="unit-data text-amber">DESPLAZAMIENTO TÉCNICO ACTIVO</span>
-                </div>
-              </div>
             </div>
           </div>
 
@@ -1021,6 +1175,8 @@
 
     <!-- 8. CONTACT SECTION (SECCIÓN 07 // CONTACTO) -->
     <section class="section contact-section lead-form-section" id="contacto">
+      <!-- Capa de degradado superior que disuelve el corte rígido -->
+      <div class="form-top-fade" aria-hidden="true" style="position: absolute; top: 0; left: 0; right: 0; height: 110px; background: linear-gradient(180deg, #0D0D0D 0%, rgba(13, 13, 13, 0) 100%); z-index: 4; pointer-events: none;"></div>
       <div class="container">
         <div class="section-heading contact-heading">
           <h2 class="section-title">CUÉNTANOS QUÉ HAY QUE REVISAR</h2>
@@ -1343,6 +1499,28 @@
   <div id="toast-notification" class="toast-notification" role="status" aria-live="polite">
     <span class="toast-icon">✓</span>
     <span class="toast-message" id="toast-message">Número copiado al portapapeles</span>
+  </div>
+
+  <!-- LOCATION CONFIRMATION MODAL (GEOLOCALIZACIÓN WHATSAPP) -->
+  <div id="location-modal" style="display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.85); z-index: 10000; align-items: center; justify-content: center; padding: 20px;">
+    <div style="background: #171717; border: 1px solid #FF9900; border-radius: 6px; padding: 24px; max-width: 440px; width: 100%; box-shadow: 0 0 24px rgba(255, 153, 0, 0.25);">
+      <h3 style="color: #FFFFFF; font-size: 16px; font-weight: 800; margin: 0 0 8px 0; text-transform: uppercase;">
+        📍 CONFIRMAR UBICACIÓN DE ASISTENCIA
+      </h3>
+      <p style="color: #AAAAAA; font-size: 13px; margin: 0 0 16px 0;">
+        Confirma o edita tu dirección / referencia antes de enviar la solicitud a nuestro WhatsApp técnico:
+      </p>
+      <textarea id="location-input" rows="3" style="width: 100%; background: #0D0D0D; border: 1px solid #333333; color: #FFFFFF; padding: 10px; font-size: 13px; border-radius: 4px; box-sizing: border-box; resize: none; margin-bottom: 16px; outline: none;"></textarea>
+      
+      <div style="display: flex; gap: 10px; justify-content: flex-end;">
+        <button id="cancel-location-btn" style="background: transparent; border: 1px solid #444444; color: #AAAAAA; padding: 8px 14px; border-radius: 4px; cursor: pointer; font-size: 13px;">
+          Cancelar
+        </button>
+        <button id="send-location-whatsapp-btn" style="background: #FF9900; border: none; color: #0D0D0D; font-weight: 700; padding: 8px 16px; border-radius: 4px; cursor: pointer; font-size: 13px;">
+          Enviar a WhatsApp →
+        </button>
+      </div>
+    </div>
   </div>
 
   <!-- Scripts -->
