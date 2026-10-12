@@ -21,6 +21,110 @@
 
   <!-- Stylesheet -->
   <link rel="stylesheet" href="styles.css">
+
+  <!-- System-Wide Boundary & Divider Purge Override -->
+  <style>
+    /* Obliterate all interior horizontal dividing lines */
+    main hr,
+    main .divider,
+    main .separator,
+    main .border-t,
+    main .border-b,
+    main section {
+      border-top: none !important;
+      border-bottom: none !important;
+      box-shadow: none !important;
+    }
+
+    main section:not(.contact-section):not(.lead-form-section):not(#contacto)::before,
+    main section:not(.contact-section):not(.lead-form-section):not(#contacto)::after {
+      display: none !important;
+      content: none !important;
+      border: none !important;
+    }
+
+    /* Explicitly strip top and bottom divider lines from this section */
+    #cobertura,
+    .coverage-section,
+    section[data-section="coverage"] {
+      border-top: none !important;
+      border-bottom: none !important;
+      box-shadow: none !important;
+      position: relative;
+      background-color: #0D0D0D !important;
+      padding-top: clamp(60px, 8vw, 90px) !important;
+      padding-bottom: clamp(60px, 8vw, 90px) !important;
+    }
+
+    #cobertura::before,
+    #cobertura::after,
+    .coverage-section::before,
+    .coverage-section::after {
+      display: none !important;
+      content: none !important;
+      height: 0 !important;
+      border: none !important;
+    }
+
+    /* Remove any sibling divider tags surrounding this section */
+    #cobertura + hr,
+    hr + #cobertura,
+    .coverage-section + hr,
+    hr + .coverage-section,
+    .coverage-divider {
+      display: none !important;
+      height: 0 !important;
+      border: none !important;
+    }
+
+    /* Soft top atmospheric gradient fade */
+    #cobertura .fade-top,
+    .coverage-section .fade-top {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 60px;
+      background: linear-gradient(180deg, #0D0D0D 0%, rgba(13, 13, 13, 0) 100%);
+      pointer-events: none;
+      z-index: 1;
+    }
+
+    /* Soft bottom atmospheric gradient fade */
+    #cobertura .fade-bottom,
+    .coverage-section .fade-bottom {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 60px;
+      background: linear-gradient(0deg, #0D0D0D 0%, rgba(13, 13, 13, 0) 100%);
+      pointer-events: none;
+      z-index: 1;
+    }
+
+    /* PRESERVE ONLY HEADER & FOOTER */
+    header,
+    nav {
+      border-bottom: 1px solid rgba(40, 40, 40, 0.7) !important;
+    }
+    footer {
+      border-top: 1px solid rgba(40, 40, 40, 0.7) !important;
+    }
+  </style>
+
+  <!-- Instant Top Scroll Restoration -->
+  <script>
+    if ('scrollRestoration' in history) {
+      history.scrollRestoration = 'manual';
+    }
+    window.addEventListener('beforeunload', () => {
+      window.scrollTo(0, 0);
+    });
+    window.addEventListener('DOMContentLoaded', () => {
+      window.scrollTo({ top: 0, left: 0, behavior: 'instant' });
+    });
+  </script>
 </head>
 
 <body>
@@ -48,22 +152,30 @@
           <li><a href="#servicios" class="nav-link">SERVICIOS</a></li>
           <li><a href="#como-funciona" class="nav-link">CÓMO FUNCIONA</a></li>
           <li><a href="#cobertura" class="nav-link">COBERTURA</a></li>
-          <li><a href="#preguntas" class="nav-link">PREGUNTAS</a></li>
+          <li><a href="#faq" class="nav-link">PREGUNTAS</a></li>
           <li><a href="#contacto" class="nav-link">CONTACTO</a></li>
         </ul>
       </nav>
 
       <!-- Actions: Phone & WhatsApp -->
       <div class="header-actions">
+        <a href="tel:+56953797437" class="btn btn-outline btn-phone-header" aria-label="Llamar al +56 9 5379 7437">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" class="btn-icon" aria-hidden="true">
+            <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
+          </svg>
+          <span class="phone-text">+56 9 5379 7437</span>
+        </a>
+
         <a href="https://wa.me/56953797437"
           target="_blank" rel="noopener noreferrer" class="btn btn-amber btn-whatsapp-header"
           aria-label="Contactar por WhatsApp">
-          <svg decoding="async" height="24" class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-            stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <svg decoding="async" height="18" width="18" class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+            stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
             <path
               d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z" />
           </svg>
-          <span class="btn-text">WHATSAPP / +56 9 5379 7437</span>
+          <span class="btn-text btn-text-desktop">WHATSAPP / +56 9 5379 7437</span>
+          <span class="btn-text btn-text-mobile">COTIZAR</span>
         </a>
 
         <!-- Mobile Menu Toggle Button -->
@@ -84,7 +196,7 @@
           <li><a href="#servicios" class="mobile-nav-link">SERVICIOS</a></li>
           <li><a href="#como-funciona" class="mobile-nav-link">CÓMO FUNCIONA</a></li>
           <li><a href="#cobertura" class="mobile-nav-link">COBERTURA</a></li>
-          <li><a href="#preguntas" class="mobile-nav-link">PREGUNTAS</a></li>
+          <li><a href="#faq" class="mobile-nav-link">PREGUNTAS</a></li>
           <li><a href="#contacto" class="mobile-nav-link">CONTACTO</a></li>
         </ul>
         <div class="mobile-actions">
@@ -105,7 +217,16 @@
   <main id="main-content">
     <!-- 2. HERO SECTION (SECCIÓN 01 // ASISTENCIA EN TERRENO) -->
     <section class="section hero-section" id="hero">
-      <div class="technical-grid-bg" aria-hidden="true"></div>
+      <!-- Background Blended Image & Gradients (Progressive Degradé Fade) -->
+      <div class="hero-bg-wrapper" aria-hidden="true">
+        <img height="900" width="1600" decoding="async"
+          src="https://images.unsplash.com/photo-1619642751034-765dfdf7c58e?auto=format&fit=crop&w=1600&q=80"
+          alt="Mecánico especializado realizando mantenimiento y diagnóstico automotriz en terreno"
+          class="hero-bg-img" loading="eager"
+          onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1486006920555-c77dce18193b?auto=format&fit=crop&w=1600&q=80';">
+        <div class="hero-bg-overlay"></div>
+      </div>
+
       <div class="container">
         <div class="hero-layout">
           <!-- Text Content -->
@@ -122,80 +243,113 @@
             </p>
 
             <!-- Action Buttons -->
-            <div class="hero-actions" style="margin-top: 2rem; display: flex; gap: 16px; flex-wrap: wrap;">
+            <div class="hero-actions">
               <a href="#contacto" class="btn btn-amber btn-cta-main">
-                ESCRIBIR POR WHATSAPP
-              </a>
-              <a href="#" class="btn btn-outline" id="btn-call-trigger">
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="margin-right: 8px;">
-                  <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
-                </svg>
-                <span id="call-btn-text">LLAMAR +56 9 5379 7437</span>
+                RELLENAR FORMULARIO
               </a>
             </div>
 
-            <!-- Badges at bottom -->
-            <div class="hero-badges">
-              <div class="badge-item active-badge">
-                <span class="badge-dot" aria-hidden="true"></span>
-                <span class="badge-label">REGIÓN METROPOLITANA:</span>
-                <span class="badge-val">ACTIVO</span>
+            <!-- Unified Value Proposition Rectangle -->
+            <div class="hero-unified-status-box" role="region" aria-label="Propuesta de valor y garantías">
+              <div class="value-prop-item">
+                <span class="value-prop-check" aria-hidden="true">✓</span>
+                <span class="value-prop-title">COBERTURA TOTAL RM</span>
+                <span class="value-prop-dash" aria-hidden="true">—</span>
+                <span class="value-prop-desc">Atención directa en tu domicilio, empresa o ruta</span>
               </div>
-              <div class="badge-divider" aria-hidden="true">|</div>
-              <div class="badge-item guarantee-badge">
-                <svg decoding="async" height="24" class="badge-shield-icon" viewBox="0 0 24 24" fill="none"
-                  stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-                  aria-hidden="true">
-                  <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
-                  <polyline points="9 12 11 14 15 10" />
+              <span class="value-prop-sep" aria-hidden="true">|</span>
+              <div class="value-prop-item">
+                <span class="value-prop-check" aria-hidden="true">✓</span>
+                <span class="value-prop-title">TRABAJO GARANTIZADO</span>
+                <span class="value-prop-dash" aria-hidden="true">—</span>
+                <span class="value-prop-desc">Diagnóstico profesional con equipamiento especializado</span>
+              </div>
+              <span class="value-prop-sep" aria-hidden="true">|</span>
+              <div class="value-prop-item">
+                <span class="value-prop-check" aria-hidden="true">✓</span>
+                <span class="value-prop-title">RESPUESTA INMEDIATA</span>
+                <span class="value-prop-dash" aria-hidden="true">—</span>
+                <span class="value-prop-desc">Salida técnica y coordinación rápida a terreno</span>
+              </div>
+            </div>
+
+            <!-- Consultation Banner (Placed strictly BELOW the unified value box) -->
+            <a href="https://wa.me/56953797437?text=Hola%2C%20tengo%20una%20consulta%20espec%C3%ADfica%20sobre%20mi%20caso"
+              target="_blank" rel="noopener noreferrer" class="faq-cta-banner consultation-card hero-consultation-banner"
+              aria-label="Consultar por WhatsApp al +56 9 5379 7437">
+              <div class="faq-cta-text">
+                <h4>¿TIENES UNA CONSULTA ESPECÍFICA SOBRE TU CASO?</h4>
+                <p>Escríbenos en un mensaje directo por WhatsApp y te orientamos sin compromiso.</p>
+              </div>
+              <div class="faq-cta-arrow" aria-hidden="true">
+                <svg width="42" height="42" viewBox="0 0 24 24" fill="none" stroke="#FF9900" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="cta-arrow-svg">
+                  <line x1="4" y1="12" x2="20" y2="12"></line>
+                  <polyline points="13 5 20 12 13 19"></polyline>
                 </svg>
-                <span class="badge-val">TRABAJO GARANTIZADO EN TERRENO</span>
               </div>
-            </div>
-          </div>
-
-          <!-- Hero Image Container -->
-          <div class="hero-visual">
-            <div class="industrial-frame">
-              <div class="frame-corner corner-tl" aria-hidden="true"></div>
-              <div class="frame-corner corner-tr" aria-hidden="true"></div>
-              <div class="frame-corner corner-bl" aria-hidden="true"></div>
-              <div class="frame-corner corner-br" aria-hidden="true"></div>
-
-              <div class="frame-badge-top">
-                <span class="tech-tag">VAN TÉCNICA // EQUIPO MÓVIL #01</span>
-                <span class="tech-coords">LAT -33.4489 | LNG -70.6693</span>
-              </div>
-
-              <div class="image-wrapper">
-                <img height="750" width="1200" decoding="async"
-                  src="https://images.unsplash.com/photo-1619642751034-765dfdf7c58e?auto=format&fit=crop&w=1200&q=80"
-                  alt="Vehículo taller móvil completamente equipado con herramientas e iluminación técnica nocturna"
-                  class="hero-img" loading="eager"
-                  onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1486006920555-c77dce18193b?auto=format&fit=crop&w=1200&q=80';">
-                <div class="img-overlay-industrial"></div>
-                <div class="crosshair-marker" aria-hidden="true">
-                  <span class="cross-line h-line"></span>
-                  <span class="cross-line v-line"></span>
-                  <span class="marker-label">UNIDAD LISTA</span>
-                </div>
-              </div>
-
-              <div class="frame-meta-bottom">
-                <div class="meta-unit">
-                  <span class="unit-title">EQUIPAMIENTO</span>
-                  <span class="unit-data">SCANNER OBD2/HD + COMPRESOR + HIDRÁULICA</span>
-                </div>
-                <div class="meta-status">
-                  <span class="unit-title">TIEMPO DE RESPUESTA</span>
-                  <span class="unit-data text-amber">COORDINACIÓN INMEDIATA</span>
-                </div>
-              </div>
-            </div>
+            </a>
           </div>
         </div>
       </div>
     </section>
+
+    <!-- MULTI-BRAND INFINITE CAROUSEL (PARQUE AUTOMOTRIZ CHILE) -->
+    <section class="brands-marquee-section" aria-label="Marcas automotrices atendidas">
+      <div class="brands-header">
+        <span class="brands-eyebrow">COBERTURA MULTIMARCA // PARQUE AUTOMOTRIZ CHILE</span>
+        <h3 class="brands-title">SERVICIO ESPECIALIZADO EN LAS PRINCIPALES MARCAS</h3>
+      </div>
+
+      <div class="marquee-wrapper">
+        <div class="marquee-track">
+          <!-- SET 1 (20 Chilean Market Brands) -->
+          <div class="brand-item"><img src="https://raw.githubusercontent.com/filippofilip95/car-logos-dataset/master/logos/optimized/toyota.png" alt="Toyota" loading="lazy"></div>
+          <div class="brand-item"><img src="https://raw.githubusercontent.com/filippofilip95/car-logos-dataset/master/logos/optimized/chevrolet.png" alt="Chevrolet" loading="lazy"></div>
+          <div class="brand-item"><img src="https://raw.githubusercontent.com/filippofilip95/car-logos-dataset/master/logos/optimized/hyundai.png" alt="Hyundai" loading="lazy"></div>
+          <div class="brand-item"><img src="https://raw.githubusercontent.com/filippofilip95/car-logos-dataset/master/logos/optimized/nissan.png" alt="Nissan" loading="lazy"></div>
+          <div class="brand-item"><img src="https://raw.githubusercontent.com/filippofilip95/car-logos-dataset/master/logos/optimized/kia.png" alt="Kia" loading="lazy"></div>
+          <div class="brand-item"><img src="https://raw.githubusercontent.com/filippofilip95/car-logos-dataset/master/logos/optimized/suzuki.png" alt="Suzuki" loading="lazy"></div>
+          <div class="brand-item"><img src="https://raw.githubusercontent.com/filippofilip95/car-logos-dataset/master/logos/optimized/ford.png" alt="Ford" loading="lazy"></div>
+          <div class="brand-item"><img src="https://raw.githubusercontent.com/filippofilip95/car-logos-dataset/master/logos/optimized/mitsubishi.png" alt="Mitsubishi" loading="lazy"></div>
+          <div class="brand-item"><img src="https://raw.githubusercontent.com/filippofilip95/car-logos-dataset/master/logos/optimized/peugeot.png" alt="Peugeot" loading="lazy"></div>
+          <div class="brand-item"><img src="https://raw.githubusercontent.com/filippofilip95/car-logos-dataset/master/logos/optimized/volkswagen.png" alt="Volkswagen" loading="lazy"></div>
+          <div class="brand-item"><img src="https://raw.githubusercontent.com/filippofilip95/car-logos-dataset/master/logos/optimized/mazda.png" alt="Mazda" loading="lazy"></div>
+          <div class="brand-item"><img src="https://raw.githubusercontent.com/filippofilip95/car-logos-dataset/master/logos/optimized/citroen.png" alt="Citroën" loading="lazy"></div>
+          <div class="brand-item"><img src="https://raw.githubusercontent.com/filippofilip95/car-logos-dataset/master/logos/optimized/mercedes-benz.png" alt="Mercedes-Benz" loading="lazy"></div>
+          <div class="brand-item"><img src="https://raw.githubusercontent.com/filippofilip95/car-logos-dataset/master/logos/optimized/scania.png" alt="Scania" loading="lazy"></div>
+          <div class="brand-item"><img src="https://raw.githubusercontent.com/filippofilip95/car-logos-dataset/master/logos/optimized/volvo.png" alt="Volvo" loading="lazy"></div>
+          <div class="brand-item"><img src="https://raw.githubusercontent.com/filippofilip95/car-logos-dataset/master/logos/optimized/chery.png" alt="Chery" loading="lazy"></div>
+          <div class="brand-item"><img src="https://raw.githubusercontent.com/filippofilip95/car-logos-dataset/master/logos/optimized/great-wall.png" alt="Great Wall" loading="lazy"></div>
+          <div class="brand-item"><img src="https://raw.githubusercontent.com/filippofilip95/car-logos-dataset/master/logos/optimized/mg.png" alt="MG" loading="lazy"></div>
+          <div class="brand-item"><img src="https://raw.githubusercontent.com/filippofilip95/car-logos-dataset/master/logos/optimized/fiat.png" alt="Fiat" loading="lazy"></div>
+          <div class="brand-item"><img src="https://raw.githubusercontent.com/filippofilip95/car-logos-dataset/master/logos/optimized/honda.png" alt="Honda" loading="lazy"></div>
+
+          <!-- SET 2 (Exact Duplicate to enable smooth CSS infinite scrolling) -->
+          <div class="brand-item" aria-hidden="true"><img src="https://raw.githubusercontent.com/filippofilip95/car-logos-dataset/master/logos/optimized/toyota.png" alt="" loading="lazy"></div>
+          <div class="brand-item" aria-hidden="true"><img src="https://raw.githubusercontent.com/filippofilip95/car-logos-dataset/master/logos/optimized/chevrolet.png" alt="" loading="lazy"></div>
+          <div class="brand-item" aria-hidden="true"><img src="https://raw.githubusercontent.com/filippofilip95/car-logos-dataset/master/logos/optimized/hyundai.png" alt="" loading="lazy"></div>
+          <div class="brand-item" aria-hidden="true"><img src="https://raw.githubusercontent.com/filippofilip95/car-logos-dataset/master/logos/optimized/nissan.png" alt="" loading="lazy"></div>
+          <div class="brand-item" aria-hidden="true"><img src="https://raw.githubusercontent.com/filippofilip95/car-logos-dataset/master/logos/optimized/kia.png" alt="" loading="lazy"></div>
+          <div class="brand-item" aria-hidden="true"><img src="https://raw.githubusercontent.com/filippofilip95/car-logos-dataset/master/logos/optimized/suzuki.png" alt="" loading="lazy"></div>
+          <div class="brand-item" aria-hidden="true"><img src="https://raw.githubusercontent.com/filippofilip95/car-logos-dataset/master/logos/optimized/ford.png" alt="" loading="lazy"></div>
+          <div class="brand-item" aria-hidden="true"><img src="https://raw.githubusercontent.com/filippofilip95/car-logos-dataset/master/logos/optimized/mitsubishi.png" alt="" loading="lazy"></div>
+          <div class="brand-item" aria-hidden="true"><img src="https://raw.githubusercontent.com/filippofilip95/car-logos-dataset/master/logos/optimized/peugeot.png" alt="" loading="lazy"></div>
+          <div class="brand-item" aria-hidden="true"><img src="https://raw.githubusercontent.com/filippofilip95/car-logos-dataset/master/logos/optimized/volkswagen.png" alt="" loading="lazy"></div>
+          <div class="brand-item" aria-hidden="true"><img src="https://raw.githubusercontent.com/filippofilip95/car-logos-dataset/master/logos/optimized/mazda.png" alt="" loading="lazy"></div>
+          <div class="brand-item" aria-hidden="true"><img src="https://raw.githubusercontent.com/filippofilip95/car-logos-dataset/master/logos/optimized/citroen.png" alt="" loading="lazy"></div>
+          <div class="brand-item" aria-hidden="true"><img src="https://raw.githubusercontent.com/filippofilip95/car-logos-dataset/master/logos/optimized/mercedes-benz.png" alt="" loading="lazy"></div>
+          <div class="brand-item" aria-hidden="true"><img src="https://raw.githubusercontent.com/filippofilip95/car-logos-dataset/master/logos/optimized/scania.png" alt="" loading="lazy"></div>
+          <div class="brand-item" aria-hidden="true"><img src="https://raw.githubusercontent.com/filippofilip95/car-logos-dataset/master/logos/optimized/volvo.png" alt="" loading="lazy"></div>
+          <div class="brand-item" aria-hidden="true"><img src="https://raw.githubusercontent.com/filippofilip95/car-logos-dataset/master/logos/optimized/chery.png" alt="" loading="lazy"></div>
+          <div class="brand-item" aria-hidden="true"><img src="https://raw.githubusercontent.com/filippofilip95/car-logos-dataset/master/logos/optimized/great-wall.png" alt="" loading="lazy"></div>
+          <div class="brand-item" aria-hidden="true"><img src="https://raw.githubusercontent.com/filippofilip95/car-logos-dataset/master/logos/optimized/mg.png" alt="" loading="lazy"></div>
+          <div class="brand-item" aria-hidden="true"><img src="https://raw.githubusercontent.com/filippofilip95/car-logos-dataset/master/logos/optimized/fiat.png" alt="" loading="lazy"></div>
+          <div class="brand-item" aria-hidden="true"><img src="https://raw.githubusercontent.com/filippofilip95/car-logos-dataset/master/logos/optimized/honda.png" alt="" loading="lazy"></div>
+        </div>
+      </div>
+    </section>
+
+
 
     <!-- 3. SERVICES & CAPABILITIES (SECCIÓN 02 // CAPACIDADES) -->
     <section class="section services-section" id="servicios">
@@ -425,6 +579,8 @@
       </div>
     </section>
 
+
+
     <!-- 4. ON-SITE PROMO BANNER (SECCIÓN 03 // EN TERRENO) -->
     <section class="banner-section" id="en-terreno">
       <div class="banner-bg-wrapper">
@@ -467,6 +623,8 @@
       </div>
     </section>
 
+
+
     <!-- 5. HOW IT WORKS (SECCIÓN 04 // CÓMO FUNCIONA) -->
     <section class="section workflow-section" id="como-funciona">
       <div class="container">
@@ -486,10 +644,9 @@
 
               <div class="image-wrapper vertical-wrapper">
                 <img height="1125" width="900" decoding="async"
-                  src="https://images.unsplash.com/photo-1617814076367-b759c7d7e738?auto=format&fit=crop&w=900&q=80"
-                  alt="Mecánico profesional realizando diagnóstico e intervención en el compartimento del motor"
-                  class="workflow-img" loading="lazy"
-                  onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1486006920555-c77dce18193b?auto=format&fit=crop&w=900&q=80';">
+                  src="cambiar por esta.jpg"
+                  alt="Flota de camiones y transporte pesado atendida por servicio técnico mecánico en terreno"
+                  class="workflow-img process-image-fleet" loading="lazy">
                 <div class="img-overlay-industrial"></div>
                 <div class="step-progress-badge">
                   <span class="step-badge-num">4</span>
@@ -570,29 +727,32 @@
               </div>
             </div>
 
-            <div class="workflow-cta">
-              <a href="https://wa.me/56953797437?text=Hola%2C%20quiero%20iniciar%20el%20paso%201%20para%20coordinar%20una%20visita"
-                target="_blank" rel="noopener noreferrer" class="btn btn-amber">
-                <svg decoding="async" height="24" class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                  stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                  <path
-                    d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z" />
-                </svg>
-                INICIAR COORDINACIÓN
-              </a>
-            </div>
+
           </div>
         </div>
       </div>
     </section>
 
+
+
     <!-- 6. COVERAGE & COMMUNES (SECCIÓN 05 // COBERTURA) -->
-    <section class="section coverage-section" id="cobertura">
+    <section class="section coverage-section" id="cobertura" data-section="coverage">
+      <!-- Soft top atmospheric gradient fade -->
+      <div class="fade-top" aria-hidden="true"></div>
       <div class="container">
+        <!-- Centered Header Placement at Top -->
+        <div class="section-heading text-center coverage-heading">
+          <h2 class="section-title">COBERTURA TOTAL: REGIÓN METROPOLITANA</h2>
+          <p class="section-subtitle">
+            Desplazamiento técnico directo a faena, empresa, domicilio o ruta en las 52 comunas de la RM.
+          </p>
+        </div>
+
+        <!-- Balanced 2-Column Grid Architecture (1fr 2fr) -->
         <div class="coverage-layout">
-          <!-- Left Visual: Close-up engine detail -->
+          <!-- Left Column (Technical Vehicle Card) -->
           <div class="coverage-visual">
-            <div class="industrial-frame">
+            <div class="coverage-tech-card industrial-frame">
               <div class="frame-corner corner-tl" aria-hidden="true"></div>
               <div class="frame-corner corner-tr" aria-hidden="true"></div>
               <div class="frame-corner corner-bl" aria-hidden="true"></div>
@@ -600,144 +760,135 @@
 
               <div class="frame-badge-top">
                 <span class="tech-tag">ZONA METROPOLITANA // MAPEO ACTIVO</span>
-                <span class="tech-coords">SANTIAGO & ALREDEDORES</span>
+                <span class="tech-coords">SANTIAGO & PROVINCIAS</span>
               </div>
 
-              <div class="image-wrapper">
+              <div class="coverage-image-wrapper">
                 <img height="562" width="900" decoding="async"
                   src="https://images.unsplash.com/photo-1503376780353-7e6692767b70?auto=format&fit=crop&w=900&q=80"
                   alt="Detalle de precisión de motor automotriz y componentes mecánicos" class="coverage-img"
                   loading="lazy"
                   onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1486006920555-c77dce18193b?auto=format&fit=crop&w=900&q=80';">
                 <div class="img-overlay-industrial"></div>
-                <div class="communes-count-badge">
-                  <span class="badge-big-num">24+</span>
-                  <span class="badge-small-text">COMUNAS CON COBERTURA HABITUAL</span>
+                <div class="coverage-badge-hero">
+                  <span class="badge-hero-amber">COBERTURA 100% // 52 COMUNAS HABILITADAS</span>
+                  <span class="badge-hero-sub">UNIDAD DE ASISTENCIA EN RUTA | RADIO RM Y PROVINCIAS RURALES</span>
+                </div>
+              </div>
+
+              <div class="coverage-specs-body">
+                <div class="spec-row">
+                  <span class="spec-bullet">■</span>
+                  <div class="spec-info">
+                    <span class="spec-label">LOGÍSTICA MÓVIL DIRECTA A DESTINO</span>
+                    <span class="spec-sub">Equipamiento técnico autónomo para atención en sitio</span>
+                  </div>
+                </div>
+                <div class="spec-row">
+                  <span class="spec-bullet">■</span>
+                  <div class="spec-info">
+                    <span class="spec-label">ALCANCE URBANO Y RURAL COMPLETO</span>
+                    <span class="spec-sub">Santiago, Cordillera, Chacabuco, Maipo, Melipilla y Talagante</span>
+                  </div>
                 </div>
               </div>
 
               <div class="frame-meta-bottom">
                 <div class="meta-unit">
-                  <span class="unit-title">DESPLAZAMIENTO</span>
-                  <span class="unit-data text-amber">LOGÍSTICA MÓVIL DIRECTA A DESTINO</span>
+                  <span class="unit-title">ESTADO OPERATIVO</span>
+                  <span class="unit-data text-amber">DESPLAZAMIENTO TÉCNICO ACTIVO</span>
                 </div>
               </div>
             </div>
           </div>
 
-          <!-- Right Content: Segments & Communes Grid -->
-          <div class="coverage-content">
-
-            <h2 class="section-title">TODA LA REGIÓN METROPOLITANA</h2>
-
-            <p class="section-subtitle">
-              Coordinamos la visita según tu ubicación dentro de la región. Si tu comuna no aparece en la lista,
-              escríbenos y confirmamos la disponibilidad.
-            </p>
-
-            <!-- Upper Columns: Particulares vs Flotas -->
-            <div class="coverage-segments-grid">
-              <!-- Particulares Box -->
-              <div class="segment-box">
-                <div class="segment-header">
-                  <span class="segment-tag">MODALIDAD 01</span>
-                  <h3 class="segment-title">PARTICULARES</h3>
-                </div>
-                <ul class="segment-features">
-                  <li><span class="bullet-check">✓</span> Una visita para tu vehículo</li>
-                  <li><span class="bullet-check">✓</span> Presupuesto antes de empezar</li>
-                  <li><span class="bullet-check">✓</span> Mantención preventiva y reparación</li>
-                </ul>
+          <!-- Right Column (Communes Container) -->
+          <div class="communes-card">
+            <div class="communes-card-header">
+              <div class="communes-header-title">
+                <span class="icon-geo" aria-hidden="true">📍</span>
+                <h3 class="communes-heading">COMUNAS CON COBERTURA (52 TOTAL)</h3>
               </div>
-
-              <!-- Flotas Box -->
-              <div class="segment-box">
-                <div class="segment-header">
-                  <span class="segment-tag">MODALIDAD 02</span>
-                  <h3 class="segment-title">FLOTAS Y EMPRESAS</h3>
-                </div>
-                <ul class="segment-features">
-                  <li><span class="bullet-check">✓</span> Visitas programadas por unidad</li>
-                  <li><span class="bullet-check">✓</span> Menos tiempo con vehículos detenidos</li>
-                  <li><span class="bullet-check">✓</span> Registro de cada trabajo realizado</li>
-                </ul>
+              <div class="communes-filter-wrap">
+                <input type="text" id="commune-search" placeholder="Buscar comuna..."
+                  aria-label="Filtrar comunas de la lista">
               </div>
             </div>
 
-            <!-- Lower Grid: COMUNAS QUE CUBRIMOS -->
-            <div class="communes-card">
-              <div class="communes-card-header">
-                <div class="communes-header-title">
-                  <span class="icon-geo" aria-hidden="true">📍</span>
-                  <h3 class="communes-heading">COMUNAS QUE CUBRIMOS</h3>
-                </div>
-                <div class="communes-filter-wrap">
-                  <input type="text" id="commune-search" placeholder="Buscar comuna..."
-                    aria-label="Filtrar comunas de la lista">
-                </div>
-              </div>
+            <!-- Exhaustive 52 Communes Grid -->
+            <div class="communes-list" id="communes-grid">
+              <div class="commune-pill"><span class="commune-dot" aria-hidden="true">•</span><span class="commune-name">ALHUÉ</span></div>
+              <div class="commune-pill"><span class="commune-dot" aria-hidden="true">•</span><span class="commune-name">BUIN</span></div>
+              <div class="commune-pill"><span class="commune-dot" aria-hidden="true">•</span><span class="commune-name">CALERA DE TANGO</span></div>
+              <div class="commune-pill"><span class="commune-dot" aria-hidden="true">•</span><span class="commune-name">CERRILLOS</span></div>
+              <div class="commune-pill"><span class="commune-dot" aria-hidden="true">•</span><span class="commune-name">CERRO NAVIA</span></div>
+              <div class="commune-pill"><span class="commune-dot" aria-hidden="true">•</span><span class="commune-name">COLINA</span></div>
+              <div class="commune-pill"><span class="commune-dot" aria-hidden="true">•</span><span class="commune-name">CONCHALÍ</span></div>
+              <div class="commune-pill"><span class="commune-dot" aria-hidden="true">•</span><span class="commune-name">CURACAVÍ</span></div>
+              <div class="commune-pill"><span class="commune-dot" aria-hidden="true">•</span><span class="commune-name">EL BOSQUE</span></div>
+              <div class="commune-pill"><span class="commune-dot" aria-hidden="true">•</span><span class="commune-name">EL MONTE</span></div>
+              <div class="commune-pill"><span class="commune-dot" aria-hidden="true">•</span><span class="commune-name">ESTACIÓN CENTRAL</span></div>
+              <div class="commune-pill"><span class="commune-dot" aria-hidden="true">•</span><span class="commune-name">HUECHURABA</span></div>
+              <div class="commune-pill"><span class="commune-dot" aria-hidden="true">•</span><span class="commune-name">INDEPENDENCIA</span></div>
+              <div class="commune-pill"><span class="commune-dot" aria-hidden="true">•</span><span class="commune-name">ISLA DE MAIPO</span></div>
+              <div class="commune-pill"><span class="commune-dot" aria-hidden="true">•</span><span class="commune-name">LA CISTERNA</span></div>
+              <div class="commune-pill"><span class="commune-dot" aria-hidden="true">•</span><span class="commune-name">LA FLORIDA</span></div>
+              <div class="commune-pill"><span class="commune-dot" aria-hidden="true">•</span><span class="commune-name">LA GRANJA</span></div>
+              <div class="commune-pill"><span class="commune-dot" aria-hidden="true">•</span><span class="commune-name">LA PINTANA</span></div>
+              <div class="commune-pill"><span class="commune-dot" aria-hidden="true">•</span><span class="commune-name">LA REINA</span></div>
+              <div class="commune-pill"><span class="commune-dot" aria-hidden="true">•</span><span class="commune-name">LAMPA</span></div>
+              <div class="commune-pill"><span class="commune-dot" aria-hidden="true">•</span><span class="commune-name">LAS CONDES</span></div>
+              <div class="commune-pill"><span class="commune-dot" aria-hidden="true">•</span><span class="commune-name">LO BARNECHEA</span></div>
+              <div class="commune-pill"><span class="commune-dot" aria-hidden="true">•</span><span class="commune-name">LO ESPEJO</span></div>
+              <div class="commune-pill"><span class="commune-dot" aria-hidden="true">•</span><span class="commune-name">LO PRADO</span></div>
+              <div class="commune-pill"><span class="commune-dot" aria-hidden="true">•</span><span class="commune-name">MACUL</span></div>
+              <div class="commune-pill"><span class="commune-dot" aria-hidden="true">•</span><span class="commune-name">MAIPÚ</span></div>
+              <div class="commune-pill"><span class="commune-dot" aria-hidden="true">•</span><span class="commune-name">MARÍA PINTO</span></div>
+              <div class="commune-pill"><span class="commune-dot" aria-hidden="true">•</span><span class="commune-name">MELIPILLA</span></div>
+              <div class="commune-pill"><span class="commune-dot" aria-hidden="true">•</span><span class="commune-name">ÑUÑOA</span></div>
+              <div class="commune-pill"><span class="commune-dot" aria-hidden="true">•</span><span class="commune-name">PADRE HURTADO</span></div>
+              <div class="commune-pill"><span class="commune-dot" aria-hidden="true">•</span><span class="commune-name">PAINE</span></div>
+              <div class="commune-pill"><span class="commune-dot" aria-hidden="true">•</span><span class="commune-name">PEDRO AGUIRRE CERDA</span></div>
+              <div class="commune-pill"><span class="commune-dot" aria-hidden="true">•</span><span class="commune-name">PEÑAFLOR</span></div>
+              <div class="commune-pill"><span class="commune-dot" aria-hidden="true">•</span><span class="commune-name">PEÑALOLÉN</span></div>
+              <div class="commune-pill"><span class="commune-dot" aria-hidden="true">•</span><span class="commune-name">PIRQUE</span></div>
+              <div class="commune-pill"><span class="commune-dot" aria-hidden="true">•</span><span class="commune-name">PROVIDENCIA</span></div>
+              <div class="commune-pill"><span class="commune-dot" aria-hidden="true">•</span><span class="commune-name">PUDAHUEL</span></div>
+              <div class="commune-pill"><span class="commune-dot" aria-hidden="true">•</span><span class="commune-name">PUENTE ALTO</span></div>
+              <div class="commune-pill"><span class="commune-dot" aria-hidden="true">•</span><span class="commune-name">QUILICURA</span></div>
+              <div class="commune-pill"><span class="commune-dot" aria-hidden="true">•</span><span class="commune-name">QUINTA NORMAL</span></div>
+              <div class="commune-pill"><span class="commune-dot" aria-hidden="true">•</span><span class="commune-name">RECOLETA</span></div>
+              <div class="commune-pill"><span class="commune-dot" aria-hidden="true">•</span><span class="commune-name">RENCA</span></div>
+              <div class="commune-pill"><span class="commune-dot" aria-hidden="true">•</span><span class="commune-name">SAN BERNARDO</span></div>
+              <div class="commune-pill"><span class="commune-dot" aria-hidden="true">•</span><span class="commune-name">SAN JOAQUÍN</span></div>
+              <div class="commune-pill"><span class="commune-dot" aria-hidden="true">•</span><span class="commune-name">SAN JOSÉ DE MAIPO</span></div>
+              <div class="commune-pill"><span class="commune-dot" aria-hidden="true">•</span><span class="commune-name">SAN MIGUEL</span></div>
+              <div class="commune-pill"><span class="commune-dot" aria-hidden="true">•</span><span class="commune-name">SAN PEDRO</span></div>
+              <div class="commune-pill"><span class="commune-dot" aria-hidden="true">•</span><span class="commune-name">SAN RAMÓN</span></div>
+              <div class="commune-pill"><span class="commune-dot" aria-hidden="true">•</span><span class="commune-name">SANTIAGO CENTRO</span></div>
+              <div class="commune-pill"><span class="commune-dot" aria-hidden="true">•</span><span class="commune-name">TALAGANTE</span></div>
+              <div class="commune-pill"><span class="commune-dot" aria-hidden="true">•</span><span class="commune-name">TILTIL</span></div>
+              <div class="commune-pill"><span class="commune-dot" aria-hidden="true">•</span><span class="commune-name">VITACURA</span></div>
+            </div>
 
-              <!-- 3-Column Bulleted List -->
-              <div class="communes-list" id="communes-grid">
-                <div class="commune-pill"><span class="commune-dot"></span><span class="commune-name">SANTIAGO
-                    CENTRO</span></div>
-                <div class="commune-pill"><span class="commune-dot"></span><span class="commune-name">PROVIDENCIA</span>
-                </div>
-                <div class="commune-pill"><span class="commune-dot"></span><span class="commune-name">LAS CONDES</span>
-                </div>
-                <div class="commune-pill"><span class="commune-dot"></span><span class="commune-name">VITACURA</span>
-                </div>
-                <div class="commune-pill"><span class="commune-dot"></span><span class="commune-name">ÑUÑOA</span></div>
-                <div class="commune-pill"><span class="commune-dot"></span><span class="commune-name">LA REINA</span>
-                </div>
-                <div class="commune-pill"><span class="commune-dot"></span><span class="commune-name">PEÑALOLÉN</span>
-                </div>
-                <div class="commune-pill"><span class="commune-dot"></span><span class="commune-name">LA FLORIDA</span>
-                </div>
-                <div class="commune-pill"><span class="commune-dot"></span><span class="commune-name">PUENTE ALTO</span>
-                </div>
-                <div class="commune-pill"><span class="commune-dot"></span><span class="commune-name">SAN
-                    BERNARDO</span></div>
-                <div class="commune-pill"><span class="commune-dot"></span><span class="commune-name">MAIPÚ</span></div>
-                <div class="commune-pill"><span class="commune-dot"></span><span class="commune-name">CERRILLOS</span>
-                </div>
-                <div class="commune-pill"><span class="commune-dot"></span><span class="commune-name">ESTACIÓN
-                    CENTRAL</span></div>
-                <div class="commune-pill"><span class="commune-dot"></span><span class="commune-name">PUDAHUEL</span>
-                </div>
-                <div class="commune-pill"><span class="commune-dot"></span><span class="commune-name">QUILICURA</span>
-                </div>
-                <div class="commune-pill"><span class="commune-dot"></span><span class="commune-name">RENCA</span></div>
-                <div class="commune-pill"><span class="commune-dot"></span><span
-                    class="commune-name">INDEPENDENCIA</span></div>
-                <div class="commune-pill"><span class="commune-dot"></span><span class="commune-name">RECOLETA</span>
-                </div>
-                <div class="commune-pill"><span class="commune-dot"></span><span class="commune-name">HUECHURABA</span>
-                </div>
-                <div class="commune-pill"><span class="commune-dot"></span><span class="commune-name">LO
-                    BARNECHEA</span></div>
-                <div class="commune-pill"><span class="commune-dot"></span><span class="commune-name">COLINA</span>
-                </div>
-                <div class="commune-pill"><span class="commune-dot"></span><span class="commune-name">SAN MIGUEL</span>
-                </div>
-                <div class="commune-pill"><span class="commune-dot"></span><span class="commune-name">LA CISTERNA</span>
-                </div>
-                <div class="commune-pill"><span class="commune-dot"></span><span class="commune-name">EL BOSQUE</span>
-                </div>
-              </div>
-
-              <div class="communes-footer-note">
-                <span class="note-amber">¿TU COMUNA ESTÁ FUERA DE LA LISTA?</span>
-                <span>Contáctanos por WhatsApp para evaluar factibilidad y coordinar viaje técnico.</span>
-              </div>
+            <!-- Bottom CTA Banner -->
+            <div class="communes-footer-note">
+              <span class="note-amber">¿TU UBICACIÓN ES FUERA DEL RADIO URBANO O EN OTRA REGIÓN?</span>
+              <a href="https://wa.me/56953797437?text=Hola%2C%20necesito%20coordinar%20asistencia%20fuera%20del%20radio%20urbano%20o%20en%20otra%20regi%C3%B3n"
+                target="_blank" rel="noopener noreferrer" class="link-amber-underline">
+                Escríbenos por WhatsApp para coordinar factibilidad de traslado interurbano →
+              </a>
             </div>
           </div>
         </div>
       </div>
+      <!-- Soft bottom atmospheric gradient fade -->
+      <div class="fade-bottom" aria-hidden="true"></div>
     </section>
 
     <!-- 7. FAQ SECTION (SECCIÓN 06 // PREGUNTAS FRECUENTES) -->
-    <section class="section faq-section" id="preguntas">
+    <section id="faq" class="section faq-section">
+      <div id="preguntas" style="position: absolute; top: -80px; left: 0; height: 1px; width: 1px; pointer-events: none; opacity: 0;"></div>
       <div class="container">
         <!-- Section Heading -->
         <div class="section-heading">
@@ -747,16 +898,16 @@
           </p>
         </div>
 
-        <!-- Accordion Component -->
-        <div class="accordion-container" id="faq-accordion">
+        <!-- 1. FAQ ACCORDION LIST FIRST -->
+        <div class="faq-accordion-container accordion-container" id="faq-accordion">
           <!-- FAQ Item 1 -->
-          <div class="accordion-item">
-            <button class="accordion-trigger" aria-expanded="false" id="faq-btn-1" aria-controls="faq-content-1">
+          <div class="faq-item accordion-item">
+            <button class="accordion-trigger accordion-header" aria-expanded="false" id="faq-btn-1" aria-controls="faq-content-1">
               <span class="faq-number">01</span>
               <span class="faq-question">¿Atienden a domicilio en toda la Región Metropolitana?</span>
-              <span class="faq-icon" aria-hidden="true">+</span>
+              <span class="faq-icon chevron-icon" aria-hidden="true">+</span>
             </button>
-            <div class="accordion-panel" id="faq-content-1" role="region" aria-labelledby="faq-btn-1" hidden>
+            <div class="accordion-panel faq-panel" id="faq-content-1" role="region" aria-labelledby="faq-btn-1" hidden>
               <div class="accordion-panel-inner">
                 <p>Sí, nos desplazamos a todas las comunas de la Región Metropolitana (Santiago, sector oriente,
                   poniente, norte y sur). Coordinamos fecha, hora y ubicación exacta para llegar directamente con el
@@ -766,13 +917,13 @@
           </div>
 
           <!-- FAQ Item 2 (Open by default as requested) -->
-          <div class="accordion-item is-open">
-            <button class="accordion-trigger" aria-expanded="true" id="faq-btn-2" aria-controls="faq-content-2">
+          <div class="faq-item accordion-item is-open">
+            <button class="accordion-trigger accordion-header" aria-expanded="true" id="faq-btn-2" aria-controls="faq-content-2">
               <span class="faq-number">02</span>
               <span class="faq-question">¿Trabajan motores diésel y bencina?</span>
-              <span class="faq-icon" aria-hidden="true">−</span>
+              <span class="faq-icon chevron-icon" aria-hidden="true">−</span>
             </button>
-            <div class="accordion-panel" id="faq-content-2" role="region" aria-labelledby="faq-btn-2">
+            <div class="accordion-panel faq-panel" id="faq-content-2" role="region" aria-labelledby="faq-btn-2">
               <div class="accordion-panel-inner">
                 <p><strong>Sí, atendemos ambos:</strong> vehículos a bencina con diagnóstico electrónico y equipos a
                   diésel, incluyendo camiones y maquinaria. Contamos con escáneres multimarca profesionales,
@@ -783,13 +934,13 @@
           </div>
 
           <!-- FAQ Item 3 -->
-          <div class="accordion-item">
-            <button class="accordion-trigger" aria-expanded="false" id="faq-btn-3" aria-controls="faq-content-3">
+          <div class="faq-item accordion-item">
+            <button class="accordion-trigger accordion-header" aria-expanded="false" id="faq-btn-3" aria-controls="faq-content-3">
               <span class="faq-number">03</span>
               <span class="faq-question">¿Qué datos necesito para pedir la visita?</span>
-              <span class="faq-icon" aria-hidden="true">+</span>
+              <span class="faq-icon chevron-icon" aria-hidden="true">+</span>
             </button>
-            <div class="accordion-panel" id="faq-content-3" role="region" aria-labelledby="faq-btn-3" hidden>
+            <div class="accordion-panel faq-panel" id="faq-content-3" role="region" aria-labelledby="faq-btn-3" hidden>
               <div class="accordion-panel-inner">
                 <p>Solo requerimos los siguientes datos básicos para preparar la unidad móvil:</p>
                 <ul class="faq-details-list">
@@ -805,13 +956,13 @@
           </div>
 
           <!-- FAQ Item 4 -->
-          <div class="accordion-item">
-            <button class="accordion-trigger" aria-expanded="false" id="faq-btn-4" aria-controls="faq-content-4">
+          <div class="faq-item accordion-item">
+            <button class="accordion-trigger accordion-header" aria-expanded="false" id="faq-btn-4" aria-controls="faq-content-4">
               <span class="faq-number">04</span>
               <span class="faq-question">¿Atienden flotas de empresas?</span>
-              <span class="faq-icon" aria-hidden="true">+</span>
+              <span class="faq-icon chevron-icon" aria-hidden="true">+</span>
             </button>
-            <div class="accordion-panel" id="faq-content-4" role="region" aria-labelledby="faq-btn-4" hidden>
+            <div class="accordion-panel faq-panel" id="faq-content-4" role="region" aria-labelledby="faq-btn-4" hidden>
               <div class="accordion-panel-inner">
                 <p>Sí. Prestamos servicios corporativos con visitas programadas por unidad, mantenciones preventivas
                   periódicas, diagnóstico en terreno y emisión de informes técnicos detallados para mantener la
@@ -821,13 +972,13 @@
           </div>
 
           <!-- FAQ Item 5 -->
-          <div class="accordion-item">
-            <button class="accordion-trigger" aria-expanded="false" id="faq-btn-5" aria-controls="faq-content-5">
+          <div class="faq-item accordion-item">
+            <button class="accordion-trigger accordion-header" aria-expanded="false" id="faq-btn-5" aria-controls="faq-content-5">
               <span class="faq-number">05</span>
               <span class="faq-question">¿Cómo se define el valor del trabajo?</span>
-              <span class="faq-icon" aria-hidden="true">+</span>
+              <span class="faq-icon chevron-icon" aria-hidden="true">+</span>
             </button>
-            <div class="accordion-panel" id="faq-content-5" role="region" aria-labelledby="faq-btn-5" hidden>
+            <div class="accordion-panel faq-panel" id="faq-content-5" role="region" aria-labelledby="faq-btn-5" hidden>
               <div class="accordion-panel-inner">
                 <p>Mantenemos una política de <strong>presupuesto claro y transparente sin costos ocultos</strong>. Para
                   trabajos habituales (mantenciones de aceite, frenos, escáner) cotizamos previamente. Para fallas
@@ -838,13 +989,13 @@
           </div>
 
           <!-- FAQ Item 6 -->
-          <div class="accordion-item">
-            <button class="accordion-trigger" aria-expanded="false" id="faq-btn-6" aria-controls="faq-content-6">
+          <div class="faq-item accordion-item">
+            <button class="accordion-trigger accordion-header" aria-expanded="false" id="faq-btn-6" aria-controls="faq-content-6">
               <span class="faq-number">06</span>
               <span class="faq-question">¿Qué pasa si la falla no se puede resolver en terreno?</span>
-              <span class="faq-icon" aria-hidden="true">+</span>
+              <span class="faq-icon chevron-icon" aria-hidden="true">+</span>
             </button>
-            <div class="accordion-panel" id="faq-content-6" role="region" aria-labelledby="faq-btn-6" hidden>
+            <div class="accordion-panel faq-panel" id="faq-content-6" role="region" aria-labelledby="faq-btn-6" hidden>
               <div class="accordion-panel-inner">
                 <p>Más del 85% de los requerimientos habituales se resuelven en el mismo lugar gracias a nuestro
                   equipamiento autónomo. En caso de una falla estructural mayor que requiera rectificación pesada o
@@ -855,33 +1006,32 @@
           </div>
         </div>
 
-        <!-- FAQ CTA Box -->
-        <div class="faq-cta-banner">
-          <div class="faq-cta-text">
-            <h4>¿TIENES UNA CONSULTA ESPECÍFICA SOBRE TU CASO?</h4>
+        <!-- 2. CONSULTATION CARD PLACED AT THE BOTTOM -->
+        <div class="consultation-banner-card faq-cta-banner consultation-card faq-consultation-banner" style="margin-top: 32px;">
+          <div class="banner-content faq-cta-text">
+            <h3>¿TIENES UNA CONSULTA ESPECÍFICA SOBRE TU CASO?</h3>
             <p>Escríbenos en un mensaje directo por WhatsApp y te orientamos sin compromiso.</p>
           </div>
-          <a href="https://wa.me/56953797437?text=Hola%2C%20tengo%20una%20consulta%20espec%C3%ADfica%20sobre%20mi%20veh%C3%ADculo"
-            target="_blank" rel="noopener noreferrer" class="btn btn-amber">
-            CONSULTAR POR WHATSAPP
+          <a href="https://wa.me/56953797437" class="banner-arrow-action faq-cta-arrow" aria-label="Consultar por WhatsApp al +56 9 5379 7437">
+            <span class="banner-arrow-glyph">→</span>
           </a>
         </div>
       </div>
     </section>
 
     <!-- 8. CONTACT SECTION (SECCIÓN 07 // CONTACTO) -->
-    <section class="section contact-section" id="contacto">
+    <section class="section contact-section lead-form-section" id="contacto">
       <div class="container">
+        <div class="section-heading contact-heading">
+          <h2 class="section-title">CUÉNTANOS QUÉ HAY QUE REVISAR</h2>
+          <p class="section-subtitle">
+            Escríbenos por WhatsApp o llámanos, y coordinamos la visita a domicilio en la Región Metropolitana.
+          </p>
+        </div>
+
         <div class="contact-layout">
           <!-- Left Content & Interactive Builder -->
           <div class="contact-content">
-
-            <h2 class="section-title">CUÉNTANOS QUÉ HAY QUE REVISAR</h2>
-
-            <p class="section-description">
-              Escríbenos por WhatsApp o llámanos, y coordinamos la visita a domicilio en la Región Metropolitana.
-            </p>
-
             <!-- Interactive Lead Capture Funnel (Contact) -->
             <div class="lead-capture-funnel">
               <div class="funnel-header">
@@ -894,12 +1044,11 @@
                 <div class="funnel-step active-step">
                   <label class="step-label">1. ¿Qué necesitas atender?</label>
                   <div class="pill-group" id="vehicleTypePillsContact">
-                    <button type="button" class="pill-btn" data-value="Auto particular">Auto particular</button>
-                    <button type="button" class="pill-btn" data-value="Camión">Camión</button>
-                    <button type="button" class="pill-btn" data-value="Flota">Flota</button>
-                    <button type="button" class="pill-btn" data-value="Maquinaria">Maquinaria</button>
-                    <button type="button" class="pill-btn" data-value="Generador / Estacionario">Generador /
-                      Estacionario</button>
+                    <button type="button" class="pill-btn chip-btn vehicle-type-btn" data-value="Auto particular" aria-pressed="false" data-selected="false">Auto particular</button>
+                    <button type="button" class="pill-btn chip-btn vehicle-type-btn" data-value="Camión" aria-pressed="false" data-selected="false">Camión</button>
+                    <button type="button" class="pill-btn chip-btn vehicle-type-btn" data-value="Flota" aria-pressed="false" data-selected="false">Flota</button>
+                    <button type="button" class="pill-btn chip-btn vehicle-type-btn" data-value="Maquinaria" aria-pressed="false" data-selected="false">Maquinaria</button>
+                    <button type="button" class="pill-btn chip-btn vehicle-type-btn" data-value="Generador / Estacionario" aria-pressed="false" data-selected="false">Generador / Estacionario</button>
                   </div>
                   <input type="hidden" class="input-tipo-vehiculo" required>
                 </div>
@@ -912,49 +1061,150 @@
                       placeholder="Ej: Toyota Hilux, Scania R450, Bobcat" required>
                     <input type="text" class="form-control input-ano" placeholder="Ej: 2018" required>
                   </div>
-                  <select class="form-control mt-2 input-falla" required>
-                    <option value="" disabled selected>Selecciona el tipo de problema / falla...</option>
-                    <option value="No arranca / Batería">No arranca / Batería</option>
-                    <option value="Diagnóstico con escáner">Diagnóstico con escáner</option>
-                    <option value="Frenos o suspensión">Frenos o suspensión</option>
-                    <option value="Problema de inyección / Motor Diésel">Problema de inyección / Motor Diésel</option>
-                    <option value="Fuga hidráulica">Fuga hidráulica</option>
-                    <option value="Mantención preventiva">Mantención preventiva</option>
-                    <option value="Otro problema">Otro problema</option>
-                  </select>
+                  <div class="custom-select-container custom-select-falla mt-2" id="custom-select-falla">
+                    <button type="button" class="custom-select-trigger form-control" aria-haspopup="listbox" aria-expanded="false" id="trigger-falla">
+                      <span class="custom-select-label">Selecciona el tipo de problema / falla...</span>
+                    </button>
+                    <ul class="custom-select-options" role="listbox" aria-labelledby="trigger-falla">
+                      <li class="custom-option select-option" role="option" data-value="No arranca / Batería">No arranca / Batería</li>
+                      <li class="custom-option select-option" role="option" data-value="Diagnóstico con escáner">Diagnóstico con escáner</li>
+                      <li class="custom-option select-option" role="option" data-value="Frenos o suspensión">Frenos o suspensión</li>
+                      <li class="custom-option select-option" role="option" data-value="Problema de inyección / Motor Diésel">Problema de inyección / Motor Diésel</li>
+                      <li class="custom-option select-option" role="option" data-value="Fuga hidráulica">Fuga hidráulica</li>
+                      <li class="custom-option select-option" role="option" data-value="Mantención preventiva">Mantención preventiva</li>
+                      <li class="custom-option select-option" role="option" data-value="Otro problema">Otro problema</li>
+                    </ul>
+                    <select class="form-control input-falla native-hidden-select" required aria-hidden="true" tabindex="-1">
+                      <option value="" disabled selected>Selecciona el tipo de problema / falla...</option>
+                      <option value="No arranca / Batería">No arranca / Batería</option>
+                      <option value="Diagnóstico con escáner">Diagnóstico con escáner</option>
+                      <option value="Frenos o suspensión">Frenos o suspensión</option>
+                      <option value="Problema de inyección / Motor Diésel">Problema de inyección / Motor Diésel</option>
+                      <option value="Fuga hidráulica">Fuga hidráulica</option>
+                      <option value="Mantención preventiva">Mantención preventiva</option>
+                      <option value="Otro problema">Otro problema</option>
+                    </select>
+                  </div>
                 </div>
 
                 <!-- Step 3 -->
                 <div class="funnel-step">
                   <label class="step-label">3. Ubicación del servicio:</label>
                   <div class="form-row">
-                    <select class="form-control input-comuna" required>
-                      <option value="" disabled selected>Selecciona la comuna...</option>
-                      <option value="Santiago Centro">Santiago Centro</option>
-                      <option value="Providencia">Providencia</option>
-                      <option value="Las Condes">Las Condes</option>
-                      <option value="Vitacura">Vitacura</option>
-                      <option value="Ñuñoa">Ñuñoa</option>
-                      <option value="La Reina">La Reina</option>
-                      <option value="Peñalolén">Peñalolén</option>
-                      <option value="La Florida">La Florida</option>
-                      <option value="Puente Alto">Puente Alto</option>
-                      <option value="San Bernardo">San Bernardo</option>
-                      <option value="Maipú">Maipú</option>
-                      <option value="Cerrillos">Cerrillos</option>
-                      <option value="Estación Central">Estación Central</option>
-                      <option value="Pudahuel">Pudahuel</option>
-                      <option value="Quilicura">Quilicura</option>
-                      <option value="Renca">Renca</option>
-                      <option value="Independencia">Independencia</option>
-                      <option value="Recoleta">Recoleta</option>
-                      <option value="Huechuraba">Huechuraba</option>
-                      <option value="Lo Barnechea">Lo Barnechea</option>
-                      <option value="Colina">Colina</option>
-                      <option value="San Miguel">San Miguel</option>
-                      <option value="La Cisterna">La Cisterna</option>
-                      <option value="El Bosque">El Bosque</option>
-                    </select>
+                    <div class="custom-select-container custom-select-comuna" id="custom-select-comuna">
+                      <button type="button" class="custom-select-trigger form-control" aria-haspopup="listbox" aria-expanded="false" id="trigger-comuna">
+                        <span class="custom-select-label">Selecciona la comuna...</span>
+                      </button>
+                      <ul class="custom-select-options" role="listbox" aria-labelledby="trigger-comuna">
+                        <li class="custom-option select-option" role="option" data-value="Alhué">Alhué</li>
+                        <li class="custom-option select-option" role="option" data-value="Buin">Buin</li>
+                        <li class="custom-option select-option" role="option" data-value="Calera de Tango">Calera de Tango</li>
+                        <li class="custom-option select-option" role="option" data-value="Cerrillos">Cerrillos</li>
+                        <li class="custom-option select-option" role="option" data-value="Cerro Navia">Cerro Navia</li>
+                        <li class="custom-option select-option" role="option" data-value="Colina">Colina</li>
+                        <li class="custom-option select-option" role="option" data-value="Conchalí">Conchalí</li>
+                        <li class="custom-option select-option" role="option" data-value="Curacaví">Curacaví</li>
+                        <li class="custom-option select-option" role="option" data-value="El Bosque">El Bosque</li>
+                        <li class="custom-option select-option" role="option" data-value="El Monte">El Monte</li>
+                        <li class="custom-option select-option" role="option" data-value="Estación Central">Estación Central</li>
+                        <li class="custom-option select-option" role="option" data-value="Huechuraba">Huechuraba</li>
+                        <li class="custom-option select-option" role="option" data-value="Independencia">Independencia</li>
+                        <li class="custom-option select-option" role="option" data-value="Isla de Maipo">Isla de Maipo</li>
+                        <li class="custom-option select-option" role="option" data-value="La Cisterna">La Cisterna</li>
+                        <li class="custom-option select-option" role="option" data-value="La Florida">La Florida</li>
+                        <li class="custom-option select-option" role="option" data-value="La Granja">La Granja</li>
+                        <li class="custom-option select-option" role="option" data-value="La Pintana">La Pintana</li>
+                        <li class="custom-option select-option" role="option" data-value="La Reina">La Reina</li>
+                        <li class="custom-option select-option" role="option" data-value="Lampa">Lampa</li>
+                        <li class="custom-option select-option" role="option" data-value="Las Condes">Las Condes</li>
+                        <li class="custom-option select-option" role="option" data-value="Lo Barnechea">Lo Barnechea</li>
+                        <li class="custom-option select-option" role="option" data-value="Lo Espejo">Lo Espejo</li>
+                        <li class="custom-option select-option" role="option" data-value="Lo Prado">Lo Prado</li>
+                        <li class="custom-option select-option" role="option" data-value="Macul">Macul</li>
+                        <li class="custom-option select-option" role="option" data-value="Maipú">Maipú</li>
+                        <li class="custom-option select-option" role="option" data-value="María Pinto">María Pinto</li>
+                        <li class="custom-option select-option" role="option" data-value="Melipilla">Melipilla</li>
+                        <li class="custom-option select-option" role="option" data-value="Ñuñoa">Ñuñoa</li>
+                        <li class="custom-option select-option" role="option" data-value="Padre Hurtado">Padre Hurtado</li>
+                        <li class="custom-option select-option" role="option" data-value="Paine">Paine</li>
+                        <li class="custom-option select-option" role="option" data-value="Pedro Aguirre Cerda">Pedro Aguirre Cerda</li>
+                        <li class="custom-option select-option" role="option" data-value="Peñaflor">Peñaflor</li>
+                        <li class="custom-option select-option" role="option" data-value="Peñalolén">Peñalolén</li>
+                        <li class="custom-option select-option" role="option" data-value="Pirque">Pirque</li>
+                        <li class="custom-option select-option" role="option" data-value="Providencia">Providencia</li>
+                        <li class="custom-option select-option" role="option" data-value="Pudahuel">Pudahuel</li>
+                        <li class="custom-option select-option" role="option" data-value="Puente Alto">Puente Alto</li>
+                        <li class="custom-option select-option" role="option" data-value="Quilicura">Quilicura</li>
+                        <li class="custom-option select-option" role="option" data-value="Quinta Normal">Quinta Normal</li>
+                        <li class="custom-option select-option" role="option" data-value="Recoleta">Recoleta</li>
+                        <li class="custom-option select-option" role="option" data-value="Renca">Renca</li>
+                        <li class="custom-option select-option" role="option" data-value="San Bernardo">San Bernardo</li>
+                        <li class="custom-option select-option" role="option" data-value="San Joaquín">San Joaquín</li>
+                        <li class="custom-option select-option" role="option" data-value="San José de Maipo">San José de Maipo</li>
+                        <li class="custom-option select-option" role="option" data-value="San Miguel">San Miguel</li>
+                        <li class="custom-option select-option" role="option" data-value="San Pedro">San Pedro</li>
+                        <li class="custom-option select-option" role="option" data-value="San Ramón">San Ramón</li>
+                        <li class="custom-option select-option" role="option" data-value="Santiago Centro">Santiago Centro</li>
+                        <li class="custom-option select-option" role="option" data-value="Talagante">Talagante</li>
+                        <li class="custom-option select-option" role="option" data-value="Tiltil">Tiltil</li>
+                        <li class="custom-option select-option" role="option" data-value="Vitacura">Vitacura</li>
+                      </ul>
+                      <select class="form-control input-comuna native-hidden-select" required aria-hidden="true" tabindex="-1">
+                        <option value="" disabled selected>Selecciona la comuna...</option>
+                        <option value="Alhué">Alhué</option>
+                        <option value="Buin">Buin</option>
+                        <option value="Calera de Tango">Calera de Tango</option>
+                        <option value="Cerrillos">Cerrillos</option>
+                        <option value="Cerro Navia">Cerro Navia</option>
+                        <option value="Colina">Colina</option>
+                        <option value="Conchalí">Conchalí</option>
+                        <option value="Curacaví">Curacaví</option>
+                        <option value="El Bosque">El Bosque</option>
+                        <option value="El Monte">El Monte</option>
+                        <option value="Estación Central">Estación Central</option>
+                        <option value="Huechuraba">Huechuraba</option>
+                        <option value="Independencia">Independencia</option>
+                        <option value="Isla de Maipo">Isla de Maipo</option>
+                        <option value="La Cisterna">La Cisterna</option>
+                        <option value="La Florida">La Florida</option>
+                        <option value="La Granja">La Granja</option>
+                        <option value="La Pintana">La Pintana</option>
+                        <option value="La Reina">La Reina</option>
+                        <option value="Lampa">Lampa</option>
+                        <option value="Las Condes">Las Condes</option>
+                        <option value="Lo Barnechea">Lo Barnechea</option>
+                        <option value="Lo Espejo">Lo Espejo</option>
+                        <option value="Lo Prado">Lo Prado</option>
+                        <option value="Macul">Macul</option>
+                        <option value="Maipú">Maipú</option>
+                        <option value="María Pinto">María Pinto</option>
+                        <option value="Melipilla">Melipilla</option>
+                        <option value="Ñuñoa">Ñuñoa</option>
+                        <option value="Padre Hurtado">Padre Hurtado</option>
+                        <option value="Paine">Paine</option>
+                        <option value="Pedro Aguirre Cerda">Pedro Aguirre Cerda</option>
+                        <option value="Peñaflor">Peñaflor</option>
+                        <option value="Peñalolén">Peñalolén</option>
+                        <option value="Pirque">Pirque</option>
+                        <option value="Providencia">Providencia</option>
+                        <option value="Pudahuel">Pudahuel</option>
+                        <option value="Puente Alto">Puente Alto</option>
+                        <option value="Quilicura">Quilicura</option>
+                        <option value="Quinta Normal">Quinta Normal</option>
+                        <option value="Recoleta">Recoleta</option>
+                        <option value="Renca">Renca</option>
+                        <option value="San Bernardo">San Bernardo</option>
+                        <option value="San Joaquín">San Joaquín</option>
+                        <option value="San José de Maipo">San José de Maipo</option>
+                        <option value="San Miguel">San Miguel</option>
+                        <option value="San Pedro">San Pedro</option>
+                        <option value="San Ramón">San Ramón</option>
+                        <option value="Santiago Centro">Santiago Centro</option>
+                        <option value="Talagante">Talagante</option>
+                        <option value="Tiltil">Tiltil</option>
+                        <option value="Vitacura">Vitacura</option>
+                      </select>
+                    </div>
                   </div>
                   <input type="text" class="form-control mt-2 input-direccion"
                     placeholder="Ej: Calle Los Robles 1234 / En obra / En garaje" required>
@@ -1040,100 +1290,54 @@
     </section>
   </main>
 
-  <!-- 9. FOOTER -->
+
+
+  <!-- 9. FOOTER (SINGLE HORIZONTAL LINE) -->
   <footer class="site-footer">
-    <div class="container footer-container">
-      <div class="footer-columns">
-        <!-- Left Column: Logo & Summary -->
-        <div class="footer-col footer-col-brand">
-          <a href="#hero" class="brand-logo footer-logo">
-            <div class="brand-icon-wrap" aria-hidden="true">
-              <svg decoding="async" height="24" class="wrench-icon" viewBox="0 0 24 24" fill="none"
-                stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
-                <path
-                  d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z" />
-              </svg>
-            </div>
-            <div class="brand-text">
-              <span class="brand-name">TALLER MÓVIL <span class="accent-text">PRO</span></span>
-              <span class="brand-sub">SERVICIO TÉCNICO EN TERRENO</span>
-            </div>
-          </a>
-          <p class="footer-summary">
-            Servicio técnico mecánico automotriz e industrial en terreno. Diagnóstico profesional, mantención y
-            reparación donde se encuentra el vehículo en toda la Región Metropolitana.
-          </p>
-          <div class="footer-operator-badge">
-            <span class="operator-tag">OPERADO POR</span>
-            <span class="operator-name">CYD MECÁNICA SPA</span>
-          </div>
-        </div>
-
-        <!-- Middle Column: Navigation / Sitio -->
-        <div class="footer-col footer-col-links">
-          <h4 class="footer-col-title">SITIO // NAVEGACIÓN</h4>
-          <ul class="footer-links-list">
-            <li><a href="#servicios">SERVICIOS</a></li>
-            <li><a href="#como-funciona">CÓMO FUNCIONA</a></li>
-            <li><a href="#cobertura">COBERTURA</a></li>
-            <li><a href="#preguntas">PREGUNTAS</a></li>
-            <li><a href="#contacto">CONTACTO</a></li>
-          </ul>
-        </div>
-
-        <!-- Right Column: Contacto -->
-        <div class="footer-col footer-col-contact">
-          <h4 class="footer-col-title">CONTACTO // URGENCIAS</h4>
-          <div class="footer-contact-items">
-            <div class="footer-contact-line">
-              <span class="f-contact-label">WHATSAPP:</span>
-              <a href="https://wa.me/56953797437?text=Hola%2C%20necesito%20asistencia%20mec%C3%A1nica%20en%20terreno"
-                target="_blank" rel="noopener noreferrer" class="f-contact-link highlight-amber">
-                +56 9 5379 7437 (CHAT DIRECTO)
-              </a>
-            </div>
-            <div class="footer-contact-line">
-              <span class="f-contact-label">LLAMADAS:</span>
-              <a href="tel:+56953797437" class="f-contact-link btn-call-action">
-                +56 9 5379 7437
-              </a>
-            </div>
-            <div class="footer-contact-line">
-              <span class="f-contact-label">COBERTURA:</span>
-              <span class="f-contact-text">Región Metropolitana de Santiago, Chile</span>
-            </div>
-            <div class="footer-contact-line">
-              <span class="f-contact-label">ESTADO:</span>
-              <span class="f-contact-badge">• OPERACIÓN EN TERRENO</span>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- Bottom Bar -->
-      <div class="footer-bottom-bar">
-        <div class="footer-copyright">
-          © 2026 CYD MECÁNICA SPA. TODOS LOS DERECHOS RESERVADOS.
-        </div>
-        <div class="footer-region-badge">
-          REGIÓN METROPOLITANA // SERVICIO A DOMICILIO
-        </div>
-      </div>
+    <div class="footer-left">
+      <span class="footer-logo-icon" style="color: #FF9900; font-size: 20px; line-height: 1;">🔧</span>
+      <span class="footer-brand-title" style="color: #FFFFFF; font-size: 15px; font-weight: 800; letter-spacing: 0.5px; font-family: sans-serif; text-transform: uppercase;">
+        TALLER MÓVIL <span style="color: #FF9900;">PRO</span>
+      </span>
+      <span class="footer-separator" style="color: #404040; font-size: 13px;">|</span>
+      <span class="footer-service-label" style="color: #737373; font-size: 12px; letter-spacing: 1px; font-family: monospace; text-transform: uppercase;">
+        SERVICIO TÉCNICO EN TERRENO
+      </span>
+    </div>
+    <div class="footer-right">
+      <span class="footer-legal" style="color: #737373; font-size: 12px; font-family: monospace; letter-spacing: 0.5px;">
+        © 2026 CYD MECÁNICA SPA.
+      </span>
+      <span class="footer-dash" style="color: #404040; font-size: 12px;">—</span>
+      <span class="footer-scope" style="color: #FF9900; font-size: 12px; font-family: monospace; font-weight: 600; letter-spacing: 1px; text-transform: uppercase;">
+        REGIÓN METROPOLITANA // SERVICIO A DOMICILIO
+      </span>
     </div>
   </footer>
 
-  <!-- FLOATING QUICK WHATSAPP BUTTON (DESKTOP & MOBILE) -->
-  <a href="https://wa.me/56953797437?text=Hola%2C%20necesito%20asistencia%20mec%C3%A1nica%20en%20terreno%20con%20Taller%20M%C3%B3vil%20Pro"
-    target="_blank" rel="noopener noreferrer" class="floating-whatsapp"
-    aria-label="Escribir por WhatsApp a Taller Móvil Pro">
-    <div class="floating-pulse"></div>
-    <svg decoding="async" height="24" class="floating-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-      stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-      <path
-        d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z" />
-    </svg>
-    <span class="floating-text">WHATSAPP EN VIVO</span>
-  </a>
+  <!-- FLOATING ACTIONS DOCK (ESQUINA INFERIOR DERECHA) -->
+  <div class="floating-dock floating-contact-container floating-actions" id="floating-dock">
+    <!-- Call Anchor Button: Compacto, blanco con bordes muy sutiles -->
+    <a href="tel:+56953797437" class="floating-call-btn" id="btn-call-trigger" aria-label="Llamar o copiar teléfono +56 9 5379 7437" title="Llamar al +56 9 5379 7437">
+      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" class="floating-call-icon" aria-hidden="true">
+        <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
+      </svg>
+      <span id="call-btn-text">+56 9 5379 7437</span>
+    </a>
+
+    <!-- Floating WhatsApp Button -->
+    <a href="https://wa.me/56953797437?text=Hola%2C%20necesito%20asistencia%20mec%C3%A1nica%20en%20terreno%20con%20Taller%20M%C3%B3vil%20Pro"
+      target="_blank" rel="noopener noreferrer" class="floating-whatsapp"
+      aria-label="Escribir por WhatsApp a Taller Móvil Pro">
+      <div class="floating-pulse"></div>
+      <svg decoding="async" height="24" class="floating-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+        stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <path
+          d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z" />
+      </svg>
+      <span class="floating-text">WHATSAPP EN VIVO</span>
+    </a>
+  </div>
 
   <!-- TOAST NOTIFICATION CONTAINER -->
   <div id="toast-notification" class="toast-notification" role="status" aria-live="polite">
