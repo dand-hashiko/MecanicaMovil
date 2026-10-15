@@ -265,26 +265,39 @@ document.addEventListener('DOMContentLoaded', () => {
       return;
     }
 
-    // 6. Phone Copy Button
-    if (e.target.closest('#btn-copy-phone')) {
-      try {
-        if (navigator.clipboard && navigator.clipboard.writeText) {
-          await navigator.clipboard.writeText(phoneNumber);
-        } else {
-          const textarea = document.createElement('textarea');
-          textarea.value = phoneNumber;
-          textarea.style.position = 'fixed';
-          textarea.style.opacity = '0';
-          document.body.appendChild(textarea);
-          textarea.select();
-          document.execCommand('copy');
-          document.body.removeChild(textarea);
+    // 6. Phone Copy Button / Floating Phone Action
+    const phoneBtn = e.target.closest('#copy-phone-btn, #btn-copy-phone, .phone-btn');
+    if (phoneBtn) {
+      const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+      if (!isMobile) {
+        e.preventDefault();
+        try {
+          if (navigator.clipboard && navigator.clipboard.writeText) {
+            await navigator.clipboard.writeText(phoneNumber.replace(/\s+/g, ''));
+          } else {
+            const textarea = document.createElement('textarea');
+            textarea.value = phoneNumber.replace(/\s+/g, '');
+            textarea.style.position = 'fixed';
+            textarea.style.opacity = '0';
+            document.body.appendChild(textarea);
+            textarea.select();
+            document.execCommand('copy');
+            document.body.removeChild(textarea);
+          }
+          const callText = document.getElementById('call-btn-text');
+          if (callText) {
+            const originalText = callText.textContent;
+            callText.textContent = '¡NÚMERO COPIADO!';
+            setTimeout(() => {
+              callText.textContent = originalText;
+            }, 2200);
+          }
+          showToast(`✓ Teléfono ${phoneNumber} copiado al portapapeles`);
+        } catch (err) {
+          showToast(`Llamar: ${phoneNumber}`);
         }
-        showToast(`Teléfono ${phoneNumber} copiado al portapapeles`);
-      } catch (err) {
-        showToast(`Número: ${phoneNumber}`);
+        return;
       }
-      return;
     }
 
     // 7. Services Accordion
@@ -445,7 +458,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 // Phone Call Action Handler
 (function() {
-  const callBtn = document.getElementById('btn-call-trigger');
+  const callBtn = document.getElementById('copy-phone-btn') || document.getElementById('btn-call-trigger');
   if (!callBtn) return;
 
   const phoneNumber = '+56953797437';
@@ -524,32 +537,42 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // Pausa mientras el cursor o dedo interactúa
   track.addEventListener('mouseenter', () => isUserInteracting = true);
-  track.addEventListener('mouseleave', () => isUserInteracting = false);
+  track.addEventListener('mouseleave', () => {
+    if (!isDown) isUserInteracting = false;
+  });
   track.addEventListener('touchstart', () => isUserInteracting = true, { passive: true });
   track.addEventListener('touchend', () => {
     clearTimeout(resumeTimeout);
     resumeTimeout = setTimeout(() => isUserInteracting = false, 1500);
   });
 
-  // Flecha Izquierda (Retroceder)
-  if (prevBtn) {
-    prevBtn.addEventListener('click', () => {
-      isUserInteracting = true;
-      track.scrollBy({ left: -280, behavior: 'smooth' });
-      clearTimeout(resumeTimeout);
-      resumeTimeout = setTimeout(() => isUserInteracting = false, 2500);
-    });
-  }
+  // Desplazamiento manual por arrastre con mouse (Drag to Scroll)
+  let isDown = false;
+  let startX = 0;
+  let scrollLeftStart = 0;
 
-  // Flecha Derecha (Avanzar)
-  if (nextBtn) {
-    nextBtn.addEventListener('click', () => {
-      isUserInteracting = true;
-      track.scrollBy({ left: 280, behavior: 'smooth' });
+  track.addEventListener('mousedown', (e) => {
+    isDown = true;
+    isUserInteracting = true;
+    startX = e.pageX - track.offsetLeft;
+    scrollLeftStart = track.scrollLeft;
+  });
+
+  window.addEventListener('mouseup', () => {
+    if (isDown) {
+      isDown = false;
       clearTimeout(resumeTimeout);
-      resumeTimeout = setTimeout(() => isUserInteracting = false, 2500);
-    });
-  }
+      resumeTimeout = setTimeout(() => isUserInteracting = false, 1500);
+    }
+  });
+
+  track.addEventListener('mousemove', (e) => {
+    if (!isDown) return;
+    e.preventDefault();
+    const x = e.pageX - track.offsetLeft;
+    const walk = (x - startX) * 1.5;
+    track.scrollLeft = scrollLeftStart - walk;
+  });
 });
 
 // ==========================================================================
@@ -626,4 +649,5 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   }
 });
+
 

@@ -3228,38 +3228,7 @@ hr + .coverage-section,
   z-index: 1;
 }
 
-/* ==========================================================================
-   FLOATING ACTION BUTTONS RE-POSITIONING (CALL & WHATSAPP)
-   Elevate floating buttons so they never touch or block footer text
-   ========================================================================== */
-.floating-contact-container,
-.floating-actions,
-div[class*="floating-buttons"],
-div[class*="whatsapp-float"],
-div[class*="floating"],
-.floating-dock {
-  position: fixed !important;
-  right: 24px !important;
-  bottom: 95px !important; /* Raised cleanly above the single-line footer */
-  z-index: 9999 !important;
-  display: flex !important;
-  flex-direction: column !important;
-  align-items: flex-end !important;
-  gap: 8px !important;
-}
-
-/* Ensure buttons don't blow up viewport height on mobile */
-@media (max-width: 768px) {
-  .floating-contact-container,
-  .floating-actions,
-  div[class*="floating-buttons"],
-  div[class*="whatsapp-float"],
-  div[class*="floating"],
-  .floating-dock {
-    bottom: 85px !important;
-    right: 14px !important;
-  }
-}
+/* Legacy floating dock styles superseded by FLOATING ACTION BUTTONS: HIGH CONVERSION section below */
 
 /* ==========================================================================
    SINGLE-LINE FOOTER STYLING
@@ -3303,31 +3272,26 @@ footer .footer-right {
 /* ==========================================================================
    MULTI-BRAND INTERACTIVE CAROUSEL: REAL LOGOS, BRAND NAMES & ARROW CONTROLS
    ========================================================================== */
-/* Eliminar bordes físicos y cortes rígidos */
+/* Contenedor principal de la franja del carrusel */
 .brands-marquee-section,
 #marcas,
-section[data-section="brands"] {
+section[data-section="brands"],
+.brands-carousel-container {
+  background-color: #0D0D0D !important;
+  background: #0D0D0D !important;
   border-top: none !important;
   border-bottom: none !important;
   box-shadow: none !important;
-  position: relative;
-  background-color: #0D0D0D !important;
-  padding: 50px 0 60px 0 !important;
-  /* Máscara de degradado que desvanece de forma natural el límite superior e inferior */
-  mask-image: linear-gradient(
-    to bottom,
-    transparent 0%,
-    black 10%,
-    black 90%,
-    transparent 100%
-  ) !important;
-  -webkit-mask-image: linear-gradient(
-    to bottom,
-    transparent 0%,
-    black 10%,
-    black 90%,
-    transparent 100%
-  ) !important;
+}
+
+.brands-marquee-section,
+#marcas,
+section[data-section="brands"] {
+  padding: 40px 0 !important;
+  position: relative !important;
+  z-index: 10 !important;
+  mask-image: none !important;
+  -webkit-mask-image: none !important;
 }
 
 .brands-marquee-section::before,
@@ -3336,7 +3300,36 @@ section[data-section="brands"] {
   content: none !important;
 }
 
-/* Pista horizontal con soporte de scroll y flex continuo */
+/* Contenedor del carrusel */
+.brands-carousel-container {
+  padding: 16px 0 !important;
+  position: relative !important;
+  overflow: hidden !important;
+}
+
+/* Difuminado suave en los laterales izquierdo y derecho hacia el fondo oscuro */
+.brands-carousel-container::before,
+.brands-carousel-container::after {
+  content: "" !important;
+  position: absolute !important;
+  top: 0 !important;
+  bottom: 0 !important;
+  width: 90px !important;
+  z-index: 15 !important;
+  pointer-events: none !important;
+}
+
+.brands-carousel-container::before {
+  left: 0 !important;
+  background: linear-gradient(90deg, #0D0D0D 0%, rgba(13, 13, 13, 0.7) 40%, transparent 100%) !important;
+}
+
+.brands-carousel-container::after {
+  right: 0 !important;
+  background: linear-gradient(-90deg, #0D0D0D 0%, rgba(13, 13, 13, 0.7) 40%, transparent 100%) !important;
+}
+
+/* Pista limpia con auto-scroll y desplazamiento manual por arrastre o swipe */
 .brands-scroll-track {
   display: flex !important;
   gap: 48px !important;
@@ -3346,45 +3339,60 @@ section[data-section="brands"] {
   scrollbar-width: none !important;
   -ms-overflow-style: none !important;
   scroll-behavior: smooth !important;
-  padding: 18px 60px !important;
+  padding: 18px 20px !important;
   width: 100% !important;
+  cursor: grab;
+  user-select: none;
+  -webkit-overflow-scrolling: touch;
+}
+
+.brands-scroll-track:active {
+  cursor: grabbing;
 }
 
 .brands-scroll-track::-webkit-scrollbar {
   display: none !important;
 }
 
-/* Contenedor individual sin cajas rígidas ni recortes */
+/* Ambient backlight capsule for items so dark logos pop naturally without any white bar */
 .brand-item {
   flex: 0 0 auto !important;
-  display: flex !important;
-  flex-direction: column !important;
-  align-items: center !important;
-  justify-content: center !important;
-  gap: 10px !important;
   background: transparent !important;
   background-color: transparent !important;
   border: none !important;
   box-shadow: none !important;
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  justify-content: center !important;
+  gap: 8px !important;
   padding: 8px 12px !important;
   overflow: visible !important;
   cursor: pointer !important;
-  transition: transform 0.28s ease !important;
+  transition: transform 0.25s ease !important;
 }
 
-/* Insignia / Logo: tamaño proporcional, fondo transparente, colores reales */
+/* Regular colored logos stay completely natural */
 .brand-item img {
-  height: 52px !important;
-  max-height: 52px !important;
+  height: 48px !important;
+  max-height: 48px !important;
   width: auto !important;
-  max-width: 110px !important;
+  max-width: 100px !important;
   object-fit: contain !important;
-  filter: none !important; /* Mantiene el color/cromo oficial */
   opacity: 0.85 !important;
-  transition: transform 0.28s ease, filter 0.28s ease, opacity 0.28s ease !important;
+  transition: transform 0.25s ease, filter 0.25s ease, opacity 0.25s ease !important;
 }
 
-/* Nombre de la marca debajo de la insignia */
+/* Invert strictly black/dark logos to crisp white/silver */
+.brand-item img[alt="Nissan"],
+.brand-item img[src*="nissan"],
+.brand-item img[alt="Toyota"],
+.brand-item img[src*="toyota"] {
+  filter: brightness(0) invert(0.9) !important;
+  opacity: 0.85 !important;
+}
+
+/* Texto del nombre de la marca debajo de cada logo */
 .brand-name {
   color: #8C8C8C !important;
   font-size: 11px !important;
@@ -3392,15 +3400,22 @@ section[data-section="brands"] {
   font-weight: 700 !important;
   letter-spacing: 1px !important;
   text-transform: uppercase !important;
-  transition: color 0.28s ease, transform 0.28s ease !important;
+  transition: color 0.25s ease, transform 0.25s ease !important;
   pointer-events: none !important;
 }
 
-/* Efecto Hover: zoom fluido y notorio sin recuadro */
+/* Hover effect */
 .brand-item:hover img {
-  transform: scale(1.22) !important;
+  transform: scale(1.18) !important;
   opacity: 1 !important;
   filter: drop-shadow(0 0 10px rgba(255, 153, 0, 0.75)) !important;
+}
+
+.brand-item:hover img[alt="Nissan"],
+.brand-item:hover img[src*="nissan"],
+.brand-item:hover img[alt="Toyota"],
+.brand-item:hover img[src*="toyota"] {
+  filter: brightness(0) invert(0.9) drop-shadow(0 0 10px rgba(255, 153, 0, 0.8)) !important;
 }
 
 .brand-item:hover .brand-name {
@@ -3408,42 +3423,11 @@ section[data-section="brands"] {
   transform: translateY(2px) !important;
 }
 
-/* Flechas laterales de control */
-.carousel-arrow {
-  position: absolute !important;
-  top: 50% !important;
-  transform: translateY(-50%) !important;
-  width: 44px !important;
-  height: 44px !important;
-  background-color: rgba(20, 20, 20, 0.9) !important;
-  border: 1px solid rgba(255, 153, 0, 0.5) !important;
-  border-radius: 50% !important;
-  color: #FF9900 !important;
-  font-size: 20px !important;
-  display: flex !important;
-  align-items: center !important;
-  justify-content: center !important;
-  cursor: pointer !important;
-  z-index: 25 !important;
-  transition: all 0.2s ease !important;
-  backdrop-filter: blur(6px) !important;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.6) !important;
-}
-
-.carousel-arrow:hover {
-  background-color: #FF9900 !important;
-  color: #0D0D0D !important;
-  border-color: #FF9900 !important;
-  box-shadow: 0 0 16px rgba(255, 153, 0, 0.8) !important;
-  transform: translateY(-50%) scale(1.08) !important;
-}
-
-.left-arrow {
-  left: 16px !important;
-}
-
-.right-arrow {
-  right: 16px !important;
+/* Ocultar botones de flecha del carrusel */
+.carousel-arrow,
+#carousel-prev,
+#carousel-next {
+  display: none !important;
 }
 
 @media (max-width: 768px) {
@@ -3472,4 +3456,189 @@ section[data-section="brands"] {
   object-fit: cover !important;
   object-position: center !important;
 }
+
+/* ==========================================================================
+   HEADER CLEANUP & AMBIENT DIRECTIONAL HINTS
+   ========================================================================== */
+/* Force hide any residual header contact actions */
+header .header-actions,
+header .header-contact-btn,
+header a[href*="56953797437"],
+nav .header-btn-group {
+  display: none !important;
+}
+
+/* Directional ambient contact hint text */
+.contact-hint-text {
+  background: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+  cursor: default !important;
+  pointer-events: auto;
+}
+
+.contact-hint-text p {
+  cursor: default !important;
+}
+
+/* ==========================================================================
+   FLOATING ACTION BUTTONS: HIGH CONVERSION CALL & WHATSAPP
+   ========================================================================== */
+/* Contenedor flotante protegido con la capa máxima */
+.floating-cta-container {
+  position: fixed !important;
+  right: 20px !important;
+  bottom: 24px !important;
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: flex-end !important;
+  gap: 12px !important;
+  z-index: 99999 !important;
+  pointer-events: auto !important;
+}
+
+/* Base de los botones */
+.floating-cta-btn {
+  display: flex !important;
+  align-items: center !important;
+  gap: 10px !important;
+  padding: 10px 18px !important;
+  border-radius: 8px !important;
+  text-decoration: none !important;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif !important;
+  font-weight: 800 !important;
+  font-size: 13px !important;
+  letter-spacing: 0.5px !important;
+  text-transform: uppercase !important;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.65) !important;
+  transition: transform 0.25s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.25s ease !important;
+  position: relative !important;
+  overflow: visible !important;
+}
+
+/* 1. Botón Teléfono: Estilo dark técnico de precisión */
+.phone-btn {
+  background: #161616 !important;
+  color: #FFFFFF !important;
+  border: 1px solid rgba(255, 153, 0, 0.4) !important;
+}
+.phone-btn .cta-icon-wrap {
+  color: #FF9900 !important; /* Auricular en ámbar técnico */
+  display: flex;
+  align-items: center;
+}
+.phone-btn:hover {
+  background: #202020 !important;
+  border-color: #FF9900 !important;
+  transform: translateY(-2px) scale(1.03) !important;
+}
+
+/* Punto verde activo con latido continuo */
+.online-status-badge {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 10px;
+  height: 10px;
+  margin-left: 4px;
+}
+.status-dot {
+  width: 8px;
+  height: 8px;
+  background-color: #10B981;
+  border-radius: 50%;
+  z-index: 2;
+}
+.status-wave {
+  position: absolute;
+  width: 8px;
+  height: 8px;
+  background-color: #10B981;
+  border-radius: 50%;
+  animation: ping-wave 1.8s infinite cubic-bezier(0, 0, 0.2, 1);
+  z-index: 1;
+}
+
+@keyframes ping-wave {
+  0% { transform: scale(1); opacity: 0.9; }
+  100% { transform: scale(2.8); opacity: 0; }
+}
+
+/* 2. Botón WhatsApp: El punto focal con pulso radar de alta conversión */
+.whatsapp-btn {
+  background: #FF9900 !important;
+  color: #0D0D0D !important;
+  border: 1px solid #FFB74D !important;
+  animation: radar-pulse 2.6s infinite ease-out !important;
+}
+.whatsapp-btn .ws-icon-wrap {
+  display: flex;
+  align-items: center;
+  color: #0D0D0D !important;
+}
+.whatsapp-btn:hover {
+  background: #FFA726 !important;
+  transform: translateY(-3px) scale(1.05) !important;
+  box-shadow: 0 8px 25px rgba(255, 153, 0, 0.6) !important;
+}
+
+/* Animación de Pulso Radar para WhatsApp */
+@keyframes radar-pulse {
+  0% {
+    box-shadow: 0 0 0 0 rgba(255, 153, 0, 0.7), 0 4px 16px rgba(0, 0, 0, 0.6);
+  }
+  50% {
+    box-shadow: 0 0 0 14px rgba(255, 153, 0, 0), 0 4px 16px rgba(0, 0, 0, 0.6);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(255, 153, 0, 0), 0 4px 16px rgba(0, 0, 0, 0.6);
+  }
+}
+
+@media (max-width: 768px) {
+  .floating-cta-container {
+    right: 14px !important;
+    bottom: 18px !important;
+    gap: 10px !important;
+  }
+  .floating-cta-btn {
+    padding: 9px 14px !important;
+    font-size: 12px !important;
+  }
+}
+
+/* ==========================================================================
+   FAQ AMBIENT DIRECTIONAL HINT
+   ========================================================================== */
+.faq-ambient-hint {
+  background: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+}
+
+.faq-ambient-hint p {
+  cursor: default !important;
+}
+
+@media (max-width: 600px) {
+  .hero-guarantees-box {
+    padding: 14px 16px !important;
+  }
+  .hero-guarantees-box > div {
+    flex-wrap: wrap !important;
+    gap: 4px 8px !important;
+  }
+}
+
+/* ==========================================================================
+   COBERTURA: NOTA INTERURBANO TEXTO PLANO
+   ========================================================================== */
+.interurbano-note,
+.interurbano-note * {
+  text-decoration: none !important;
+  border-bottom: none !important;
+  cursor: default !important;
+}
+
 
