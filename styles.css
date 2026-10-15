@@ -3641,4 +3641,11 @@ nav .header-btn-group {
   cursor: default !important;
 }
 
+/* Hero Primary CTA Hover */
+.btn-primary-hero:hover {
+  background-color: #FFA726 !important;
+  transform: translateY(-2px) !important;
+  box-shadow: 0 6px 20px rgba(255, 153, 0, 0.4) !important;
+}
+
 
