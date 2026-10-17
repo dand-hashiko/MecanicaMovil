@@ -2376,178 +2376,26 @@ select option {
   box-shadow: 0 6px 22px rgba(255, 153, 0, 0.45);
 }
 
-/* Right Summary Card ("CENTRAL TÉCNICA MÓVIL") */
-.contact-info-panel .industrial-card {
-  background-color: var(--bg-card);
-  border: 1px solid var(--border-default);
-  border-radius: var(--radius-md);
-  padding: var(--card-padding);
-  box-shadow: 0 16px 36px rgba(0, 0, 0, 0.55);
+/* ==========================================================================
+   PANEL LATERAL DE CERTEZAS TÉCNICAS (DISPATCH TRUST CARD)
+   ========================================================================== */
+.dispatch-trust-card {
+  background-color: #121212 !important;
+  border: 1px solid #262626 !important;
+  border-radius: 8px !important;
+  padding: 26px 24px !important;
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 20px !important;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5) !important;
   height: 100%;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  margin-top: 0 !important;
   box-sizing: border-box;
 }
 
-.info-card-header {
-  border-bottom: 1px solid var(--border-subtle);
-  padding-bottom: 16px;
-  margin-bottom: 20px;
-}
-
-.info-header-tag {
-  font-family: var(--font-mono);
-  font-size: 11px;
-  font-weight: 700;
-  color: var(--accent-amber);
-  display: block;
-  letter-spacing: 0.08em;
-  margin-bottom: 4px;
-}
-
-.info-header-title {
-  font-size: 20px;
-  font-weight: 900;
-  color: var(--text-primary);
-}
-
-.info-items-list {
-  display: flex;
-  flex-direction: column;
-  gap: 18px;
-  flex-grow: 1;
-}
-
-.info-item {
-  display: flex;
-  flex-direction: column;
-  gap: 4px;
-}
-
-.info-item-label {
-  font-family: var(--font-mono);
-  font-size: 10.5px;
-  font-weight: 600;
-  color: var(--text-muted);
-  letter-spacing: 0.08em;
-}
-
-.info-item-val-group {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-}
-
-.info-phone-link {
-  font-family: var(--font-mono);
-  font-size: clamp(18px, 2vw, 22px);
-  font-weight: 800;
-  color: var(--accent-amber);
-}
-
-.info-phone-link:hover {
-  color: var(--accent-amber-hover);
-}
-
-.btn-copy-phone {
-  background-color: #1A1A1A;
-  border: 1px solid var(--border-default);
-  color: var(--text-secondary);
-  width: 34px;
-  height: 34px;
-  border-radius: var(--radius-md);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-  transition: all var(--transition-fast);
-}
-
-.btn-copy-phone svg {
-  width: 15px;
-  height: 15px;
-}
-
-.btn-copy-phone:hover {
-  background-color: var(--accent-amber-subtle);
-  border-color: var(--accent-amber);
-  color: var(--accent-amber);
-}
-
-.info-item-value {
-  font-size: 15.5px;
-  font-weight: 700;
-  color: var(--text-primary);
-}
-
-.info-item-sub {
-  font-size: 12px;
-  color: var(--text-muted);
-}
-
-.status-box-highlight {
-  background-color: #121212;
-  border: 1px solid var(--border-default);
-  padding: 12px 14px;
-  border-radius: var(--radius-md);
-}
-
-.live-status-pill {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  margin-top: 4px;
-}
-
-.live-dot-pulse {
-  width: 10px;
-  height: 10px;
-  background-color: var(--accent-amber);
-  border-radius: 50%;
-  box-shadow: 0 0 10px var(--accent-amber-glow);
-  animation: 1.8s ease-in-out infinite pulse-dot;
-}
-
-@keyframes pulse-dot {
-  0%, 100% { transform: scale(1); opacity: 1; }
-  50% { transform: scale(1.25); opacity: 0.6; }
-}
-
-.status-strong {
-  font-family: var(--font-mono);
-  font-size: 12.5px;
-  font-weight: 800;
-  color: var(--accent-amber);
-  letter-spacing: 0.05em;
-}
-
-.operational-stamps {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 12px;
-  margin-top: 24px;
-  padding-top: 18px;
-  border-top: 1px solid var(--border-subtle);
-}
-
-.stamp-box {
-  background-color: #121212;
-  border: 1px solid var(--border-subtle);
-  padding: 10px 12px;
-  border-radius: var(--radius-md);
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  font-family: var(--font-mono);
-  font-size: 10px;
-  font-weight: 700;
-  color: var(--text-secondary);
-}
-
-.stamp-icon {
-  font-size: 14px;
+@media (max-width: 900px) {
+  .dispatch-trust-card {
+    height: auto !important;
+  }
 }
 
 /* Contact Responsive Breakpoints */
@@ -2573,9 +2421,6 @@ select option {
     padding: 8px 12px;
     font-size: 12.5px;
     min-height: 42px;
-  }
-  .operational-stamps {
-    grid-template-columns: 1fr;
   }
 }
 
