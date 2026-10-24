@@ -1532,36 +1532,68 @@ p {
   }
 }
 
-/* Protocol 4 Steps Grid Styles & Responsive */
-.protocol-section .step-card {
-  transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
+/* Grilla 2x2 para el protocolo */
+.steps-grid {
+  display: grid !important;
+  grid-template-columns: repeat(2, 1fr) !important;
+  gap: 24px !important;
+  max-width: 960px !important;
+  margin: 0 auto !important;
 }
 
-.protocol-section .step-card:hover {
-  transform: translateY(-4px);
-  border-color: rgba(255, 153, 0, 0.45) !important;
-  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.55);
+/* Tarjeta individual */
+.step-card {
+  background-color: #121212 !important;
+  border: 1px solid #242424 !important;
+  border-radius: 8px !important;
+  overflow: hidden !important;
+  display: flex !important;
+  flex-direction: column !important;
+  transition: transform 0.25s ease, border-color 0.25s ease !important;
 }
 
-.protocol-section .step-card img {
-  transition: transform 0.35s ease;
+.step-card:hover {
+  transform: translateY(-4px) !important;
+  border-color: #FF9900 !important;
 }
 
-.protocol-section .step-card:hover img {
-  transform: scale(1.04);
+/* Contenedor de imagen uniforme en 2x2 */
+.step-card > div:first-child {
+  width: 100% !important;
+  height: 220px !important; /* Altura óptima para balancear en 2x2 */
+  overflow: hidden !important;
+  background-color: #0d0d0d !important;
 }
 
-@media (max-width: 992px) {
-  .protocol-section .steps-grid {
-    grid-template-columns: repeat(2, 1fr) !important;
-    gap: 16px !important;
-  }
+.step-card img {
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: cover !important;
+  object-position: center !important;
+  display: block !important;
+  transition: transform 0.35s ease !important;
 }
 
-@media (max-width: 580px) {
-  .protocol-section .steps-grid {
+.step-card:hover img {
+  transform: scale(1.04) !important;
+}
+
+/* Contenedor de textos */
+.step-card > div:last-child {
+  padding: 22px !important;
+  display: flex !important;
+  flex-direction: column !important;
+  flex-grow: 1 !important;
+}
+
+/* Adaptabilidad para teléfonos pequeños */
+@media (max-width: 640px) {
+  .steps-grid {
     grid-template-columns: 1fr !important;
-    gap: 16px !important;
+    gap: 18px !important;
+  }
+  .step-card > div:first-child {
+    height: 190px !important;
   }
 }
 
@@ -3833,6 +3865,125 @@ nav .header-btn-group {
   right: 0;
   background: linear-gradient(to left, #0A0A0A, transparent);
 }
+
+/* ==========================================================================
+   ESTILOS PARA UNIFICACIÓN VISUAL Y SCROLL EN CAMIONES Y MAQUINARIA
+   ========================================================================== */
+.brand-unit {
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  justify-content: center !important;
+  gap: 8px !important;
+  min-width: 90px !important;
+  flex-shrink: 0 !important;
+  user-select: none !important;
+}
+
+.brand-icon-wrap {
+  width: 50px !important;
+  height: 38px !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  transition: transform 0.2s ease !important;
+}
+
+.brand-unit:hover .brand-icon-wrap {
+  transform: scale(1.12) !important;
+}
+
+.brand-name-tag {
+  color: #A3A3A3 !important;
+  font-family: monospace, -apple-system, sans-serif !important;
+  font-size: 11px !important;
+  font-weight: 700 !important;
+  letter-spacing: 0.8px !important;
+  text-transform: uppercase !important;
+  text-align: center !important;
+  transition: color 0.2s ease !important;
+}
+
+.brand-unit:hover .brand-name-tag {
+  color: #FF9900 !important;
+}
+
+/* Barra de scroll horizontal estilizada en dark mode */
+.scroll-brand-track::-webkit-scrollbar {
+  height: 4px !important;
+}
+.scroll-brand-track::-webkit-scrollbar-track {
+  background: #111111 !important;
+}
+.scroll-brand-track::-webkit-scrollbar-thumb {
+  background: #333333 !important;
+  border-radius: 4px !important;
+}
+.scroll-brand-track::-webkit-scrollbar-thumb:hover {
+  background: #FF9900 !important;
+}
+
+/* ==========================================================================
+   CARRUSEL PRINCIPAL DE MARCAS (VEHÍCULOS LIVIANOS / SUV / CAMIONETAS)
+   ========================================================================== */
+/* Contenedor de cada marca */
+.brand-carousel-item {
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  justify-content: center !important;
+  gap: 8px !important;
+  min-width: 90px !important;
+  flex-shrink: 0 !important;
+  user-select: none !important;
+}
+
+/* Marco para asegurar que el logo nunca quede negro o invisible */
+.brand-logo-frame {
+  width: 52px !important;
+  height: 40px !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  transition: transform 0.25s ease !important;
+}
+
+.brand-carousel-item:hover .brand-logo-frame {
+  transform: scale(1.15) !important;
+}
+
+/* Tipografía del nombre inferior */
+.brand-name {
+  color: #A3A3A3 !important;
+  font-family: monospace, -apple-system, sans-serif !important;
+  font-size: 11px !important;
+  font-weight: 700 !important;
+  letter-spacing: 0.8px !important;
+  text-transform: uppercase !important;
+  text-align: center !important;
+  transition: color 0.2s ease !important;
+}
+
+.brand-carousel-item:hover .brand-name {
+  color: #FF9900 !important;
+}
+
+/* Animación Marquee Continua */
+.brands-marquee-track {
+  animation: marquee-infinite 36s linear infinite !important;
+  will-change: transform;
+}
+
+.brands-marquee-track:hover {
+  animation-play-state: paused !important;
+}
+
+@keyframes marquee-infinite {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+
 
 
 

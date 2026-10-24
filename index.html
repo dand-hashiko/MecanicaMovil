@@ -306,170 +306,715 @@
 
       <div class="brands-carousel-container" style="position: relative; width: 100%; overflow: hidden; display: flex; align-items: center;">
         <!-- Pista de logos con auto-scroll y desplazamiento manual -->
-        <div class="brands-scroll-track" id="brands-track">
-          <!-- SET 1 (Marcas presentes en Chile) -->
-          <div class="brand-item">
-            <img src="https://raw.githubusercontent.com/filippofilip95/car-logos-dataset/master/logos/optimized/toyota.png" alt="Toyota" loading="lazy">
+        <!-- Pista de logos con auto-scroll continuo y desplazamiento -->
+        <div class="brands-marquee-track" id="brands-track" style="display: flex; gap: 40px; width: max-content; align-items: center; padding: 18px 0;">
+
+          <!-- SET 1 (44 Marcas Livianas, SUV y Camionetas) -->
+          <!-- TOYOTA -->
+          <div class="brand-carousel-item">
+            <div class="brand-logo-frame">
+              <svg width="38" height="28" viewBox="0 0 24 24" fill="#FFFFFF"><path d="M12 2C6.48 2 2 4.69 2 8c0 2.25 2.11 4.2 5.27 5.18L6.8 15.3c-.52-.16-1.03-.35-1.5-.57l-.8 1.83c.75.34 1.57.62 2.44.83L6.15 20.7l1.9.54.9-3.23c.98.15 2.01.23 3.05.23s2.07-.08 3.05-.23l.9 3.23 1.9-.54-.79-3.31c.87-.21 1.69-.49 2.44-.83l-.8-1.83c-.47.22-.98.41-1.5.57l-.47-2.12C19.89 12.2 22 10.25 22 8c0-3.31-4.48-6-10-6zm0 1.8c4.46 0 7.8 2.04 7.8 4.2 0 1.4-1.42 2.66-3.71 3.44l-1.02-4.57C15.65 6.45 16 5.76 16 5c0-1.66-1.79-3-4-3s-4 1.34-4 3c0 .76.35 1.45.93 1.87l-1.02 4.57C5.62 10.66 4.2 9.4 4.2 8c0-2.16 3.34-4.2 7.8-4.2zm0 2.2c1.21 0 2.2.63 2.2 1.4 0 .5-.41.93-1.02 1.18l-.51-2.29c-.21-.18-.43-.29-.67-.29s-.46.11-.67.29l-.51 2.29c-.61-.25-1.02-.68-1.02-1.18 0-.77.99-1.4 2.2-1.4z"/></svg>
+            </div>
             <span class="brand-name">TOYOTA</span>
           </div>
-          <div class="brand-item">
-            <img src="https://raw.githubusercontent.com/filippofilip95/car-logos-dataset/master/logos/optimized/chevrolet.png" alt="Chevrolet" loading="lazy">
-            <span class="brand-name">CHEVROLET</span>
-          </div>
-          <div class="brand-item">
-            <img src="https://raw.githubusercontent.com/filippofilip95/car-logos-dataset/master/logos/optimized/hyundai.png" alt="Hyundai" loading="lazy">
+
+          <!-- HYUNDAI -->
+          <div class="brand-carousel-item">
+            <div class="brand-logo-frame">
+              <svg width="38" height="26" viewBox="0 0 24 24" fill="#38BDF8"><path d="M12 2C5.37 2 0 6.48 0 12s5.37 10 12 10 12-4.48 12-10S18.63 2 12 2zm0 1.8c4.95 0 9.08 3.19 9.96 7.4h-3.41c-.48-2.61-2.91-4.6-6.55-4.6s-6.07 1.99-6.55 4.6H1.94C2.82 6.99 6.95 3.8 12 3.8z"/></svg>
+            </div>
             <span class="brand-name">HYUNDAI</span>
           </div>
-          <div class="brand-item">
-            <img src="https://raw.githubusercontent.com/filippofilip95/car-logos-dataset/master/logos/optimized/nissan.png" alt="Nissan" loading="lazy">
+
+          <!-- NISSAN -->
+          <div class="brand-carousel-item">
+            <div class="brand-logo-frame">
+              <svg width="34" height="34" viewBox="0 0 24 24" fill="#FFFFFF"><circle cx="12" cy="12" r="9.5" stroke="#FFFFFF" stroke-width="2" fill="none"/><rect x="2" y="10" width="20" height="4" fill="#0D0D0D" stroke="#FFFFFF" stroke-width="1.5"/><text x="12" y="13.2" font-family="Arial, sans-serif" font-weight="900" font-size="3.5" fill="#FFFFFF" text-anchor="middle" letter-spacing="0.5">NISSAN</text></svg>
+            </div>
             <span class="brand-name">NISSAN</span>
           </div>
-          <div class="brand-item">
-            <img src="https://raw.githubusercontent.com/filippofilip95/car-logos-dataset/master/logos/optimized/kia.png" alt="Kia" loading="lazy">
+
+          <!-- KIA -->
+          <div class="brand-carousel-item">
+            <div class="brand-logo-frame">
+              <svg width="38" height="22" viewBox="0 0 24 24" fill="#EF4444"><ellipse cx="12" cy="12" rx="11" ry="6.5" stroke="#EF4444" stroke-width="1.8" fill="none"/><text x="12" y="14.5" font-family="Arial Black, sans-serif" font-weight="900" font-size="7.5" fill="#EF4444" text-anchor="middle">KIA</text></svg>
+            </div>
             <span class="brand-name">KIA</span>
           </div>
-          <div class="brand-item">
-            <img src="https://raw.githubusercontent.com/filippofilip95/car-logos-dataset/master/logos/optimized/suzuki.png" alt="Suzuki" loading="lazy">
+
+          <!-- SUZUKI -->
+          <div class="brand-carousel-item">
+            <div class="brand-logo-frame">
+              <svg width="30" height="30" viewBox="0 0 24 24" fill="#EF4444"><path d="M18.8 3H5.2L3.5 6.5l8.5 5-8.5 6 1.7 3.5h13.6l1.7-3.5-8.5-6 8.5-5z"/></svg>
+            </div>
             <span class="brand-name">SUZUKI</span>
           </div>
-          <div class="brand-item">
-            <img src="https://raw.githubusercontent.com/filippofilip95/car-logos-dataset/master/logos/optimized/ford.png" alt="Ford" loading="lazy">
+
+          <!-- FORD -->
+          <div class="brand-carousel-item">
+            <div class="brand-logo-frame">
+              <svg width="42" height="24" viewBox="0 0 24 24" fill="#3B82F6"><ellipse cx="12" cy="12" rx="11" ry="6.5" fill="#1D4ED8" stroke="#FFFFFF" stroke-width="1.2"/><text x="12" y="14.8" font-family="Brush Script MT, cursive, Arial" font-style="italic" font-weight="900" font-size="8.5" fill="#FFFFFF" text-anchor="middle">Ford</text></svg>
+            </div>
             <span class="brand-name">FORD</span>
           </div>
-          <div class="brand-item">
-            <img src="https://raw.githubusercontent.com/filippofilip95/car-logos-dataset/master/logos/optimized/mitsubishi.png" alt="Mitsubishi" loading="lazy">
+
+          <!-- CHEVROLET -->
+          <div class="brand-carousel-item">
+            <div class="brand-logo-frame">
+              <svg width="42" height="22" viewBox="0 0 24 24" fill="#EAB308"><path d="M9 3h6v4h6v6h-6v8H9v-8H3V7h6V3z"/></svg>
+            </div>
+            <span class="brand-name">CHEVROLET</span>
+          </div>
+
+          <!-- MITSUBISHI -->
+          <div class="brand-carousel-item">
+            <div class="brand-logo-frame">
+              <svg width="32" height="32" viewBox="0 0 24 24" fill="#EF4444"><polygon points="12,2 15.5,8 8.5,8"/><polygon points="15.5,8 22.5,8 19,14"/><polygon points="8.5,8 1.5,8 5,14"/><polygon points="12,14 15.5,20 8.5,20"/></svg>
+            </div>
             <span class="brand-name">MITSUBISHI</span>
           </div>
-          <div class="brand-item">
-            <img src="https://raw.githubusercontent.com/filippofilip95/car-logos-dataset/master/logos/optimized/peugeot.png" alt="Peugeot" loading="lazy">
+
+          <!-- PEUGEOT -->
+          <div class="brand-carousel-item">
+            <div class="brand-logo-frame">
+              <svg width="30" height="34" viewBox="0 0 24 24" fill="#FFFFFF"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 16h-2v-4H9l3-6 3 6h-2v4z"/></svg>
+            </div>
             <span class="brand-name">PEUGEOT</span>
           </div>
-          <div class="brand-item">
-            <img src="https://raw.githubusercontent.com/filippofilip95/car-logos-dataset/master/logos/optimized/volkswagen.png" alt="Volkswagen" loading="lazy">
+
+          <!-- VOLKSWAGEN -->
+          <div class="brand-carousel-item">
+            <div class="brand-logo-frame">
+              <svg width="32" height="32" viewBox="0 0 24 24" fill="#38BDF8"><circle cx="12" cy="12" r="10" stroke="#38BDF8" stroke-width="2" fill="none"/><path d="M6 8l3 8 3-7 3 7 3-8" stroke="#38BDF8" stroke-width="1.8" fill="none"/></svg>
+            </div>
             <span class="brand-name">VOLKSWAGEN</span>
           </div>
-          <div class="brand-item">
-            <img src="https://raw.githubusercontent.com/filippofilip95/car-logos-dataset/master/logos/optimized/mazda.png" alt="Mazda" loading="lazy">
+
+          <!-- MAZDA -->
+          <div class="brand-carousel-item">
+            <div class="brand-logo-frame">
+              <svg width="36" height="30" viewBox="0 0 24 24" fill="#FFFFFF"><ellipse cx="12" cy="12" rx="10" ry="8" stroke="#FFFFFF" stroke-width="1.8" fill="none"/><path d="M6 10c3 3 5 5 6 5s3-2 6-5c-3 1-5 2-6 2s-3-1-6-2z" fill="#FFFFFF"/></svg>
+            </div>
             <span class="brand-name">MAZDA</span>
           </div>
-          <div class="brand-item">
-            <img src="https://raw.githubusercontent.com/filippofilip95/car-logos-dataset/master/logos/optimized/citroen.png" alt="Citroën" loading="lazy">
+
+          <!-- CITROËN -->
+          <div class="brand-carousel-item">
+            <div class="brand-logo-frame">
+              <svg width="32" height="32" viewBox="0 0 24 24" fill="#EF4444"><path d="M12 2L4 9l2 1.5L12 5l6 5.5L20 9z M12 10L4 17l2 1.5L12 13l6 5.5L20 17z"/></svg>
+            </div>
             <span class="brand-name">CITROËN</span>
           </div>
-          <div class="brand-item">
-            <img src="https://raw.githubusercontent.com/filippofilip95/car-logos-dataset/master/logos/optimized/mercedes-benz.png" alt="Mercedes-Benz" loading="lazy">
+
+          <!-- MERCEDES-BENZ -->
+          <div class="brand-carousel-item">
+            <div class="brand-logo-frame">
+              <svg width="34" height="34" viewBox="0 0 24 24" fill="#FFFFFF"><circle cx="12" cy="12" r="10" stroke="#FFFFFF" stroke-width="1.8" fill="none"/><line x1="12" y1="2" x2="12" y2="12" stroke="#FFFFFF" stroke-width="1.8"/><line x1="12" y1="12" x2="3.5" y2="17.5" stroke="#FFFFFF" stroke-width="1.8"/><line x1="12" y1="12" x2="20.5" y2="17.5" stroke="#FFFFFF" stroke-width="1.8"/></svg>
+            </div>
             <span class="brand-name">MERCEDES</span>
           </div>
-          <div class="brand-item">
-            <img src="https://raw.githubusercontent.com/filippofilip95/car-logos-dataset/master/logos/optimized/scania.png" alt="Scania" loading="lazy">
-            <span class="brand-name">SCANIA</span>
+
+          <!-- BMW -->
+          <div class="brand-carousel-item">
+            <div class="brand-logo-frame">
+              <svg width="34" height="34" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" stroke="#FFFFFF" stroke-width="2" fill="none"/><path d="M12 2A10 10 0 0 1 22 12H12V2z" fill="#38BDF8"/><path d="M12 22A10 10 0 0 1 2 12H12V22z" fill="#38BDF8"/></svg>
+            </div>
+            <span class="brand-name">BMW</span>
           </div>
-          <div class="brand-item">
-            <img src="https://raw.githubusercontent.com/filippofilip95/car-logos-dataset/master/logos/optimized/volvo.png" alt="Volvo" loading="lazy">
-            <span class="brand-name">VOLVO</span>
+
+          <!-- AUDI -->
+          <div class="brand-carousel-item">
+            <div class="brand-logo-frame">
+              <svg width="46" height="22" viewBox="0 0 46 22" fill="none" stroke="#FFFFFF" stroke-width="2"><circle cx="8" cy="11" r="7"/><circle cx="18" cy="11" r="7"/><circle cx="28" cy="11" r="7"/><circle cx="38" cy="11" r="7"/></svg>
+            </div>
+            <span class="brand-name">AUDI</span>
           </div>
-          <div class="brand-item">
-            <img src="https://raw.githubusercontent.com/filippofilip95/car-logos-dataset/master/logos/optimized/chery.png" alt="Chery" loading="lazy">
-            <span class="brand-name">CHERY</span>
+
+          <!-- SUBARU -->
+          <div class="brand-carousel-item">
+            <div class="brand-logo-frame">
+              <svg width="38" height="26" viewBox="0 0 24 24" fill="#3B82F6"><ellipse cx="12" cy="12" rx="11" ry="7" stroke="#3B82F6" stroke-width="1.8" fill="none"/><polygon points="12,7 13.5,10 17,10 14,12 15,15 12,13 9,15 10,12 7,10 10.5,10" fill="#FFFFFF"/></svg>
+            </div>
+            <span class="brand-name">SUBARU</span>
           </div>
-          <div class="brand-item">
-            <img src="https://raw.githubusercontent.com/filippofilip95/car-logos-dataset/master/logos/optimized/great-wall.png" alt="Great Wall" loading="lazy">
-            <span class="brand-name">GREAT WALL</span>
+
+          <!-- JEEP -->
+          <div class="brand-carousel-item">
+            <div class="brand-logo-frame">
+              <span style="font-family: Impact, Arial Black, sans-serif; font-size: 20px; color: #FFFFFF; letter-spacing: 1.5px;">Jeep</span>
+            </div>
+            <span class="brand-name">JEEP</span>
           </div>
-          <div class="brand-item">
-            <img src="https://raw.githubusercontent.com/filippofilip95/car-logos-dataset/master/logos/optimized/mg.png" alt="MG" loading="lazy">
-            <span class="brand-name">MG</span>
+
+          <!-- RAM -->
+          <div class="brand-carousel-item">
+            <div class="brand-logo-frame">
+              <svg width="36" height="30" viewBox="0 0 24 24" fill="#EF4444"><path d="M12 2L4 7v6c0 5 8 9 8 9s8-4 8-9V7l-8-5zm0 4l4 3-4 5-4-5 4-3z"/></svg>
+            </div>
+            <span class="brand-name">RAM</span>
           </div>
-          <div class="brand-item">
-            <img src="https://raw.githubusercontent.com/filippofilip95/car-logos-dataset/master/logos/optimized/fiat.png" alt="Fiat" loading="lazy">
+
+          <!-- RENAULT -->
+          <div class="brand-carousel-item">
+            <div class="brand-logo-frame">
+              <svg width="26" height="34" viewBox="0 0 24 24" fill="none" stroke="#FBBF24" stroke-width="2.5"><polygon points="12,2 21,12 12,22 3,12"/></svg>
+            </div>
+            <span class="brand-name">RENAULT</span>
+          </div>
+
+          <!-- FIAT -->
+          <div class="brand-carousel-item">
+            <div class="brand-logo-frame">
+              <span style="font-family: Arial Black, sans-serif; font-size: 16px; color: #FFFFFF; border: 2px solid #EF4444; padding: 2px 8px; border-radius: 4px; background-color: #B91C1C;">FIAT</span>
+            </div>
             <span class="brand-name">FIAT</span>
           </div>
-          <div class="brand-item">
-            <img src="https://raw.githubusercontent.com/filippofilip95/car-logos-dataset/master/logos/optimized/honda.png" alt="Honda" loading="lazy">
+
+          <!-- VOLVO -->
+          <div class="brand-carousel-item">
+            <div class="brand-logo-frame">
+              <svg width="32" height="32" viewBox="0 0 24 24" fill="#FFFFFF"><circle cx="12" cy="12" r="9" stroke="#FFFFFF" stroke-width="2" fill="none"/><line x1="17" y1="7" x2="21" y2="3" stroke="#FFFFFF" stroke-width="2"/><polyline points="18 3 21 3 21 6" stroke="#FFFFFF" stroke-width="2" fill="none"/></svg>
+            </div>
+            <span class="brand-name">VOLVO</span>
+          </div>
+
+          <!-- MG -->
+          <div class="brand-carousel-item">
+            <div class="brand-logo-frame">
+              <svg width="34" height="34" viewBox="0 0 24 24"><polygon points="12,2 22,7 22,17 12,22 2,17 2,7" stroke="#EF4444" stroke-width="2" fill="none"/><text x="12" y="15" font-family="Arial Black, sans-serif" font-weight="900" font-size="8" fill="#EF4444" text-anchor="middle">MG</text></svg>
+            </div>
+            <span class="brand-name">MG</span>
+          </div>
+
+          <!-- CHERY / TIGGO -->
+          <div class="brand-carousel-item">
+            <div class="brand-logo-frame">
+              <svg width="36" height="26" viewBox="0 0 24 24" fill="#EF4444"><ellipse cx="12" cy="12" rx="10" ry="6" stroke="#EF4444" stroke-width="1.8" fill="none"/><polygon points="12,8 15,14 9,14" fill="#EF4444"/></svg>
+            </div>
+            <span class="brand-name">CHERY</span>
+          </div>
+
+          <!-- GREAT WALL / GWM / HAVAL -->
+          <div class="brand-carousel-item">
+            <div class="brand-logo-frame">
+              <svg width="32" height="32" viewBox="0 0 24 24" fill="#EF4444"><circle cx="12" cy="12" r="9" stroke="#EF4444" stroke-width="2" fill="none"/><rect x="10" y="5" width="4" height="14" fill="#EF4444"/></svg>
+            </div>
+            <span class="brand-name">GWM / HAVAL</span>
+          </div>
+
+          <!-- CHANGAN -->
+          <div class="brand-carousel-item">
+            <div class="brand-logo-frame">
+              <svg width="32" height="32" viewBox="0 0 24 24" fill="#3B82F6"><circle cx="12" cy="12" r="9.5" stroke="#3B82F6" stroke-width="2" fill="none"/><path d="M8 9l4 6 4-6" stroke="#3B82F6" stroke-width="2.5" fill="none"/></svg>
+            </div>
+            <span class="brand-name">CHANGAN</span>
+          </div>
+
+          <!-- BYD -->
+          <div class="brand-carousel-item">
+            <div class="brand-logo-frame">
+              <svg width="38" height="24" viewBox="0 0 24 24"><ellipse cx="12" cy="12" rx="11" ry="6.5" stroke="#EF4444" stroke-width="1.8" fill="none"/><text x="12" y="14.5" font-family="Arial, sans-serif" font-weight="900" font-size="7.5" fill="#FFFFFF" text-anchor="middle">BYD</text></svg>
+            </div>
+            <span class="brand-name">BYD</span>
+          </div>
+
+          <!-- MAXUS -->
+          <div class="brand-carousel-item">
+            <div class="brand-logo-frame">
+              <svg width="34" height="30" viewBox="0 0 24 24" fill="#38BDF8"><polygon points="12,4 16,11 8,11"/><polygon points="8,12 12,19 4,19"/><polygon points="16,12 20,19 12,19"/></svg>
+            </div>
+            <span class="brand-name">MAXUS</span>
+          </div>
+
+          <!-- GEELY -->
+          <div class="brand-carousel-item">
+            <div class="brand-logo-frame">
+              <svg width="36" height="24" viewBox="0 0 24 24" fill="#3B82F6"><rect x="3" y="6" width="18" height="12" rx="3" stroke="#3B82F6" stroke-width="1.8" fill="none"/><line x1="9" y1="6" x2="9" y2="18" stroke="#3B82F6" stroke-width="1.5"/><line x1="15" y1="6" x2="15" y2="18" stroke="#3B82F6" stroke-width="1.5"/></svg>
+            </div>
+            <span class="brand-name">GEELY</span>
+          </div>
+
+          <!-- JAC -->
+          <div class="brand-carousel-item">
+            <div class="brand-logo-frame">
+              <svg width="32" height="32" viewBox="0 0 24 24" fill="#EF4444"><polygon points="12,2 15,8 22,9 17,14 18,21 12,18 6,21 7,14 2,9 9,8"/></svg>
+            </div>
+            <span class="brand-name">JAC</span>
+          </div>
+
+          <!-- HONDA -->
+          <div class="brand-carousel-item">
+            <div class="brand-logo-frame">
+              <svg width="32" height="32" viewBox="0 0 24 24" fill="#EF4444"><rect x="3" y="4" width="18" height="16" rx="3" stroke="#EF4444" stroke-width="2" fill="none"/><path d="M7 6v12h2v-5h6v5h2V6h-2v5H9V6z" fill="#EF4444"/></svg>
+            </div>
             <span class="brand-name">HONDA</span>
           </div>
 
-          <!-- SET 2 (Duplicado exacto para efecto de bucle infinito) -->
-          <div class="brand-item" aria-hidden="true">
-            <img src="https://raw.githubusercontent.com/filippofilip95/car-logos-dataset/master/logos/optimized/toyota.png" alt="" loading="lazy">
+          <!-- ISUZU (D-MAX) -->
+          <div class="brand-carousel-item">
+            <div class="brand-logo-frame">
+              <span style="font-family: Arial Black, sans-serif; font-size: 15px; color: #EF4444; font-weight: 900; letter-spacing: 1px;">ISUZU</span>
+            </div>
+            <span class="brand-name">ISUZU</span>
+          </div>
+
+          <!-- KGM / SSANGYONG -->
+          <div class="brand-carousel-item">
+            <div class="brand-logo-frame">
+              <svg width="34" height="28" viewBox="0 0 24 24" fill="#3B82F6"><circle cx="8" cy="12" r="5" stroke="#3B82F6" stroke-width="2" fill="none"/><circle cx="16" cy="12" r="5" stroke="#3B82F6" stroke-width="2" fill="none"/></svg>
+            </div>
+            <span class="brand-name">KGM</span>
+          </div>
+
+          <!-- OMODA / JAECOO -->
+          <div class="brand-carousel-item">
+            <div class="brand-logo-frame">
+              <span style="font-family: -apple-system, sans-serif; font-weight: 900; font-size: 13px; color: #FFFFFF; letter-spacing: 2px;">OMODA</span>
+            </div>
+            <span class="brand-name">OMODA</span>
+          </div>
+
+          <!-- JETOUR -->
+          <div class="brand-carousel-item">
+            <div class="brand-logo-frame">
+              <span style="font-family: Impact, sans-serif; font-size: 15px; color: #EF4444; letter-spacing: 1.5px;">JETOUR</span>
+            </div>
+            <span class="brand-name">JETOUR</span>
+          </div>
+
+          <!-- DFSK -->
+          <div class="brand-carousel-item">
+            <div class="brand-logo-frame">
+              <svg width="30" height="30" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9" stroke="#EF4444" stroke-width="2" fill="none"/><circle cx="12" cy="12" r="4" fill="#EF4444"/></svg>
+            </div>
+            <span class="brand-name">DFSK</span>
+          </div>
+
+          <!-- TESLA -->
+          <div class="brand-carousel-item">
+            <div class="brand-logo-frame">
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="#EF4444"><path d="M12 4c3.5 0 7 1 9 2.5l-1.5 2C17.5 7.5 15 7 12 7S6.5 7.5 4.5 8.5L3 6.5C5 5 8.5 4 12 4zm-1 5h2v11h-2V9z"/></svg>
+            </div>
+            <span class="brand-name">TESLA</span>
+          </div>
+
+          <!-- PORSCHE -->
+          <div class="brand-carousel-item">
+            <div class="brand-logo-frame">
+              <svg width="26" height="32" viewBox="0 0 24 24" fill="#FBBF24"><path d="M12 2L4 5v7c0 5.5 8 10 8 10s8-4.5 8-10V5l-8-3zm0 4a3 3 0 110 6 3 3 0 010-6z"/></svg>
+            </div>
+            <span class="brand-name">PORSCHE</span>
+          </div>
+
+          <!-- LAND ROVER -->
+          <div class="brand-carousel-item">
+            <div class="brand-logo-frame">
+              <svg width="40" height="24" viewBox="0 0 24 24"><ellipse cx="12" cy="12" rx="11" ry="6.5" fill="#047857" stroke="#FFFFFF" stroke-width="1.2"/><text x="12" y="13.8" font-family="Arial, sans-serif" font-weight="900" font-size="3" fill="#FFFFFF" text-anchor="middle" letter-spacing="0.5">ROVER</text></svg>
+            </div>
+            <span class="brand-name">LAND ROVER</span>
+          </div>
+
+          <!-- LEXUS -->
+          <div class="brand-carousel-item">
+            <div class="brand-logo-frame">
+              <svg width="34" height="26" viewBox="0 0 24 24" fill="#FFFFFF"><ellipse cx="12" cy="12" rx="10" ry="7" stroke="#FFFFFF" stroke-width="1.8" fill="none"/><path d="M8 8v7l8-4" stroke="#FFFFFF" stroke-width="2" fill="none"/></svg>
+            </div>
+            <span class="brand-name">LEXUS</span>
+          </div>
+
+          <!-- CUPRA -->
+          <div class="brand-carousel-item">
+            <div class="brand-logo-frame">
+              <svg width="32" height="30" viewBox="0 0 24 24" fill="#D97706"><polygon points="12,4 16,12 12,20 8,12"/></svg>
+            </div>
+            <span class="brand-name">CUPRA</span>
+          </div>
+
+          <!-- SEAT -->
+          <div class="brand-carousel-item">
+            <div class="brand-logo-frame">
+              <span style="font-family: Impact, sans-serif; font-size: 18px; color: #FFFFFF; letter-spacing: 1px;">S</span>
+            </div>
+            <span class="brand-name">SEAT</span>
+          </div>
+
+          <!-- ŠKODA -->
+          <div class="brand-carousel-item">
+            <div class="brand-logo-frame">
+              <svg width="30" height="30" viewBox="0 0 24 24" fill="#10B981"><circle cx="12" cy="12" r="9.5" stroke="#10B981" stroke-width="2" fill="none"/><path d="M9 13l4-5v4l3 2"/></svg>
+            </div>
+            <span class="brand-name">ŠKODA</span>
+          </div>
+
+          <!-- OPEL -->
+          <div class="brand-carousel-item">
+            <div class="brand-logo-frame">
+              <svg width="32" height="32" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9" stroke="#FBBF24" stroke-width="2" fill="none"/><polygon points="7,10 13,10 11,14 17,14" fill="#FBBF24"/></svg>
+            </div>
+            <span class="brand-name">OPEL</span>
+          </div>
+
+          <!-- MINI -->
+          <div class="brand-carousel-item">
+            <div class="brand-logo-frame">
+              <svg width="36" height="22" viewBox="0 0 24 24"><circle cx="12" cy="12" r="5" fill="#FFFFFF"/><path d="M3 10h4v4H3z M17 10h4v4h-4z" fill="#9CA3AF"/></svg>
+            </div>
+            <span class="brand-name">MINI</span>
+          </div>
+
+          <!-- SET 2 (Duplicado exacto para bucle infinito continuo) -->
+          <!-- TOYOTA -->
+          <div class="brand-carousel-item" aria-hidden="true">
+            <div class="brand-logo-frame">
+              <svg width="38" height="28" viewBox="0 0 24 24" fill="#FFFFFF"><path d="M12 2C6.48 2 2 4.69 2 8c0 2.25 2.11 4.2 5.27 5.18L6.8 15.3c-.52-.16-1.03-.35-1.5-.57l-.8 1.83c.75.34 1.57.62 2.44.83L6.15 20.7l1.9.54.9-3.23c.98.15 2.01.23 3.05.23s2.07-.08 3.05-.23l.9 3.23 1.9-.54-.79-3.31c.87-.21 1.69-.49 2.44-.83l-.8-1.83c-.47.22-.98.41-1.5.57l-.47-2.12C19.89 12.2 22 10.25 22 8c0-3.31-4.48-6-10-6zm0 1.8c4.46 0 7.8 2.04 7.8 4.2 0 1.4-1.42 2.66-3.71 3.44l-1.02-4.57C15.65 6.45 16 5.76 16 5c0-1.66-1.79-3-4-3s-4 1.34-4 3c0 .76.35 1.45.93 1.87l-1.02 4.57C5.62 10.66 4.2 9.4 4.2 8c0-2.16 3.34-4.2 7.8-4.2zm0 2.2c1.21 0 2.2.63 2.2 1.4 0 .5-.41.93-1.02 1.18l-.51-2.29c-.21-.18-.43-.29-.67-.29s-.46.11-.67.29l-.51 2.29c-.61-.25-1.02-.68-1.02-1.18 0-.77.99-1.4 2.2-1.4z"/></svg>
+            </div>
             <span class="brand-name">TOYOTA</span>
           </div>
-          <div class="brand-item" aria-hidden="true">
-            <img src="https://raw.githubusercontent.com/filippofilip95/car-logos-dataset/master/logos/optimized/chevrolet.png" alt="" loading="lazy">
-            <span class="brand-name">CHEVROLET</span>
-          </div>
-          <div class="brand-item" aria-hidden="true">
-            <img src="https://raw.githubusercontent.com/filippofilip95/car-logos-dataset/master/logos/optimized/hyundai.png" alt="" loading="lazy">
+
+          <!-- HYUNDAI -->
+          <div class="brand-carousel-item" aria-hidden="true">
+            <div class="brand-logo-frame">
+              <svg width="38" height="26" viewBox="0 0 24 24" fill="#38BDF8"><path d="M12 2C5.37 2 0 6.48 0 12s5.37 10 12 10 12-4.48 12-10S18.63 2 12 2zm0 1.8c4.95 0 9.08 3.19 9.96 7.4h-3.41c-.48-2.61-2.91-4.6-6.55-4.6s-6.07 1.99-6.55 4.6H1.94C2.82 6.99 6.95 3.8 12 3.8z"/></svg>
+            </div>
             <span class="brand-name">HYUNDAI</span>
           </div>
-          <div class="brand-item" aria-hidden="true">
-            <img src="https://raw.githubusercontent.com/filippofilip95/car-logos-dataset/master/logos/optimized/nissan.png" alt="" loading="lazy">
+
+          <!-- NISSAN -->
+          <div class="brand-carousel-item" aria-hidden="true">
+            <div class="brand-logo-frame">
+              <svg width="34" height="34" viewBox="0 0 24 24" fill="#FFFFFF"><circle cx="12" cy="12" r="9.5" stroke="#FFFFFF" stroke-width="2" fill="none"/><rect x="2" y="10" width="20" height="4" fill="#0D0D0D" stroke="#FFFFFF" stroke-width="1.5"/><text x="12" y="13.2" font-family="Arial, sans-serif" font-weight="900" font-size="3.5" fill="#FFFFFF" text-anchor="middle" letter-spacing="0.5">NISSAN</text></svg>
+            </div>
             <span class="brand-name">NISSAN</span>
           </div>
-          <div class="brand-item" aria-hidden="true">
-            <img src="https://raw.githubusercontent.com/filippofilip95/car-logos-dataset/master/logos/optimized/kia.png" alt="" loading="lazy">
+
+          <!-- KIA -->
+          <div class="brand-carousel-item" aria-hidden="true">
+            <div class="brand-logo-frame">
+              <svg width="38" height="22" viewBox="0 0 24 24" fill="#EF4444"><ellipse cx="12" cy="12" rx="11" ry="6.5" stroke="#EF4444" stroke-width="1.8" fill="none"/><text x="12" y="14.5" font-family="Arial Black, sans-serif" font-weight="900" font-size="7.5" fill="#EF4444" text-anchor="middle">KIA</text></svg>
+            </div>
             <span class="brand-name">KIA</span>
           </div>
-          <div class="brand-item" aria-hidden="true">
-            <img src="https://raw.githubusercontent.com/filippofilip95/car-logos-dataset/master/logos/optimized/suzuki.png" alt="" loading="lazy">
+
+          <!-- SUZUKI -->
+          <div class="brand-carousel-item" aria-hidden="true">
+            <div class="brand-logo-frame">
+              <svg width="30" height="30" viewBox="0 0 24 24" fill="#EF4444"><path d="M18.8 3H5.2L3.5 6.5l8.5 5-8.5 6 1.7 3.5h13.6l1.7-3.5-8.5-6 8.5-5z"/></svg>
+            </div>
             <span class="brand-name">SUZUKI</span>
           </div>
-          <div class="brand-item" aria-hidden="true">
-            <img src="https://raw.githubusercontent.com/filippofilip95/car-logos-dataset/master/logos/optimized/ford.png" alt="" loading="lazy">
+
+          <!-- FORD -->
+          <div class="brand-carousel-item" aria-hidden="true">
+            <div class="brand-logo-frame">
+              <svg width="42" height="24" viewBox="0 0 24 24" fill="#3B82F6"><ellipse cx="12" cy="12" rx="11" ry="6.5" fill="#1D4ED8" stroke="#FFFFFF" stroke-width="1.2"/><text x="12" y="14.8" font-family="Brush Script MT, cursive, Arial" font-style="italic" font-weight="900" font-size="8.5" fill="#FFFFFF" text-anchor="middle">Ford</text></svg>
+            </div>
             <span class="brand-name">FORD</span>
           </div>
-          <div class="brand-item" aria-hidden="true">
-            <img src="https://raw.githubusercontent.com/filippofilip95/car-logos-dataset/master/logos/optimized/mitsubishi.png" alt="" loading="lazy">
+
+          <!-- CHEVROLET -->
+          <div class="brand-carousel-item" aria-hidden="true">
+            <div class="brand-logo-frame">
+              <svg width="42" height="22" viewBox="0 0 24 24" fill="#EAB308"><path d="M9 3h6v4h6v6h-6v8H9v-8H3V7h6V3z"/></svg>
+            </div>
+            <span class="brand-name">CHEVROLET</span>
+          </div>
+
+          <!-- MITSUBISHI -->
+          <div class="brand-carousel-item" aria-hidden="true">
+            <div class="brand-logo-frame">
+              <svg width="32" height="32" viewBox="0 0 24 24" fill="#EF4444"><polygon points="12,2 15.5,8 8.5,8"/><polygon points="15.5,8 22.5,8 19,14"/><polygon points="8.5,8 1.5,8 5,14"/><polygon points="12,14 15.5,20 8.5,20"/></svg>
+            </div>
             <span class="brand-name">MITSUBISHI</span>
           </div>
-          <div class="brand-item" aria-hidden="true">
-            <img src="https://raw.githubusercontent.com/filippofilip95/car-logos-dataset/master/logos/optimized/peugeot.png" alt="" loading="lazy">
+
+          <!-- PEUGEOT -->
+          <div class="brand-carousel-item" aria-hidden="true">
+            <div class="brand-logo-frame">
+              <svg width="30" height="34" viewBox="0 0 24 24" fill="#FFFFFF"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 16h-2v-4H9l3-6 3 6h-2v4z"/></svg>
+            </div>
             <span class="brand-name">PEUGEOT</span>
           </div>
-          <div class="brand-item" aria-hidden="true">
-            <img src="https://raw.githubusercontent.com/filippofilip95/car-logos-dataset/master/logos/optimized/volkswagen.png" alt="" loading="lazy">
+
+          <!-- VOLKSWAGEN -->
+          <div class="brand-carousel-item" aria-hidden="true">
+            <div class="brand-logo-frame">
+              <svg width="32" height="32" viewBox="0 0 24 24" fill="#38BDF8"><circle cx="12" cy="12" r="10" stroke="#38BDF8" stroke-width="2" fill="none"/><path d="M6 8l3 8 3-7 3 7 3-8" stroke="#38BDF8" stroke-width="1.8" fill="none"/></svg>
+            </div>
             <span class="brand-name">VOLKSWAGEN</span>
           </div>
-          <div class="brand-item" aria-hidden="true">
-            <img src="https://raw.githubusercontent.com/filippofilip95/car-logos-dataset/master/logos/optimized/mazda.png" alt="" loading="lazy">
+
+          <!-- MAZDA -->
+          <div class="brand-carousel-item" aria-hidden="true">
+            <div class="brand-logo-frame">
+              <svg width="36" height="30" viewBox="0 0 24 24" fill="#FFFFFF"><ellipse cx="12" cy="12" rx="10" ry="8" stroke="#FFFFFF" stroke-width="1.8" fill="none"/><path d="M6 10c3 3 5 5 6 5s3-2 6-5c-3 1-5 2-6 2s-3-1-6-2z" fill="#FFFFFF"/></svg>
+            </div>
             <span class="brand-name">MAZDA</span>
           </div>
-          <div class="brand-item" aria-hidden="true">
-            <img src="https://raw.githubusercontent.com/filippofilip95/car-logos-dataset/master/logos/optimized/citroen.png" alt="" loading="lazy">
+
+          <!-- CITROËN -->
+          <div class="brand-carousel-item" aria-hidden="true">
+            <div class="brand-logo-frame">
+              <svg width="32" height="32" viewBox="0 0 24 24" fill="#EF4444"><path d="M12 2L4 9l2 1.5L12 5l6 5.5L20 9z M12 10L4 17l2 1.5L12 13l6 5.5L20 17z"/></svg>
+            </div>
             <span class="brand-name">CITROËN</span>
           </div>
-          <div class="brand-item" aria-hidden="true">
-            <img src="https://raw.githubusercontent.com/filippofilip95/car-logos-dataset/master/logos/optimized/mercedes-benz.png" alt="" loading="lazy">
+
+          <!-- MERCEDES-BENZ -->
+          <div class="brand-carousel-item" aria-hidden="true">
+            <div class="brand-logo-frame">
+              <svg width="34" height="34" viewBox="0 0 24 24" fill="#FFFFFF"><circle cx="12" cy="12" r="10" stroke="#FFFFFF" stroke-width="1.8" fill="none"/><line x1="12" y1="2" x2="12" y2="12" stroke="#FFFFFF" stroke-width="1.8"/><line x1="12" y1="12" x2="3.5" y2="17.5" stroke="#FFFFFF" stroke-width="1.8"/><line x1="12" y1="12" x2="20.5" y2="17.5" stroke="#FFFFFF" stroke-width="1.8"/></svg>
+            </div>
             <span class="brand-name">MERCEDES</span>
           </div>
-          <div class="brand-item" aria-hidden="true">
-            <img src="https://raw.githubusercontent.com/filippofilip95/car-logos-dataset/master/logos/optimized/scania.png" alt="" loading="lazy">
-            <span class="brand-name">SCANIA</span>
+
+          <!-- BMW -->
+          <div class="brand-carousel-item" aria-hidden="true">
+            <div class="brand-logo-frame">
+              <svg width="34" height="34" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" stroke="#FFFFFF" stroke-width="2" fill="none"/><path d="M12 2A10 10 0 0 1 22 12H12V2z" fill="#38BDF8"/><path d="M12 22A10 10 0 0 1 2 12H12V22z" fill="#38BDF8"/></svg>
+            </div>
+            <span class="brand-name">BMW</span>
           </div>
-          <div class="brand-item" aria-hidden="true">
-            <img src="https://raw.githubusercontent.com/filippofilip95/car-logos-dataset/master/logos/optimized/volvo.png" alt="" loading="lazy">
-            <span class="brand-name">VOLVO</span>
+
+          <!-- AUDI -->
+          <div class="brand-carousel-item" aria-hidden="true">
+            <div class="brand-logo-frame">
+              <svg width="46" height="22" viewBox="0 0 46 22" fill="none" stroke="#FFFFFF" stroke-width="2"><circle cx="8" cy="11" r="7"/><circle cx="18" cy="11" r="7"/><circle cx="28" cy="11" r="7"/><circle cx="38" cy="11" r="7"/></svg>
+            </div>
+            <span class="brand-name">AUDI</span>
           </div>
-          <div class="brand-item" aria-hidden="true">
-            <img src="https://raw.githubusercontent.com/filippofilip95/car-logos-dataset/master/logos/optimized/chery.png" alt="" loading="lazy">
-            <span class="brand-name">CHERY</span>
+
+          <!-- SUBARU -->
+          <div class="brand-carousel-item" aria-hidden="true">
+            <div class="brand-logo-frame">
+              <svg width="38" height="26" viewBox="0 0 24 24" fill="#3B82F6"><ellipse cx="12" cy="12" rx="11" ry="7" stroke="#3B82F6" stroke-width="1.8" fill="none"/><polygon points="12,7 13.5,10 17,10 14,12 15,15 12,13 9,15 10,12 7,10 10.5,10" fill="#FFFFFF"/></svg>
+            </div>
+            <span class="brand-name">SUBARU</span>
           </div>
-          <div class="brand-item" aria-hidden="true">
-            <img src="https://raw.githubusercontent.com/filippofilip95/car-logos-dataset/master/logos/optimized/great-wall.png" alt="" loading="lazy">
-            <span class="brand-name">GREAT WALL</span>
+
+          <!-- JEEP -->
+          <div class="brand-carousel-item" aria-hidden="true">
+            <div class="brand-logo-frame">
+              <span style="font-family: Impact, Arial Black, sans-serif; font-size: 20px; color: #FFFFFF; letter-spacing: 1.5px;">Jeep</span>
+            </div>
+            <span class="brand-name">JEEP</span>
           </div>
-          <div class="brand-item" aria-hidden="true">
-            <img src="https://raw.githubusercontent.com/filippofilip95/car-logos-dataset/master/logos/optimized/mg.png" alt="" loading="lazy">
-            <span class="brand-name">MG</span>
+
+          <!-- RAM -->
+          <div class="brand-carousel-item" aria-hidden="true">
+            <div class="brand-logo-frame">
+              <svg width="36" height="30" viewBox="0 0 24 24" fill="#EF4444"><path d="M12 2L4 7v6c0 5 8 9 8 9s8-4 8-9V7l-8-5zm0 4l4 3-4 5-4-5 4-3z"/></svg>
+            </div>
+            <span class="brand-name">RAM</span>
           </div>
-          <div class="brand-item" aria-hidden="true">
-            <img src="https://raw.githubusercontent.com/filippofilip95/car-logos-dataset/master/logos/optimized/fiat.png" alt="" loading="lazy">
+
+          <!-- RENAULT -->
+          <div class="brand-carousel-item" aria-hidden="true">
+            <div class="brand-logo-frame">
+              <svg width="26" height="34" viewBox="0 0 24 24" fill="none" stroke="#FBBF24" stroke-width="2.5"><polygon points="12,2 21,12 12,22 3,12"/></svg>
+            </div>
+            <span class="brand-name">RENAULT</span>
+          </div>
+
+          <!-- FIAT -->
+          <div class="brand-carousel-item" aria-hidden="true">
+            <div class="brand-logo-frame">
+              <span style="font-family: Arial Black, sans-serif; font-size: 16px; color: #FFFFFF; border: 2px solid #EF4444; padding: 2px 8px; border-radius: 4px; background-color: #B91C1C;">FIAT</span>
+            </div>
             <span class="brand-name">FIAT</span>
           </div>
-          <div class="brand-item" aria-hidden="true">
-            <img src="https://raw.githubusercontent.com/filippofilip95/car-logos-dataset/master/logos/optimized/honda.png" alt="" loading="lazy">
+
+          <!-- VOLVO -->
+          <div class="brand-carousel-item" aria-hidden="true">
+            <div class="brand-logo-frame">
+              <svg width="32" height="32" viewBox="0 0 24 24" fill="#FFFFFF"><circle cx="12" cy="12" r="9" stroke="#FFFFFF" stroke-width="2" fill="none"/><line x1="17" y1="7" x2="21" y2="3" stroke="#FFFFFF" stroke-width="2"/><polyline points="18 3 21 3 21 6" stroke="#FFFFFF" stroke-width="2" fill="none"/></svg>
+            </div>
+            <span class="brand-name">VOLVO</span>
+          </div>
+
+          <!-- MG -->
+          <div class="brand-carousel-item" aria-hidden="true">
+            <div class="brand-logo-frame">
+              <svg width="34" height="34" viewBox="0 0 24 24"><polygon points="12,2 22,7 22,17 12,22 2,17 2,7" stroke="#EF4444" stroke-width="2" fill="none"/><text x="12" y="15" font-family="Arial Black, sans-serif" font-weight="900" font-size="8" fill="#EF4444" text-anchor="middle">MG</text></svg>
+            </div>
+            <span class="brand-name">MG</span>
+          </div>
+
+          <!-- CHERY / TIGGO -->
+          <div class="brand-carousel-item" aria-hidden="true">
+            <div class="brand-logo-frame">
+              <svg width="36" height="26" viewBox="0 0 24 24" fill="#EF4444"><ellipse cx="12" cy="12" rx="10" ry="6" stroke="#EF4444" stroke-width="1.8" fill="none"/><polygon points="12,8 15,14 9,14" fill="#EF4444"/></svg>
+            </div>
+            <span class="brand-name">CHERY</span>
+          </div>
+
+          <!-- GREAT WALL / GWM / HAVAL -->
+          <div class="brand-carousel-item" aria-hidden="true">
+            <div class="brand-logo-frame">
+              <svg width="32" height="32" viewBox="0 0 24 24" fill="#EF4444"><circle cx="12" cy="12" r="9" stroke="#EF4444" stroke-width="2" fill="none"/><rect x="10" y="5" width="4" height="14" fill="#EF4444"/></svg>
+            </div>
+            <span class="brand-name">GWM / HAVAL</span>
+          </div>
+
+          <!-- CHANGAN -->
+          <div class="brand-carousel-item" aria-hidden="true">
+            <div class="brand-logo-frame">
+              <svg width="32" height="32" viewBox="0 0 24 24" fill="#3B82F6"><circle cx="12" cy="12" r="9.5" stroke="#3B82F6" stroke-width="2" fill="none"/><path d="M8 9l4 6 4-6" stroke="#3B82F6" stroke-width="2.5" fill="none"/></svg>
+            </div>
+            <span class="brand-name">CHANGAN</span>
+          </div>
+
+          <!-- BYD -->
+          <div class="brand-carousel-item" aria-hidden="true">
+            <div class="brand-logo-frame">
+              <svg width="38" height="24" viewBox="0 0 24 24"><ellipse cx="12" cy="12" rx="11" ry="6.5" stroke="#EF4444" stroke-width="1.8" fill="none"/><text x="12" y="14.5" font-family="Arial, sans-serif" font-weight="900" font-size="7.5" fill="#FFFFFF" text-anchor="middle">BYD</text></svg>
+            </div>
+            <span class="brand-name">BYD</span>
+          </div>
+
+          <!-- MAXUS -->
+          <div class="brand-carousel-item" aria-hidden="true">
+            <div class="brand-logo-frame">
+              <svg width="34" height="30" viewBox="0 0 24 24" fill="#38BDF8"><polygon points="12,4 16,11 8,11"/><polygon points="8,12 12,19 4,19"/><polygon points="16,12 20,19 12,19"/></svg>
+            </div>
+            <span class="brand-name">MAXUS</span>
+          </div>
+
+          <!-- GEELY -->
+          <div class="brand-carousel-item" aria-hidden="true">
+            <div class="brand-logo-frame">
+              <svg width="36" height="24" viewBox="0 0 24 24" fill="#3B82F6"><rect x="3" y="6" width="18" height="12" rx="3" stroke="#3B82F6" stroke-width="1.8" fill="none"/><line x1="9" y1="6" x2="9" y2="18" stroke="#3B82F6" stroke-width="1.5"/><line x1="15" y1="6" x2="15" y2="18" stroke="#3B82F6" stroke-width="1.5"/></svg>
+            </div>
+            <span class="brand-name">GEELY</span>
+          </div>
+
+          <!-- JAC -->
+          <div class="brand-carousel-item" aria-hidden="true">
+            <div class="brand-logo-frame">
+              <svg width="32" height="32" viewBox="0 0 24 24" fill="#EF4444"><polygon points="12,2 15,8 22,9 17,14 18,21 12,18 6,21 7,14 2,9 9,8"/></svg>
+            </div>
+            <span class="brand-name">JAC</span>
+          </div>
+
+          <!-- HONDA -->
+          <div class="brand-carousel-item" aria-hidden="true">
+            <div class="brand-logo-frame">
+              <svg width="32" height="32" viewBox="0 0 24 24" fill="#EF4444"><rect x="3" y="4" width="18" height="16" rx="3" stroke="#EF4444" stroke-width="2" fill="none"/><path d="M7 6v12h2v-5h6v5h2V6h-2v5H9V6z" fill="#EF4444"/></svg>
+            </div>
             <span class="brand-name">HONDA</span>
           </div>
+
+          <!-- ISUZU (D-MAX) -->
+          <div class="brand-carousel-item" aria-hidden="true">
+            <div class="brand-logo-frame">
+              <span style="font-family: Arial Black, sans-serif; font-size: 15px; color: #EF4444; font-weight: 900; letter-spacing: 1px;">ISUZU</span>
+            </div>
+            <span class="brand-name">ISUZU</span>
+          </div>
+
+          <!-- KGM / SSANGYONG -->
+          <div class="brand-carousel-item" aria-hidden="true">
+            <div class="brand-logo-frame">
+              <svg width="34" height="28" viewBox="0 0 24 24" fill="#3B82F6"><circle cx="8" cy="12" r="5" stroke="#3B82F6" stroke-width="2" fill="none"/><circle cx="16" cy="12" r="5" stroke="#3B82F6" stroke-width="2" fill="none"/></svg>
+            </div>
+            <span class="brand-name">KGM</span>
+          </div>
+
+          <!-- OMODA / JAECOO -->
+          <div class="brand-carousel-item" aria-hidden="true">
+            <div class="brand-logo-frame">
+              <span style="font-family: -apple-system, sans-serif; font-weight: 900; font-size: 13px; color: #FFFFFF; letter-spacing: 2px;">OMODA</span>
+            </div>
+            <span class="brand-name">OMODA</span>
+          </div>
+
+          <!-- JETOUR -->
+          <div class="brand-carousel-item" aria-hidden="true">
+            <div class="brand-logo-frame">
+              <span style="font-family: Impact, sans-serif; font-size: 15px; color: #EF4444; letter-spacing: 1.5px;">JETOUR</span>
+            </div>
+            <span class="brand-name">JETOUR</span>
+          </div>
+
+          <!-- DFSK -->
+          <div class="brand-carousel-item" aria-hidden="true">
+            <div class="brand-logo-frame">
+              <svg width="30" height="30" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9" stroke="#EF4444" stroke-width="2" fill="none"/><circle cx="12" cy="12" r="4" fill="#EF4444"/></svg>
+            </div>
+            <span class="brand-name">DFSK</span>
+          </div>
+
+          <!-- TESLA -->
+          <div class="brand-carousel-item" aria-hidden="true">
+            <div class="brand-logo-frame">
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="#EF4444"><path d="M12 4c3.5 0 7 1 9 2.5l-1.5 2C17.5 7.5 15 7 12 7S6.5 7.5 4.5 8.5L3 6.5C5 5 8.5 4 12 4zm-1 5h2v11h-2V9z"/></svg>
+            </div>
+            <span class="brand-name">TESLA</span>
+          </div>
+
+          <!-- PORSCHE -->
+          <div class="brand-carousel-item" aria-hidden="true">
+            <div class="brand-logo-frame">
+              <svg width="26" height="32" viewBox="0 0 24 24" fill="#FBBF24"><path d="M12 2L4 5v7c0 5.5 8 10 8 10s8-4.5 8-10V5l-8-3zm0 4a3 3 0 110 6 3 3 0 010-6z"/></svg>
+            </div>
+            <span class="brand-name">PORSCHE</span>
+          </div>
+
+          <!-- LAND ROVER -->
+          <div class="brand-carousel-item" aria-hidden="true">
+            <div class="brand-logo-frame">
+              <svg width="40" height="24" viewBox="0 0 24 24"><ellipse cx="12" cy="12" rx="11" ry="6.5" fill="#047857" stroke="#FFFFFF" stroke-width="1.2"/><text x="12" y="13.8" font-family="Arial, sans-serif" font-weight="900" font-size="3" fill="#FFFFFF" text-anchor="middle" letter-spacing="0.5">ROVER</text></svg>
+            </div>
+            <span class="brand-name">LAND ROVER</span>
+          </div>
+
+          <!-- LEXUS -->
+          <div class="brand-carousel-item" aria-hidden="true">
+            <div class="brand-logo-frame">
+              <svg width="34" height="26" viewBox="0 0 24 24" fill="#FFFFFF"><ellipse cx="12" cy="12" rx="10" ry="7" stroke="#FFFFFF" stroke-width="1.8" fill="none"/><path d="M8 8v7l8-4" stroke="#FFFFFF" stroke-width="2" fill="none"/></svg>
+            </div>
+            <span class="brand-name">LEXUS</span>
+          </div>
+
+          <!-- CUPRA -->
+          <div class="brand-carousel-item" aria-hidden="true">
+            <div class="brand-logo-frame">
+              <svg width="32" height="30" viewBox="0 0 24 24" fill="#D97706"><polygon points="12,4 16,12 12,20 8,12"/></svg>
+            </div>
+            <span class="brand-name">CUPRA</span>
+          </div>
+
+          <!-- SEAT -->
+          <div class="brand-carousel-item" aria-hidden="true">
+            <div class="brand-logo-frame">
+              <span style="font-family: Impact, sans-serif; font-size: 18px; color: #FFFFFF; letter-spacing: 1px;">S</span>
+            </div>
+            <span class="brand-name">SEAT</span>
+          </div>
+
+          <!-- ŠKODA -->
+          <div class="brand-carousel-item" aria-hidden="true">
+            <div class="brand-logo-frame">
+              <svg width="30" height="30" viewBox="0 0 24 24" fill="#10B981"><circle cx="12" cy="12" r="9.5" stroke="#10B981" stroke-width="2" fill="none"/><path d="M9 13l4-5v4l3 2"/></svg>
+            </div>
+            <span class="brand-name">ŠKODA</span>
+          </div>
+
+          <!-- OPEL -->
+          <div class="brand-carousel-item" aria-hidden="true">
+            <div class="brand-logo-frame">
+              <svg width="32" height="32" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9" stroke="#FBBF24" stroke-width="2" fill="none"/><polygon points="7,10 13,10 11,14 17,14" fill="#FBBF24"/></svg>
+            </div>
+            <span class="brand-name">OPEL</span>
+          </div>
+
+          <!-- MINI -->
+          <div class="brand-carousel-item" aria-hidden="true">
+            <div class="brand-logo-frame">
+              <svg width="36" height="22" viewBox="0 0 24 24"><circle cx="12" cy="12" r="5" fill="#FFFFFF"/><path d="M3 10h4v4H3z M17 10h4v4h-4z" fill="#9CA3AF"/></svg>
+            </div>
+            <span class="brand-name">MINI</span>
+          </div>
+
         </div>
       </div>
     </section>
@@ -568,249 +1113,261 @@
             </div>
           </article>
 
-          <!-- ======================= ACORDEÓN: CAMIONES ======================= -->
+          <!-- DESPLEGABLE: CAMIONES -->
           <div class="category-accordion-item" style="margin-bottom: 12px; border: 1px solid #222222; border-radius: 6px; overflow: hidden; background-color: #121212;">
-            
-            <button type="button" class="category-trigger" onclick="toggleCategoryAccordion(this)" style="width: 100%; display: flex; align-items: center; justify-content: space-between; padding: 16px 20px; background: transparent; border: none; cursor: pointer; text-align: left;">
-              <span style="color: #FFFFFF; font-weight: 900; font-size: 14px; letter-spacing: 0.5px; text-transform: uppercase;">
-                CAMIONES
-              </span>
+            <button type="button" class="category-trigger" onclick="toggleCategoryAccordion(this)" style="width: 100%; display: flex; align-items: center; justify-content: space-between; padding: 16px 20px; background: transparent; border: none; cursor: pointer;">
+              <span style="color: #FFFFFF; font-weight: 900; font-size: 14px; letter-spacing: 0.5px; text-transform: uppercase;">CAMIONES</span>
               <div style="display: flex; align-items: center; gap: 12px;">
-                <!-- Icono camión ámbar -->
                 <span style="color: #FF9900; font-size: 16px;">🚚</span>
-                <svg class="chevron-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#888888" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="transition: transform 0.3s ease;">
-                  <polyline points="6 9 12 15 18 9"></polyline>
-                </svg>
+                <svg class="chevron-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#888888" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="transition: transform 0.3s ease;"><polyline points="6 9 12 15 18 9"></polyline></svg>
               </div>
             </button>
-
-            <div class="category-panel" style="max-height: 0; overflow: hidden; transition: max-height 0.4s cubic-bezier(0.4, 0, 0.2, 1); background-color: #0A0A0A; border-top: 1px solid transparent;">
-              <div style="padding: 24px 16px 20px 16px;">
-                
-                <div class="logo-marquee-container" style="overflow: hidden; width: 100%; position: relative;">
-                  <div class="logo-marquee-track trucks-track" style="display: flex; gap: 34px; width: max-content; align-items: center;">
-
-                    <!-- MERCEDES TRUCKS -->
-                    <div class="brand-showcase-item">
-                      <div class="brand-logo-box">
-                        <svg width="34" height="34" viewBox="0 0 24 24" fill="#FFFFFF"><path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm0 1.5c5.799 0 10.5 4.701 10.5 10.5S17.799 22.5 12 22.5 1.5 17.799 1.5 12 6.201 1.5 12 1.5zm0 2.25L9.621 11.25H3.636C5.07 7.02 8.28 3.75 12 3.75zm1.5 7.5l-1.5-6.75c3.72 0 6.93 3.27 8.364 7.5h-5.985zm-2.079 1.5H3.141c.429 4.86 4.305 8.745 9.174 9.204L11.421 12.75zm1.158 0l1.104 9.404c4.869-.459 8.745-4.344 9.174-9.204h-8.278z"/></svg>
-                      </div>
-                      <span class="brand-label">MERCEDES</span>
+            
+            <div class="category-panel" style="max-height: 0; overflow: hidden; transition: max-height 0.4s ease; background-color: #0A0A0A;">
+              <div style="padding: 24px 16px;">
+                <div class="scroll-brand-track" style="display: flex; gap: 36px; overflow-x: auto; padding-bottom: 12px; scrollbar-width: thin; scroll-behavior: smooth; -webkit-overflow-scrolling: touch; cursor: grab;">
+                  
+                  <!-- MERCEDES-BENZ -->
+                  <div class="brand-unit">
+                    <div class="brand-icon-wrap">
+                      <svg viewBox="0 0 24 24" width="34" height="34" fill="#FFFFFF"><path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm0 1.5c5.799 0 10.5 4.701 10.5 10.5S17.799 22.5 12 22.5 1.5 17.799 1.5 12 6.201 1.5 12 1.5zm0 2.25L9.621 11.25H3.636C5.07 7.02 8.28 3.75 12 3.75zm1.5 7.5l-1.5-6.75c3.72 0 6.93 3.27 8.364 7.5h-5.985zm-2.079 1.5H3.141c.429 4.86 4.305 8.745 9.174 9.204L11.421 12.75zm1.158 0l1.104 9.404c4.869-.459 8.745-4.344 9.174-9.204h-8.278z"/></svg>
                     </div>
-
-                    <!-- VOLVO TRUCKS -->
-                    <div class="brand-showcase-item">
-                      <div class="brand-logo-box">
-                        <svg width="34" height="34" viewBox="0 0 24 24" fill="#FFFFFF"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10c0-1.58-.37-3.07-1.03-4.4L18.41 9A7.95 7.95 0 0120 12c0 4.41-3.59 8-8 8s-8-3.59-8-8 3.59-8 8-8c1.64 0 3.16.5 4.43 1.35l1.41-1.41A9.94 9.94 0 0012 2zm7.41 0l-2.12 2.12H21.5V2h-2.09zM22 0h-5v2h2.59L17.3 4.29A9.94 9.94 0 0012 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10a9.92 9.92 0 00-.86-4.04L22 4.41V7h2V0h-2z"/></svg>
-                      </div>
-                      <span class="brand-label">VOLVO</span>
-                    </div>
-
-                    <!-- SCANIA -->
-                    <div class="brand-showcase-item">
-                      <div class="brand-logo-box">
-                        <svg width="34" height="34" viewBox="0 0 24 24" fill="#3B82F6"><path d="M12 2L3 6v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V6l-9-4zm0 2.18l7 3.11v5.11c0 4.54-3.08 8.78-7 9.87-3.92-1.09-7-5.33-7-9.87V7.29l7-3.11zM11 7v6h2V7h-2zm0 8v2h2v-2h-2z"/></svg>
-                      </div>
-                      <span class="brand-label">SCANIA</span>
-                    </div>
-
-                    <!-- CHEVROLET TRUCKS -->
-                    <div class="brand-showcase-item">
-                      <div class="brand-logo-box">
-                        <svg width="40" height="20" viewBox="0 0 24 24" fill="#EAB308"><path d="M9 3h6v4h6v6h-6v8H9v-8H3V7h6V3z"/></svg>
-                      </div>
-                      <span class="brand-label">CHEVROLET</span>
-                    </div>
-
-                    <!-- HYUNDAI TRUCKS -->
-                    <div class="brand-showcase-item">
-                      <div class="brand-logo-box">
-                        <svg width="36" height="24" viewBox="0 0 24 24" fill="#3B82F6"><path d="M12 2C5.37 2 0 6.48 0 12s5.37 10 12 10 12-4.48 12-10S18.63 2 12 2zm0 1.8c4.95 0 9.08 3.19 9.96 7.4h-3.41c-.48-2.61-2.91-4.6-6.55-4.6s-6.07 1.99-6.55 4.6H1.94C2.82 6.99 6.95 3.8 12 3.8z"/></svg>
-                      </div>
-                      <span class="brand-label">HYUNDAI</span>
-                    </div>
-
-                    <!-- VOLKSWAGEN -->
-                    <div class="brand-showcase-item">
-                      <div class="brand-logo-box">
-                        <svg width="32" height="32" viewBox="0 0 24 24" fill="#38BDF8"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 1.6c4.64 0 8.4 3.76 8.4 8.4 0 1.9-.63 3.65-1.7 5.06l-4.7-9.52h-2.1l-2.05 4.38-2.05-4.38h-2.1l-4.7 9.52A8.34 8.34 0 013.6 12c0-4.64 3.76-8.4 8.4-8.4z"/></svg>
-                      </div>
-                      <span class="brand-label">VOLKSWAGEN</span>
-                    </div>
-
-                    <!-- JAC TRUCKS -->
-                    <div class="brand-showcase-item">
-                      <div class="brand-logo-box">
-                        <svg width="34" height="34" viewBox="0 0 24 24" fill="#EF4444"><path d="M12 2L14.9 8.26L21.79 9.27L16.8 14.14L17.98 21.02L12 17.77L6.02 21.02L7.2 14.14L2.21 9.27L9.1 8.26L12 2Z"/></svg>
-                      </div>
-                      <span class="brand-label">JAC</span>
-                    </div>
-
-                    <!-- FOTON -->
-                    <div class="brand-showcase-item">
-                      <div class="brand-logo-box">
-                        <svg width="32" height="32" viewBox="0 0 24 24" fill="#9CA3AF"><circle cx="12" cy="12" r="10" stroke="#9CA3AF" stroke-width="2" fill="none"/><polygon points="12,5 18,17 6,17" fill="#9CA3AF"/></svg>
-                      </div>
-                      <span class="brand-label">FOTON</span>
-                    </div>
-
-                    <!-- DONGFENG -->
-                    <div class="brand-showcase-item">
-                      <div class="brand-logo-box">
-                        <svg width="32" height="32" viewBox="0 0 24 24" fill="#EF4444"><circle cx="12" cy="12" r="10" stroke="#EF4444" stroke-width="2" fill="none"/><path d="M12 6c-3.31 0-6 2.69-6 6 0 2.21 1.79 4 4 4s4-1.79 4-4c0-1.1-.9-2-2-2s-2 .9-2 2" stroke="#EF4444" stroke-width="2" fill="none"/></svg>
-                      </div>
-                      <span class="brand-label">DONGFENG</span>
-                    </div>
-
-                    <!-- MACK TRUCKS -->
-                    <div class="brand-showcase-item">
-                      <div class="brand-logo-box">
-                        <svg width="34" height="34" viewBox="0 0 24 24" fill="#E5E7EB"><path d="M19 13h-2V9h2a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v2a2 2 0 002 2h2v4H5a2 2 0 00-2 2v4a2 2 0 002 2h14a2 2 0 002-2v-4a2 2 0 00-2-2zM5 5h14v2H5V5zm6 4h2v4h-2V9zm-6 8v-2h14v2H5z"/></svg>
-                      </div>
-                      <span class="brand-label">MACK</span>
-                    </div>
-
-                    <!-- REPETICIÓN PARA LOOP INFINITO SIN INTERRUPCIONES -->
-                    <div class="brand-showcase-item" aria-hidden="true"><div class="brand-logo-box"><svg width="34" height="34" viewBox="0 0 24 24" fill="#FFFFFF"><path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm0 1.5c5.799 0 10.5 4.701 10.5 10.5S17.799 22.5 12 22.5 1.5 17.799 1.5 12 6.201 1.5 12 1.5zm0 2.25L9.621 11.25H3.636C5.07 7.02 8.28 3.75 12 3.75zm1.5 7.5l-1.5-6.75c3.72 0 6.93 3.27 8.364 7.5h-5.985zm-2.079 1.5H3.141c.429 4.86 4.305 8.745 9.174 9.204L11.421 12.75zm1.158 0l1.104 9.404c4.869-.459 8.745-4.344 9.174-9.204h-8.278z"/></svg></div><span class="brand-label">MERCEDES</span></div>
-                    <div class="brand-showcase-item" aria-hidden="true"><div class="brand-logo-box"><svg width="34" height="34" viewBox="0 0 24 24" fill="#FFFFFF"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10c0-1.58-.37-3.07-1.03-4.4L18.41 9A7.95 7.95 0 0120 12c0 4.41-3.59 8-8 8s-8-3.59-8-8 3.59-8 8-8c1.64 0 3.16.5 4.43 1.35l1.41-1.41A9.94 9.94 0 0012 2zm7.41 0l-2.12 2.12H21.5V2h-2.09zM22 0h-5v2h2.59L17.3 4.29A9.94 9.94 0 0012 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10a9.92 9.92 0 00-.86-4.04L22 4.41V7h2V0h-2z"/></svg></div><span class="brand-label">VOLVO</span></div>
-                    <div class="brand-showcase-item" aria-hidden="true"><div class="brand-logo-box"><svg width="34" height="34" viewBox="0 0 24 24" fill="#3B82F6"><path d="M12 2L3 6v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V6l-9-4zm0 2.18l7 3.11v5.11c0 4.54-3.08 8.78-7 9.87-3.92-1.09-7-5.33-7-9.87V7.29l7-3.11zM11 7v6h2V7h-2zm0 8v2h2v-2h-2z"/></svg></div><span class="brand-label">SCANIA</span></div>
-                    <div class="brand-showcase-item" aria-hidden="true"><div class="brand-logo-box"><svg width="40" height="20" viewBox="0 0 24 24" fill="#EAB308"><path d="M9 3h6v4h6v6h-6v8H9v-8H3V7h6V3z"/></svg></div><span class="brand-label">CHEVROLET</span></div>
-                    <div class="brand-showcase-item" aria-hidden="true"><div class="brand-logo-box"><svg width="36" height="24" viewBox="0 0 24 24" fill="#3B82F6"><path d="M12 2C5.37 2 0 6.48 0 12s5.37 10 12 10 12-4.48 12-10S18.63 2 12 2zm0 1.8c4.95 0 9.08 3.19 9.96 7.4h-3.41c-.48-2.61-2.91-4.6-6.55-4.6s-6.07 1.99-6.55 4.6H1.94C2.82 6.99 6.95 3.8 12 3.8z"/></svg></div><span class="brand-label">HYUNDAI</span></div>
-                    <div class="brand-showcase-item" aria-hidden="true"><div class="brand-logo-box"><svg width="32" height="32" viewBox="0 0 24 24" fill="#38BDF8"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 1.6c4.64 0 8.4 3.76 8.4 8.4 0 1.9-.63 3.65-1.7 5.06l-4.7-9.52h-2.1l-2.05 4.38-2.05-4.38h-2.1l-4.7 9.52A8.34 8.34 0 013.6 12c0-4.64 3.76-8.4 8.4-8.4z"/></svg></div><span class="brand-label">VOLKSWAGEN</span></div>
-                    <div class="brand-showcase-item" aria-hidden="true"><div class="brand-logo-box"><svg width="34" height="34" viewBox="0 0 24 24" fill="#EF4444"><path d="M12 2L14.9 8.26L21.79 9.27L16.8 14.14L17.98 21.02L12 17.77L6.02 21.02L7.2 14.14L2.21 9.27L9.1 8.26L12 2Z"/></svg></div><span class="brand-label">JAC</span></div>
-                    <div class="brand-showcase-item" aria-hidden="true"><div class="brand-logo-box"><svg width="32" height="32" viewBox="0 0 24 24" fill="#9CA3AF"><circle cx="12" cy="12" r="10" stroke="#9CA3AF" stroke-width="2" fill="none"/><polygon points="12,5 18,17 6,17" fill="#9CA3AF"/></svg></div><span class="brand-label">FOTON</span></div>
-                    <div class="brand-showcase-item" aria-hidden="true"><div class="brand-logo-box"><svg width="32" height="32" viewBox="0 0 24 24" fill="#EF4444"><circle cx="12" cy="12" r="10" stroke="#EF4444" stroke-width="2" fill="none"/><path d="M12 6c-3.31 0-6 2.69-6 6 0 2.21 1.79 4 4 4s4-1.79 4-4c0-1.1-.9-2-2-2s-2 .9-2 2" stroke="#EF4444" stroke-width="2" fill="none"/></svg></div><span class="brand-label">DONGFENG</span></div>
-                    <div class="brand-showcase-item" aria-hidden="true"><div class="brand-logo-box"><svg width="34" height="34" viewBox="0 0 24 24" fill="#E5E7EB"><path d="M19 13h-2V9h2a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v2a2 2 0 002 2h2v4H5a2 2 0 00-2 2v4a2 2 0 002 2h14a2 2 0 002-2v-4a2 2 0 00-2-2zM5 5h14v2H5V5zm6 4h2v4h-2V9zm-6 8v-2h14v2H5z"/></svg></div><span class="brand-label">MACK</span></div>
-
+                    <span class="brand-name-tag">MERCEDES</span>
                   </div>
-                </div>
 
+                  <!-- VOLVO -->
+                  <div class="brand-unit">
+                    <div class="brand-icon-wrap">
+                      <svg viewBox="0 0 24 24" width="34" height="34" fill="#FFFFFF"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10c0-1.58-.37-3.07-1.03-4.4L18.41 9A7.95 7.95 0 0120 12c0 4.41-3.59 8-8 8s-8-3.59-8-8 3.59-8 8-8c1.64 0 3.16.5 4.43 1.35l1.41-1.41A9.94 9.94 0 0012 2zm7.41 0l-2.12 2.12H21.5V2h-2.09zM22 0h-5v2h2.59L17.3 4.29A9.94 9.94 0 0012 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10a9.92 9.92 0 00-.86-4.04L22 4.41V7h2V0h-2z"/></svg>
+                    </div>
+                    <span class="brand-name-tag">VOLVO</span>
+                  </div>
+
+                  <!-- SCANIA -->
+                  <div class="brand-unit">
+                    <div class="brand-icon-wrap">
+                      <svg viewBox="0 0 24 24" width="34" height="34" fill="#3B82F6"><path d="M12 2L3 6v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V6l-9-4zm0 2.18l7 3.11v5.11c0 4.54-3.08 8.78-7 9.87-3.92-1.09-7-5.33-7-9.87V7.29l7-3.11zM11 7v6h2V7h-2zm0 8v2h2v-2h-2z"/></svg>
+                    </div>
+                    <span class="brand-name-tag">SCANIA</span>
+                  </div>
+
+                  <!-- CHEVROLET -->
+                  <div class="brand-unit">
+                    <div class="brand-icon-wrap">
+                      <svg viewBox="0 0 24 24" width="38" height="20" fill="#EAB308"><path d="M9 3h6v4h6v6h-6v8H9v-8H3V7h6V3z"/></svg>
+                    </div>
+                    <span class="brand-name-tag">CHEVROLET</span>
+                  </div>
+
+                  <!-- HYUNDAI -->
+                  <div class="brand-unit">
+                    <div class="brand-icon-wrap">
+                      <svg viewBox="0 0 24 24" width="36" height="24" fill="#38BDF8"><path d="M12 2C5.37 2 0 6.48 0 12s5.37 10 12 10 12-4.48 12-10S18.63 2 12 2zm0 1.8c4.95 0 9.08 3.19 9.96 7.4h-3.41c-.48-2.61-2.91-4.6-6.55-4.6s-6.07 1.99-6.55 4.6H1.94C2.82 6.99 6.95 3.8 12 3.8z"/></svg>
+                    </div>
+                    <span class="brand-name-tag">HYUNDAI</span>
+                  </div>
+
+                  <!-- VOLKSWAGEN -->
+                  <div class="brand-unit">
+                    <div class="brand-icon-wrap">
+                      <svg viewBox="0 0 24 24" width="32" height="32" fill="#38BDF8"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 1.6c4.64 0 8.4 3.76 8.4 8.4 0 1.9-.63 3.65-1.7 5.06l-4.7-9.52h-2.1l-2.05 4.38-2.05-4.38h-2.1l-4.7 9.52A8.34 8.34 0 013.6 12c0-4.64 3.76-8.4 8.4-8.4z"/></svg>
+                    </div>
+                    <span class="brand-name-tag">VOLKSWAGEN</span>
+                  </div>
+
+                  <!-- JAC -->
+                  <div class="brand-unit">
+                    <div class="brand-icon-wrap">
+                      <svg viewBox="0 0 24 24" width="34" height="34" fill="#EF4444"><path d="M12 2L14.9 8.26L21.79 9.27L16.8 14.14L17.98 21.02L12 17.77L6.02 21.02L7.2 14.14L2.21 9.27L9.1 8.26L12 2Z"/></svg>
+                    </div>
+                    <span class="brand-name-tag">JAC</span>
+                  </div>
+
+                  <!-- FOTON -->
+                  <div class="brand-unit">
+                    <div class="brand-icon-wrap">
+                      <svg viewBox="0 0 24 24" width="32" height="32" fill="#9CA3AF"><circle cx="12" cy="12" r="10" stroke="#9CA3AF" stroke-width="2" fill="none"/><polygon points="12,5 18,17 6,17" fill="#9CA3AF"/></svg>
+                    </div>
+                    <span class="brand-name-tag">FOTON</span>
+                  </div>
+
+                  <!-- DONGFENG -->
+                  <div class="brand-unit">
+                    <div class="brand-icon-wrap">
+                      <svg viewBox="0 0 24 24" width="32" height="32" fill="#EF4444"><circle cx="12" cy="12" r="10" stroke="#EF4444" stroke-width="2" fill="none"/><path d="M12 6c-3.31 0-6 2.69-6 6 0 2.21 1.79 4 4 4s4-1.79 4-4c0-1.1-.9-2-2-2s-2 .9-2 2" stroke="#EF4444" stroke-width="2" fill="none"/></svg>
+                    </div>
+                    <span class="brand-name-tag">DONGFENG</span>
+                  </div>
+
+                  <!-- MACK -->
+                  <div class="brand-unit">
+                    <div class="brand-icon-wrap">
+                      <svg viewBox="0 0 24 24" width="32" height="32" fill="#E5E7EB"><path d="M19 13h-2V9h2a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v2a2 2 0 002 2h2v4H5a2 2 0 00-2 2v4a2 2 0 002 2h14a2 2 0 002-2v-4a2 2 0 00-2-2zM5 5h14v2H5V5zm6 4h2v4h-2V9zm-6 8v-2h14v2H5z"/></svg>
+                    </div>
+                    <span class="brand-name-tag">MACK</span>
+                  </div>
+
+                  <!-- FREIGHTLINER -->
+                  <div class="brand-unit">
+                    <div class="brand-icon-wrap">
+                      <span style="font-family: Impact, sans-serif; font-size: 15px; color: #FFFFFF; border-bottom: 2px solid #FF9900; letter-spacing: 1px;">FLN</span>
+                    </div>
+                    <span class="brand-name-tag">FREIGHTLINER</span>
+                  </div>
+
+                  <!-- KENWORTH -->
+                  <div class="brand-unit">
+                    <div class="brand-icon-wrap">
+                      <span style="font-family: Arial Black, sans-serif; font-size: 17px; color: #EF4444; border: 1.5px solid #EF4444; padding: 1px 4px;">KW</span>
+                    </div>
+                    <span class="brand-name-tag">KENWORTH</span>
+                  </div>
+
+                  <!-- ISUZU -->
+                  <div class="brand-unit">
+                    <div class="brand-icon-wrap">
+                      <span style="font-family: Arial Black, sans-serif; font-size: 16px; color: #EF4444; letter-spacing: 1px;">ISUZU</span>
+                    </div>
+                    <span class="brand-name-tag">ISUZU</span>
+                  </div>
+
+                  <!-- HINO -->
+                  <div class="brand-unit">
+                    <div class="brand-icon-wrap">
+                      <svg viewBox="0 0 24 24" width="32" height="32" fill="#EF4444"><circle cx="12" cy="12" r="10" stroke="#EF4444" stroke-width="2" fill="none"/><line x1="6" y1="12" x2="18" y2="12" stroke="#EF4444" stroke-width="2"/></svg>
+                    </div>
+                    <span class="brand-name-tag">HINO</span>
+                  </div>
+
+                </div>
               </div>
             </div>
-
           </div>
 
-
-          <!-- ======================= ACORDEÓN: MAQUINARIA ======================= -->
+          <!-- DESPLEGABLE: MAQUINARIA -->
           <div class="category-accordion-item" style="margin-bottom: 12px; border: 1px solid #222222; border-radius: 6px; overflow: hidden; background-color: #121212;">
-            
-            <button type="button" class="category-trigger" onclick="toggleCategoryAccordion(this)" style="width: 100%; display: flex; align-items: center; justify-content: space-between; padding: 16px 20px; background: transparent; border: none; cursor: pointer; text-align: left;">
-              <span style="color: #FFFFFF; font-weight: 900; font-size: 14px; letter-spacing: 0.5px; text-transform: uppercase;">
-                MAQUINARIA
-              </span>
+            <button type="button" class="category-trigger" onclick="toggleCategoryAccordion(this)" style="width: 100%; display: flex; align-items: center; justify-content: space-between; padding: 16px 20px; background: transparent; border: none; cursor: pointer;">
+              <span style="color: #FFFFFF; font-weight: 900; font-size: 14px; letter-spacing: 0.5px; text-transform: uppercase;">MAQUINARIA</span>
               <div style="display: flex; align-items: center; gap: 12px;">
-                <!-- Icono tractor/maquinaria verde -->
                 <span style="color: #10B981; font-size: 16px;">🚜</span>
-                <svg class="chevron-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#888888" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="transition: transform 0.3s ease;">
-                  <polyline points="6 9 12 15 18 9"></polyline>
-                </svg>
+                <svg class="chevron-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#888888" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="transition: transform 0.3s ease;"><polyline points="6 9 12 15 18 9"></polyline></svg>
               </div>
             </button>
-
-            <div class="category-panel" style="max-height: 0; overflow: hidden; transition: max-height 0.4s cubic-bezier(0.4, 0, 0.2, 1); background-color: #0A0A0A; border-top: 1px solid transparent;">
-              <div style="padding: 24px 16px 20px 16px;">
-                
-                <div class="logo-marquee-container" style="overflow: hidden; width: 100%; position: relative;">
-                  <div class="logo-marquee-track machinery-track" style="display: flex; gap: 34px; width: max-content; align-items: center;">
-
-                    <!-- CATERPILLAR / CAT -->
-                    <div class="brand-showcase-item">
-                      <div class="brand-logo-box">
-                        <svg width="40" height="24" viewBox="0 0 40 24">
-                          <polygon points="12,2 28,2 36,22 4,22" fill="#FFCC00"/>
-                          <text x="20" y="18" font-family="Arial, sans-serif" font-weight="900" font-size="12" fill="#0D0D0D" text-anchor="middle">CAT</text>
-                        </svg>
-                      </div>
-                      <span class="brand-label">CATERPILLAR</span>
+            
+            <div class="category-panel" style="max-height: 0; overflow: hidden; transition: max-height 0.4s ease; background-color: #0A0A0A;">
+              <div style="padding: 24px 16px;">
+                <div class="scroll-brand-track" style="display: flex; gap: 36px; overflow-x: auto; padding-bottom: 12px; scrollbar-width: thin; scroll-behavior: smooth; -webkit-overflow-scrolling: touch; cursor: grab;">
+                  
+                  <!-- CATERPILLAR -->
+                  <div class="brand-unit">
+                    <div class="brand-icon-wrap">
+                      <svg viewBox="0 0 40 24" width="40" height="24">
+                        <polygon points="12,2 28,2 36,22 4,22" fill="#FFCC00"/>
+                        <text x="20" y="17" font-family="Arial, sans-serif" font-weight="900" font-size="11" fill="#0D0D0D" text-anchor="middle">CAT</text>
+                      </svg>
                     </div>
-
-                    <!-- KOMATSU -->
-                    <div class="brand-showcase-item">
-                      <div class="brand-logo-box">
-                        <span style="font-family: Impact, Arial Black, sans-serif; font-size: 19px; color: #3B82F6; letter-spacing: 0.5px;">KOMATSU</span>
-                      </div>
-                      <span class="brand-label">KOMATSU</span>
-                    </div>
-
-                    <!-- BOBCAT -->
-                    <div class="brand-showcase-item">
-                      <div class="brand-logo-box">
-                        <svg width="32" height="32" viewBox="0 0 24 24" fill="#EF4444">
-                          <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 14h-2v-2h2v2zm0-4h-2V7h2v5z"/>
-                          <circle cx="12" cy="12" r="9" stroke="#EF4444" stroke-width="1.5" fill="none"/>
-                        </svg>
-                      </div>
-                      <span class="brand-label">BOBCAT</span>
-                    </div>
-
-                    <!-- KUBOTA -->
-                    <div class="brand-showcase-item">
-                      <div class="brand-logo-box">
-                        <span style="font-family: Arial, sans-serif; font-weight: 900; font-size: 16px; color: #10B981; letter-spacing: 1px;">Kubota</span>
-                      </div>
-                      <span class="brand-label">KUBOTA</span>
-                    </div>
-
-                    <!-- LIEBHERR -->
-                    <div class="brand-showcase-item">
-                      <div class="brand-logo-box">
-                        <span style="font-family: Impact, Arial Black, sans-serif; font-size: 18px; color: #E5E7EB; letter-spacing: 0.8px;">LIEBHERR</span>
-                      </div>
-                      <span class="brand-label">LIEBHERR</span>
-                    </div>
-
-                    <!-- DOOSAN -->
-                    <div class="brand-showcase-item">
-                      <div class="brand-logo-box">
-                        <span style="font-family: Arial Black, Impact, sans-serif; font-size: 17px; color: #38BDF8; letter-spacing: 0.5px;">DOOSAN</span>
-                      </div>
-                      <span class="brand-label">DOOSAN</span>
-                    </div>
-
-                    <!-- SANY -->
-                    <div class="brand-showcase-item">
-                      <div class="brand-logo-box">
-                        <svg width="32" height="32" viewBox="0 0 24 24" fill="#EF4444">
-                          <circle cx="12" cy="12" r="10" stroke="#EF4444" stroke-width="2" fill="none"/>
-                          <path d="M12 4L14 11H10L12 4z M5 18L10 13L7 11L5 18z M19 18L14 13L17 11L19 18z" fill="#EF4444"/>
-                        </svg>
-                      </div>
-                      <span class="brand-label">SANY</span>
-                    </div>
-
-                    <!-- ATLAS COPCO -->
-                    <div class="brand-showcase-item">
-                      <div class="brand-logo-box">
-                        <span style="font-family: Arial, sans-serif; font-weight: 900; font-size: 13px; color: #0EA5E9; border: 1.5px solid #0EA5E9; padding: 2px 5px; border-radius: 3px;">AtlasCopco</span>
-                      </div>
-                      <span class="brand-label">ATLAS COPCO</span>
-                    </div>
-
-                    <!-- CUMMINS -->
-                    <div class="brand-showcase-item">
-                      <div class="brand-logo-box">
-                        <span style="font-family: Arial Black, sans-serif; font-size: 22px; font-weight: 900; color: #EF4444; border-bottom: 2px solid #EF4444; line-height: 1;">C</span>
-                      </div>
-                      <span class="brand-label">CUMMINS</span>
-                    </div>
-
-                    <!-- REPETICIÓN PARA LOOP INFINITO SIN INTERRUPCIONES -->
-                    <div class="brand-showcase-item" aria-hidden="true"><div class="brand-logo-box"><svg width="40" height="24" viewBox="0 0 40 24"><polygon points="12,2 28,2 36,22 4,22" fill="#FFCC00"/><text x="20" y="18" font-family="Arial, sans-serif" font-weight="900" font-size="12" fill="#0D0D0D" text-anchor="middle">CAT</text></svg></div><span class="brand-label">CATERPILLAR</span></div>
-                    <div class="brand-showcase-item" aria-hidden="true"><div class="brand-logo-box"><span style="font-family: Impact, Arial Black, sans-serif; font-size: 19px; color: #3B82F6;">KOMATSU</span></div><span class="brand-label">KOMATSU</span></div>
-                    <div class="brand-showcase-item" aria-hidden="true"><div class="brand-logo-box"><svg width="32" height="32" viewBox="0 0 24 24" fill="#EF4444"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 14h-2v-2h2v2zm0-4h-2V7h2v5z"/><circle cx="12" cy="12" r="9" stroke="#EF4444" stroke-width="1.5" fill="none"/></svg></div><span class="brand-label">BOBCAT</span></div>
-                    <div class="brand-showcase-item" aria-hidden="true"><div class="brand-logo-box"><span style="font-family: Arial, sans-serif; font-weight: 900; font-size: 16px; color: #10B981; letter-spacing: 1px;">Kubota</span></div><span class="brand-label">KUBOTA</span></div>
-                    <div class="brand-showcase-item" aria-hidden="true"><div class="brand-logo-box"><span style="font-family: Impact, Arial Black, sans-serif; font-size: 18px; color: #E5E7EB; letter-spacing: 0.8px;">LIEBHERR</span></div><span class="brand-label">LIEBHERR</span></div>
-                    <div class="brand-showcase-item" aria-hidden="true"><div class="brand-logo-box"><span style="font-family: Arial Black, Impact, sans-serif; font-size: 17px; color: #38BDF8; letter-spacing: 0.5px;">DOOSAN</span></div><span class="brand-label">DOOSAN</span></div>
-                    <div class="brand-showcase-item" aria-hidden="true"><div class="brand-logo-box"><svg width="32" height="32" viewBox="0 0 24 24" fill="#EF4444"><circle cx="12" cy="12" r="10" stroke="#EF4444" stroke-width="2" fill="none"/><path d="M12 4L14 11H10L12 4z M5 18L10 13L7 11L5 18z M19 18L14 13L17 11L19 18z" fill="#EF4444"/></svg></div><span class="brand-label">SANY</span></div>
-                    <div class="brand-showcase-item" aria-hidden="true"><div class="brand-logo-box"><span style="font-family: Arial, sans-serif; font-weight: 900; font-size: 13px; color: #0EA5E9; border: 1.5px solid #0EA5E9; padding: 2px 5px; border-radius: 3px;">AtlasCopco</span></div><span class="brand-label">ATLAS COPCO</span></div>
-                    <div class="brand-showcase-item" aria-hidden="true"><div class="brand-logo-box"><span style="font-family: Arial Black, sans-serif; font-size: 22px; font-weight: 900; color: #EF4444; border-bottom: 2px solid #EF4444; line-height: 1;">C</span></div><span class="brand-label">CUMMINS</span></div>
-
+                    <span class="brand-name-tag">CATERPILLAR</span>
                   </div>
-                </div>
 
+                  <!-- KOMATSU -->
+                  <div class="brand-unit">
+                    <div class="brand-icon-wrap">
+                      <span style="font-family: Impact, Arial Black, sans-serif; font-size: 18px; color: #3B82F6; letter-spacing: 0.5px;">KOMATSU</span>
+                    </div>
+                    <span class="brand-name-tag">KOMATSU</span>
+                  </div>
+
+                  <!-- JOHN DEERE -->
+                  <div class="brand-unit">
+                    <div class="brand-icon-wrap">
+                      <svg viewBox="0 0 24 24" width="32" height="32" fill="#34D399"><circle cx="12" cy="12" r="10" stroke="#FBBF24" stroke-width="2" fill="none"/><path d="M7 14l3-4 4 3 3-5" stroke="#34D399" stroke-width="2" fill="none"/></svg>
+                    </div>
+                    <span class="brand-name-tag">JOHN DEERE</span>
+                  </div>
+
+                  <!-- JCB -->
+                  <div class="brand-unit">
+                    <div class="brand-icon-wrap">
+                      <span style="background-color: #FBBF24; color: #000; font-family: Impact, sans-serif; font-size: 15px; padding: 2px 6px; border-radius: 2px;">JCB</span>
+                    </div>
+                    <span class="brand-name-tag">JCB</span>
+                  </div>
+
+                  <!-- HITACHI -->
+                  <div class="brand-unit">
+                    <div class="brand-icon-wrap">
+                      <span style="font-family: Arial, sans-serif; font-weight: 900; font-size: 14px; color: #EF4444; letter-spacing: 0.5px;">HITACHI</span>
+                    </div>
+                    <span class="brand-name-tag">HITACHI</span>
+                  </div>
+
+                  <!-- VOLVO CE -->
+                  <div class="brand-unit">
+                    <div class="brand-icon-wrap">
+                      <svg viewBox="0 0 24 24" width="32" height="32" fill="#FFFFFF"><circle cx="12" cy="12" r="9" stroke="#FFF" stroke-width="1.5" fill="none"/><text x="12" y="15" font-family="Arial, sans-serif" font-weight="900" font-size="7" fill="#FFF" text-anchor="middle">VOLVO</text></svg>
+                    </div>
+                    <span class="brand-name-tag">VOLVO CE</span>
+                  </div>
+
+                  <!-- BOBCAT -->
+                  <div class="brand-unit">
+                    <div class="brand-icon-wrap">
+                      <svg viewBox="0 0 24 24" width="30" height="30" fill="#EF4444"><circle cx="12" cy="12" r="9" stroke="#EF4444" stroke-width="1.5" fill="none"/><path d="M12 7l2 5h-4z M9 15h6v2H9z"/></svg>
+                    </div>
+                    <span class="brand-name-tag">BOBCAT</span>
+                  </div>
+
+                  <!-- KUBOTA -->
+                  <div class="brand-unit">
+                    <div class="brand-icon-wrap">
+                      <span style="font-family: Arial, sans-serif; font-weight: 900; font-size: 15px; color: #10B981;">Kubota</span>
+                    </div>
+                    <span class="brand-name-tag">KUBOTA</span>
+                  </div>
+
+                  <!-- LIEBHERR -->
+                  <div class="brand-unit">
+                    <div class="brand-icon-wrap">
+                      <span style="font-family: Impact, sans-serif; font-size: 16px; color: #E5E7EB; letter-spacing: 0.5px;">LIEBHERR</span>
+                    </div>
+                    <span class="brand-name-tag">LIEBHERR</span>
+                  </div>
+
+                  <!-- DOOSAN -->
+                  <div class="brand-unit">
+                    <div class="brand-icon-wrap">
+                      <span style="font-family: Arial Black, sans-serif; font-size: 15px; color: #38BDF8;">DOOSAN</span>
+                    </div>
+                    <span class="brand-name-tag">DOOSAN</span>
+                  </div>
+
+                  <!-- SANY -->
+                  <div class="brand-unit">
+                    <div class="brand-icon-wrap">
+                      <svg viewBox="0 0 24 24" width="30" height="30" fill="#EF4444"><circle cx="12" cy="12" r="10" stroke="#EF4444" stroke-width="1.5" fill="none"/><polygon points="12,5 15,13 9,13"/></svg>
+                    </div>
+                    <span class="brand-name-tag">SANY</span>
+                  </div>
+
+                  <!-- ATLAS COPCO -->
+                  <div class="brand-unit">
+                    <div class="brand-icon-wrap">
+                      <span style="font-family: Arial, sans-serif; font-weight: 900; font-size: 11px; color: #0EA5E9; border: 1.5px solid #0EA5E9; padding: 2px 4px; border-radius: 2px;">AtlasCopco</span>
+                    </div>
+                    <span class="brand-name-tag">ATLAS COPCO</span>
+                  </div>
+
+                  <!-- CUMMINS -->
+                  <div class="brand-unit">
+                    <div class="brand-icon-wrap">
+                      <span style="font-family: Arial Black, sans-serif; font-size: 20px; font-weight: 900; color: #EF4444; border-bottom: 2px solid #EF4444; line-height: 1;">C</span>
+                    </div>
+                    <span class="brand-name-tag">CUMMINS</span>
+                  </div>
+
+                </div>
               </div>
             </div>
-
           </div>
 
           <!-- Item 5 -->
@@ -1081,15 +1638,15 @@
           </h2>
         </div>
 
-        <!-- Grilla de 4 Tarjetas -->
-        <div class="steps-grid" style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px;">
+        <!-- Grilla de 4 Tarjetas (2x2) -->
+        <div class="steps-grid">
           
           <!-- Paso 01 -->
-          <div class="step-card" style="background-color: #121212; border: 1px solid #242424; border-radius: 6px; overflow: hidden; display: flex; flex-direction: column;">
-            <div style="width: 100%; height: 180px; overflow: hidden; background-color: #1a1a1a;">
-              <img src="images.jpeg" alt="Contacto y Ubicación" style="width: 100%; height: 100%; object-fit: cover; display: block;">
+          <div class="step-card">
+            <div>
+              <img src="images.jpeg" alt="Contacto y Ubicación">
             </div>
-            <div style="padding: 20px; display: flex; flex-direction: column; flex-grow: 1;">
+            <div>
               <span style="color: #FF9900; font-family: monospace; font-size: 13px; font-weight: 800; border: 1px solid rgba(255, 153, 0, 0.4); border-radius: 3px; padding: 2px 8px; width: fit-content; margin-bottom: 12px;">
                 01
               </span>
@@ -1103,11 +1660,11 @@
           </div>
 
           <!-- Paso 02 -->
-          <div class="step-card" style="background-color: #121212; border: 1px solid #242424; border-radius: 6px; overflow: hidden; display: flex; flex-direction: column;">
-            <div style="width: 100%; height: 180px; overflow: hidden; background-color: #1a1a1a;">
-              <img src="camion.jpg" alt="Evaluación Previa" style="width: 100%; height: 100%; object-fit: cover; display: block;">
+          <div class="step-card">
+            <div>
+              <img src="camion.jpg" alt="Evaluación Previa">
             </div>
-            <div style="padding: 20px; display: flex; flex-direction: column; flex-grow: 1;">
+            <div>
               <span style="color: #FF9900; font-family: monospace; font-size: 13px; font-weight: 800; border: 1px solid rgba(255, 153, 0, 0.4); border-radius: 3px; padding: 2px 8px; width: fit-content; margin-bottom: 12px;">
                 02
               </span>
@@ -1121,11 +1678,11 @@
           </div>
 
           <!-- Paso 03 -->
-          <div class="step-card" style="background-color: #121212; border: 1px solid #242424; border-radius: 6px; overflow: hidden; display: flex; flex-direction: column;">
-            <div style="width: 100%; height: 180px; overflow: hidden; background-color: #1a1a1a;">
-              <img src="65177771d1bb61.94791321.jpg" alt="Despacho a Terreno" style="width: 100%; height: 100%; object-fit: cover; display: block;">
+          <div class="step-card">
+            <div>
+              <img src="65177771d1bb61.94791321.jpg" alt="Despacho a Terreno">
             </div>
-            <div style="padding: 20px; display: flex; flex-direction: column; flex-grow: 1;">
+            <div>
               <span style="color: #FF9900; font-family: monospace; font-size: 13px; font-weight: 800; border: 1px solid rgba(255, 153, 0, 0.4); border-radius: 3px; padding: 2px 8px; width: fit-content; margin-bottom: 12px;">
                 03
               </span>
@@ -1139,11 +1696,11 @@
           </div>
 
           <!-- Paso 04 -->
-          <div class="step-card" style="background-color: #121212; border: 1px solid #242424; border-radius: 6px; overflow: hidden; display: flex; flex-direction: column;">
-            <div style="width: 100%; height: 180px; overflow: hidden; background-color: #1a1a1a;">
-              <img src="mecanicaPesada.jpg" alt="Reparación y Entrega" style="width: 100%; height: 100%; object-fit: cover; display: block;">
+          <div class="step-card">
+            <div>
+              <img src="mecanicaPesada.jpg" alt="Reparación y Entrega">
             </div>
-            <div style="padding: 20px; display: flex; flex-direction: column; flex-grow: 1;">
+            <div>
               <span style="color: #FF9900; font-family: monospace; font-size: 13px; font-weight: 800; border: 1px solid rgba(255, 153, 0, 0.4); border-radius: 3px; padding: 2px 8px; width: fit-content; margin-bottom: 12px;">
                 04
               </span>

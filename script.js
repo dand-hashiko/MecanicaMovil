@@ -513,65 +513,51 @@ document.addEventListener('DOMContentLoaded', () => {
 // ==========================================================================
 document.addEventListener('DOMContentLoaded', () => {
   const track = document.getElementById('brands-track');
-  const prevBtn = document.getElementById('carousel-prev');
-  const nextBtn = document.getElementById('carousel-next');
-
   if (!track) return;
 
-  let isUserInteracting = false;
   let resumeTimeout = null;
-  const scrollStep = 1; // Velocidad de avance fluido
 
-  function continuousScroll() {
-    if (!isUserInteracting) {
-      track.scrollLeft += scrollStep;
-      // Reseteo al inicio del segundo set para un bucle continuo imperceptible
-      if (track.scrollLeft >= track.scrollWidth / 2) {
-        track.scrollLeft = 0;
-      }
-    }
-    requestAnimationFrame(continuousScroll);
-  }
-
-  requestAnimationFrame(continuousScroll);
-
-  // Pausa mientras el cursor o dedo interactúa
-  track.addEventListener('mouseenter', () => isUserInteracting = true);
-  track.addEventListener('mouseleave', () => {
-    if (!isDown) isUserInteracting = false;
+  // Pausa en hover y touch
+  track.addEventListener('mouseenter', () => {
+    track.style.animationPlayState = 'paused';
   });
-  track.addEventListener('touchstart', () => isUserInteracting = true, { passive: true });
+
+  track.addEventListener('mouseleave', () => {
+    track.style.animationPlayState = 'running';
+  });
+
+  track.addEventListener('touchstart', () => {
+    track.style.animationPlayState = 'paused';
+    clearTimeout(resumeTimeout);
+  }, { passive: true });
+
   track.addEventListener('touchend', () => {
     clearTimeout(resumeTimeout);
-    resumeTimeout = setTimeout(() => isUserInteracting = false, 1500);
+    resumeTimeout = setTimeout(() => {
+      track.style.animationPlayState = 'running';
+    }, 1500);
   });
 
-  // Desplazamiento manual por arrastre con mouse (Drag to Scroll)
-  let isDown = false;
-  let startX = 0;
-  let scrollLeftStart = 0;
+  // Interacción al hacer clic en cualquier marca (.brand-carousel-item)
+  track.querySelectorAll('.brand-carousel-item').forEach(item => {
+    item.style.cursor = 'pointer';
+    item.addEventListener('click', () => {
+      const brandTag = item.querySelector('.brand-name');
+      const brandName = brandTag ? brandTag.textContent.trim() : item.textContent.trim();
+      const formInput = document.querySelector('.input-marca');
 
-  track.addEventListener('mousedown', (e) => {
-    isDown = true;
-    isUserInteracting = true;
-    startX = e.pageX - track.offsetLeft;
-    scrollLeftStart = track.scrollLeft;
-  });
+      if (formInput) {
+        formInput.value = brandName;
+        const typeBtn = Array.from(document.querySelectorAll('.vehicle-type-btn')).find(b => b.dataset.value === 'Auto particular');
+        if (typeBtn) typeBtn.click();
 
-  window.addEventListener('mouseup', () => {
-    if (isDown) {
-      isDown = false;
-      clearTimeout(resumeTimeout);
-      resumeTimeout = setTimeout(() => isUserInteracting = false, 1500);
-    }
-  });
-
-  track.addEventListener('mousemove', (e) => {
-    if (!isDown) return;
-    e.preventDefault();
-    const x = e.pageX - track.offsetLeft;
-    const walk = (x - startX) * 1.5;
-    track.scrollLeft = scrollLeftStart - walk;
+        const contactSection = document.getElementById('contacto');
+        if (contactSection) {
+          contactSection.scrollIntoView({ behavior: 'smooth' });
+          formInput.focus();
+        }
+      }
+    });
   });
 });
 
@@ -817,6 +803,73 @@ if (document.readyState === 'loading') {
 } else {
   initMiniBrandCarousels();
 }
+
+// ==========================================================================
+// SCROLL MANUAL POR ARRASTRE CON RATÓN (DRAG-TO-SCROLL) EN CAMIONES Y MAQUINARIA
+// ==========================================================================
+function initScrollBrandTracks() {
+  document.querySelectorAll('.scroll-brand-track').forEach(slider => {
+    let isDown = false;
+    let startX, scrollLeft;
+
+    slider.addEventListener('mousedown', (e) => {
+      isDown = true;
+      slider.style.cursor = 'grabbing';
+      startX = e.pageX - slider.offsetLeft;
+      scrollLeft = slider.scrollLeft;
+    });
+
+    slider.addEventListener('mouseleave', () => {
+      isDown = false;
+      slider.style.cursor = 'grab';
+    });
+
+    slider.addEventListener('mouseup', () => {
+      isDown = false;
+      slider.style.cursor = 'grab';
+    });
+
+    slider.addEventListener('mousemove', (e) => {
+      if (!isDown) return;
+      e.preventDefault();
+      const x = e.pageX - slider.offsetLeft;
+      const walk = (x - startX) * 1.5;
+      slider.scrollLeft = scrollLeft - walk;
+    });
+  });
+
+  // Interacción al hacer clic en insignias de marca (.brand-unit)
+  document.querySelectorAll('.brand-unit').forEach(unit => {
+    unit.style.cursor = 'pointer';
+    unit.addEventListener('click', () => {
+      const brandTag = unit.querySelector('.brand-name-tag');
+      const brandName = brandTag ? brandTag.textContent.trim() : unit.textContent.trim();
+      const formInput = document.querySelector('.input-marca');
+      const itemContainer = unit.closest('.category-accordion-item');
+      const isTruck = itemContainer && itemContainer.textContent.includes('CAMIONES');
+
+      if (formInput) {
+        formInput.value = brandName;
+        const targetType = isTruck ? 'Camión' : 'Maquinaria';
+        const typeBtn = Array.from(document.querySelectorAll('.vehicle-type-btn')).find(b => b.dataset.value === targetType);
+        if (typeBtn) typeBtn.click();
+
+        const contactSection = document.getElementById('contacto');
+        if (contactSection) {
+          contactSection.scrollIntoView({ behavior: 'smooth' });
+          formInput.focus();
+        }
+      }
+    });
+  });
+}
+
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', initScrollBrandTracks);
+} else {
+  initScrollBrandTracks();
+}
+
 
 
 
