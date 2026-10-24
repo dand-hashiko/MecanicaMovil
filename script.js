@@ -23,7 +23,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const toastMsg = document.getElementById('toast-message');
   
   let toastTimer = null;
-  const phoneNumber = '+56 9 5379 7437';
+  const phoneNumber = '+56 9 8933 4099';
 
   // State Management
   const state = {
@@ -257,7 +257,7 @@ document.addEventListener('DOMContentLoaded', () => {
       const comuna = comunaInput.value;
       const direccion = direccionInput.value;
 
-      const targetPhone = "56953797437";
+      const targetPhone = "56989334099";
       const message = `Hola, necesito asistencia técnica en terreno:\n\n• Vehículo/Equipo: ${vehiculoTipo || 'No especificado'} - ${marcaModelo || ''} (${ano || ''})\n• Problema / Falla: ${falla || 'Diagnóstico general'}\n• Ubicación: ${comuna || ''}, ${direccion || ''}\n\nFavor confirmar disponibilidad y presupuesto.`;
       const waUrl = `https://wa.me/${targetPhone}?text=${encodeURIComponent(message)}`;
 
@@ -461,7 +461,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const callBtn = document.getElementById('copy-phone-btn') || document.getElementById('btn-call-trigger');
   if (!callBtn) return;
 
-  const phoneNumber = '+56953797437';
+  const phoneNumber = '+56989334099';
   const isMobile = /Android|iPhone|iPad|iPod|Opera Mini|IEMobile|WPDesktop/i.test(navigator.userAgent) 
                    || (navigator.maxTouchPoints && navigator.maxTouchPoints > 2);
 
@@ -572,7 +572,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const locationInput = document.getElementById('location-input');
   const cancelBtn = document.getElementById('cancel-location-btn');
   const sendBtn = document.getElementById('send-location-whatsapp-btn');
-  const targetPhone = "56953797437";
+  const targetPhone = "56989334099";
 
   let mapLink = "";
 
@@ -805,69 +805,196 @@ if (document.readyState === 'loading') {
 }
 
 // ==========================================================================
-// SCROLL MANUAL POR ARRASTRE CON RATÓN (DRAG-TO-SCROLL) EN CAMIONES Y MAQUINARIA
+// RENDERIZADO DINÁMICO DE LAS 76 MARCAS VECTORIALES (CAMIONES Y MAQUINARIA)
 // ==========================================================================
-function initScrollBrandTracks() {
-  document.querySelectorAll('.scroll-brand-track').forEach(slider => {
-    let isDown = false;
-    let startX, scrollLeft;
+function renderAllHeavyBrands() {
+  // Lista completa 1: 28 Marcas de Camiones y Tractocamiones
+  const camionesBrands = [
+    { name: "ASTRA", badge: "ASTRA", color: "#EF4444", shape: "shield" },
+    { name: "CHEVROLET CAMIONES", badge: "CHEVY", color: "#EAB308", shape: "cross" },
+    { name: "DAF", badge: "DAF", color: "#3B82F6", shape: "rect" },
+    { name: "DONGFENG", badge: "DFM", color: "#EF4444", shape: "circle" },
+    { name: "FAW CAMIONES", badge: "FAW", color: "#38BDF8", shape: "wings" },
+    { name: "FREIGHTLINER", badge: "FTL", color: "#E5E7EB", shape: "rect" },
+    { name: "FUSO", badge: "FUSO", color: "#EF4444", shape: "diamond" },
+    { name: "FOTON", badge: "FOTON", color: "#38BDF8", shape: "triangle" },
+    { name: "HINO", badge: "HINO", color: "#EF4444", shape: "horns" },
+    { name: "HYUNDAI CAMIONES", badge: "H", color: "#3B82F6", shape: "oval" },
+    { name: "INTERNATIONAL", badge: "INTL", color: "#FF9900", shape: "diamond" },
+    { name: "ISUZU", badge: "ISUZU", color: "#EF4444", shape: "rect" },
+    { name: "IVECO", badge: "IVECO", color: "#3B82F6", shape: "rect" },
+    { name: "JAC CAMIONES", badge: "JAC", color: "#EF4444", shape: "star" },
+    { name: "JMC CAMIONES", badge: "JMC", color: "#EF4444", shape: "triangle" },
+    { name: "KENWORTH", badge: "KW", color: "#EF4444", shape: "circle" },
+    { name: "MACK", badge: "MACK", color: "#E5E7EB", shape: "oval" },
+    { name: "MAN", badge: "MAN", color: "#38BDF8", shape: "arch" },
+    { name: "MAXUS", badge: "MAXUS", color: "#38BDF8", shape: "triangle" },
+    { name: "MERCEDES-BENZ", badge: "MB", color: "#FFFFFF", shape: "star3" },
+    { name: "PETERBILT", badge: "PETE", color: "#EF4444", shape: "oval" },
+    { name: "RENAULT TRUCKS", badge: "RENAULT", color: "#EF4444", shape: "diamond" },
+    { name: "SCANIA", badge: "SCANIA", color: "#3B82F6", shape: "circle" },
+    { name: "SHACMAN", badge: "SHAC", color: "#38BDF8", shape: "shield" },
+    { name: "SINOTRUK", badge: "CNHTC", color: "#10B981", shape: "triangle" },
+    { name: "VW CAMIONES Y BUSES", badge: "VW", color: "#38BDF8", shape: "circle" },
+    { name: "VOLVO TRUCKS", badge: "VOLVO", color: "#FFFFFF", shape: "iron" },
+    { name: "YUTONG", badge: "YUTONG", color: "#3B82F6", shape: "arch" }
+  ];
 
-    slider.addEventListener('mousedown', (e) => {
+  // Lista completa 2: 48 Marcas de Maquinaria Pesada, Construcción e Industrial
+  const maquinariaBrands = [
+    { name: "AMMANN YANMAR", badge: "AMMANN", color: "#EF4444", shape: "triangle" },
+    { name: "ATLAS COPCO", badge: "ATLAS", color: "#0EA5E9", shape: "rect" },
+    { name: "BOBCAT", badge: "BOBCAT", color: "#EF4444", shape: "shield" },
+    { name: "BOMAG", badge: "BOMAG", color: "#FBBF24", shape: "diamond" },
+    { name: "CASE CONSTRUCTION", badge: "CASE", color: "#D97706", shape: "rect" },
+    { name: "CAT (CATERPILLAR)", badge: "CAT", color: "#FFCC00", shape: "triangle" },
+    { name: "CLARK", badge: "CLARK", color: "#84CC16", shape: "oval" },
+    { name: "CNH INDUSTRIAL", badge: "CNH", color: "#EF4444", shape: "rect" },
+    { name: "CUMMINS", badge: "C", color: "#EF4444", shape: "circle" },
+    { name: "DAEWOO HEAVY", badge: "DAEWOO", color: "#38BDF8", shape: "arch" },
+    { name: "DOOSAN", badge: "DOOSAN", color: "#0EA5E9", shape: "rect" },
+    { name: "HITACHI", badge: "HITACHI", color: "#F97316", shape: "circle" },
+    { name: "HYSTER", badge: "HYSTER", color: "#FBBF24", shape: "shield" },
+    { name: "IHI", badge: "IHI", color: "#3B82F6", shape: "rect" },
+    { name: "JCB", badge: "JCB", color: "#FBBF24", shape: "rect" },
+    { name: "JOHN DEERE", badge: "DEERE", color: "#22C55E", shape: "shield" },
+    { name: "KAWASAKI", badge: "KHI", color: "#EF4444", shape: "rect" },
+    { name: "KOBELCO", badge: "KOBELCO", color: "#0EA5E9", shape: "circle" },
+    { name: "KOMATSU", badge: "KOMATSU", color: "#2563EB", shape: "rect" },
+    { name: "KUBOTA", badge: "KUBOTA", color: "#10B981", shape: "oval" },
+    { name: "KYB (KAYABA)", badge: "KYB", color: "#EF4444", shape: "diamond" },
+    { name: "LIEBHERR", badge: "LIEBHERR", color: "#FBBF24", shape: "rect" },
+    { name: "LIUGONG", badge: "LIUGONG", color: "#3B82F6", shape: "shield" },
+    { name: "LONKING", badge: "LONKING", color: "#38BDF8", shape: "diamond" },
+    { name: "LOVOL", badge: "LOVOL", color: "#E5E7EB", shape: "oval" },
+    { name: "MANITOU", badge: "MANITOU", color: "#EF4444", shape: "circle" },
+    { name: "METSO", badge: "METSO", color: "#F97316", shape: "arch" },
+    { name: "MITSUBISHI HEAVY", badge: "MHI", color: "#EF4444", shape: "diamond" },
+    { name: "NABTESCO", badge: "NABTESCO", color: "#0EA5E9", shape: "rect" },
+    { name: "NACHI", badge: "NACHI", color: "#EF4444", shape: "circle" },
+    { name: "NEW HOLLAND", badge: "NH", color: "#FBBF24", shape: "wings" },
+    { name: "OM PIMESPO", badge: "OM", color: "#3B82F6", shape: "oval" },
+    { name: "PALFINGER", badge: "PALFINGER", color: "#FBBF24", shape: "rect" },
+    { name: "REXROTH (BOSCH)", badge: "REXROTH", color: "#38BDF8", shape: "circle" },
+    { name: "SANY", badge: "SANY", color: "#EF4444", shape: "star3" },
+    { name: "SDLG", badge: "SDLG", color: "#EF4444", shape: "triangle" },
+    { name: "SHANTUI", badge: "SHANTUI", color: "#FBBF24", shape: "shield" },
+    { name: "SUMITOMO", badge: "SUMITOMO", color: "#0EA5E9", shape: "diamond" },
+    { name: "SUNWARD", badge: "SUNWARD", color: "#2563EB", shape: "rect" },
+    { name: "TAKEUCHI", badge: "TAKEUCHI", color: "#EF4444", shape: "rect" },
+    { name: "TEREX", badge: "TEREX", color: "#EF4444", shape: "triangle" },
+    { name: "TOYOTA INDUSTRIAL", badge: "TOYOTA", color: "#EF4444", shape: "oval" },
+    { name: "VOLVO CE", badge: "VOLVO", color: "#FFFFFF", shape: "iron" },
+    { name: "XCMG", badge: "XCMG", color: "#FBBF24", shape: "diamond" },
+    { name: "XGMA", badge: "XGMA", color: "#3B82F6", shape: "shield" },
+    { name: "YALE", badge: "YALE", color: "#FBBF24", shape: "circle" },
+    { name: "YANMAR", badge: "YANMAR", color: "#EF4444", shape: "wings" },
+    { name: "YUCHAI HEAVY", badge: "YUCHAI", color: "#EF4444", shape: "circle" },
+    { name: "ZOOMLION", badge: "ZOOMLION", color: "#84CC16", shape: "rect" }
+  ];
+
+  function createSvgEmblem(item) {
+    const c = item.color;
+    const text = item.badge;
+    const fontSize = text.length > 6 ? 7.5 : text.length > 4 ? 9 : 11;
+
+    let geometry = `<rect x="4" y="6" width="56" height="26" rx="4" fill="none" stroke="${c}" stroke-width="2"/>`;
+    if (item.shape === "circle") {
+      geometry = `<circle cx="32" cy="19" r="15" fill="none" stroke="${c}" stroke-width="2.2"/>`;
+    } else if (item.shape === "oval") {
+      geometry = `<ellipse cx="32" cy="19" rx="26" ry="13" fill="none" stroke="${c}" stroke-width="2"/>`;
+    } else if (item.shape === "diamond") {
+      geometry = `<polygon points="32,3 58,19 32,35 6,19" fill="none" stroke="${c}" stroke-width="2"/>`;
+    } else if (item.shape === "triangle") {
+      geometry = `<polygon points="32,3 58,34 6,34" fill="none" stroke="${c}" stroke-width="2"/>`;
+    } else if (item.shape === "shield") {
+      geometry = `<path d="M12,5 H52 V19 C52,28 32,35 32,35 C32,35 12,28 12,19 Z" fill="none" stroke="${c}" stroke-width="2"/>`;
+    } else if (item.shape === "star3" || item.shape === "star") {
+      geometry = `<circle cx="32" cy="19" r="15" fill="none" stroke="${c}" stroke-width="2"/><path d="M32,4 V19 M32,19 L19,27 M32,19 L45,27" stroke="${c}" stroke-width="1.8"/>`;
+    } else if (item.shape === "iron") {
+      geometry = `<circle cx="30" cy="20" r="13" fill="none" stroke="${c}" stroke-width="2.2"/><path d="M39,11 L48,4 M42,4 H48 V10" fill="none" stroke="${c}" stroke-width="2"/>`;
+    } else if (item.shape === "cross") {
+      geometry = `<path d="M22,8 H42 V14 H54 V24 H42 V30 H22 V24 H10 V14 H22 Z" fill="none" stroke="${c}" stroke-width="2"/>`;
+    } else if (item.shape === "horns") {
+      geometry = `<ellipse cx="32" cy="22" rx="20" ry="11" fill="none" stroke="${c}" stroke-width="2"/><path d="M14,14 C20,24 32,24 32,24 C32,24 44,24 50,14" fill="none" stroke="${c}" stroke-width="2"/>`;
+    } else if (item.shape === "wings") {
+      geometry = `<path d="M10,22 Q32,10 54,22 Q32,6 10,22 Z M16,25 Q32,16 48,25" fill="none" stroke="${c}" stroke-width="1.8"/>`;
+    } else if (item.shape === "arch") {
+      geometry = `<path d="M10,32 V19 C10,9 54,9 54,19 V32" fill="none" stroke="${c}" stroke-width="2.2"/>`;
+    }
+
+    return `
+      <svg width="64" height="38" viewBox="0 0 64 38" xmlns="http://www.w3.org/2000/svg">
+        ${geometry}
+        <text x="32" y="22.5" font-family="Arial Black, Impact, sans-serif" font-size="${fontSize}" font-weight="900" fill="#FFFFFF" text-anchor="middle" letter-spacing="0.5">${text}</text>
+      </svg>
+    `;
+  }
+
+  function populateTrack(trackId, list) {
+    const track = document.getElementById(trackId);
+    if (!track) return;
+    const targetType = trackId.includes('camiones') ? 'Camión' : 'Maquinaria';
+    track.innerHTML = list.map(item => `
+      <div class="brand-item-card" data-brand="${item.name}" data-target-type="${targetType}">
+        <div class="brand-svg-emblem">${createSvgEmblem(item)}</div>
+        <span class="brand-item-title">${item.name}</span>
+      </div>
+    `).join('');
+
+    // Interacción al hacer clic en cualquier tarjeta de marca
+    track.querySelectorAll('.brand-item-card').forEach(card => {
+      card.addEventListener('click', () => {
+        const brandName = card.dataset.brand || card.querySelector('.brand-item-title').textContent.trim();
+        const formInput = document.querySelector('.input-marca');
+
+        if (formInput) {
+          formInput.value = brandName;
+          const typeBtn = Array.from(document.querySelectorAll('.vehicle-type-btn')).find(b => b.dataset.value === targetType);
+          if (typeBtn) typeBtn.click();
+
+          const contactSection = document.getElementById('contacto');
+          if (contactSection) {
+            contactSection.scrollIntoView({ behavior: 'smooth' });
+            formInput.focus();
+          }
+        }
+      });
+    });
+  }
+
+  populateTrack("track-camiones", camionesBrands);
+  populateTrack("track-maquinaria", maquinariaBrands);
+
+  // Activar Drag-to-Scroll con el mouse y rueda horizontal en ambos carruseles
+  document.querySelectorAll('.brand-carousel-viewport').forEach(viewport => {
+    let isDown = false, startX, scrollLeft;
+    viewport.addEventListener('mousedown', e => {
       isDown = true;
-      slider.style.cursor = 'grabbing';
-      startX = e.pageX - slider.offsetLeft;
-      scrollLeft = slider.scrollLeft;
+      startX = e.pageX - viewport.offsetLeft;
+      scrollLeft = viewport.scrollLeft;
     });
-
-    slider.addEventListener('mouseleave', () => {
-      isDown = false;
-      slider.style.cursor = 'grab';
-    });
-
-    slider.addEventListener('mouseup', () => {
-      isDown = false;
-      slider.style.cursor = 'grab';
-    });
-
-    slider.addEventListener('mousemove', (e) => {
+    viewport.addEventListener('mouseleave', () => isDown = false);
+    viewport.addEventListener('mouseup', () => isDown = false);
+    viewport.addEventListener('mousemove', e => {
       if (!isDown) return;
       e.preventDefault();
-      const x = e.pageX - slider.offsetLeft;
-      const walk = (x - startX) * 1.5;
-      slider.scrollLeft = scrollLeft - walk;
+      const x = e.pageX - viewport.offsetLeft;
+      viewport.scrollLeft = scrollLeft - (x - startX) * 1.8;
     });
-  });
-
-  // Interacción al hacer clic en insignias de marca (.brand-unit)
-  document.querySelectorAll('.brand-unit').forEach(unit => {
-    unit.style.cursor = 'pointer';
-    unit.addEventListener('click', () => {
-      const brandTag = unit.querySelector('.brand-name-tag');
-      const brandName = brandTag ? brandTag.textContent.trim() : unit.textContent.trim();
-      const formInput = document.querySelector('.input-marca');
-      const itemContainer = unit.closest('.category-accordion-item');
-      const isTruck = itemContainer && itemContainer.textContent.includes('CAMIONES');
-
-      if (formInput) {
-        formInput.value = brandName;
-        const targetType = isTruck ? 'Camión' : 'Maquinaria';
-        const typeBtn = Array.from(document.querySelectorAll('.vehicle-type-btn')).find(b => b.dataset.value === targetType);
-        if (typeBtn) typeBtn.click();
-
-        const contactSection = document.getElementById('contacto');
-        if (contactSection) {
-          contactSection.scrollIntoView({ behavior: 'smooth' });
-          formInput.focus();
-        }
+    viewport.addEventListener('wheel', e => {
+      if (Math.abs(e.deltaY) > Math.abs(e.deltaX)) {
+        e.preventDefault();
+        viewport.scrollLeft += e.deltaY;
       }
-    });
+    }, { passive: false });
   });
 }
 
 if (document.readyState === 'loading') {
-  document.addEventListener('DOMContentLoaded', initScrollBrandTracks);
+  document.addEventListener('DOMContentLoaded', renderAllHeavyBrands);
 } else {
-  initScrollBrandTracks();
+  renderAllHeavyBrands();
 }
 
 

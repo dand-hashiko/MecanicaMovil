@@ -1116,7 +1116,11 @@ p {
 }
 
 .category-panel {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.35s cubic-bezier(0.4, 0, 0.2, 1), border-top-color 0.3s ease;
   will-change: max-height;
+  border-top: 1px solid transparent;
 }
 
 .mini-carousel-wrapper {
@@ -3455,6 +3459,7 @@ section[data-section="brands"] {
 header .header-actions,
 header .header-contact-btn,
 header a[href*="56953797437"],
+header a[href*="56989334099"],
 nav .header-btn-group {
   display: none !important;
 }
@@ -3867,60 +3872,84 @@ nav .header-btn-group {
 }
 
 /* ==========================================================================
-   ESTILOS PARA UNIFICACIÓN VISUAL Y SCROLL EN CAMIONES Y MAQUINARIA
+   CARRUSELES DINÁMICOS VECTORIALES (CAMIONES Y MAQUINARIA - 76 MARCAS)
    ========================================================================== */
-.brand-unit {
-  display: flex !important;
-  flex-direction: column !important;
-  align-items: center !important;
-  justify-content: center !important;
-  gap: 8px !important;
-  min-width: 90px !important;
-  flex-shrink: 0 !important;
-  user-select: none !important;
+.brand-carousel-viewport {
+  width: 100%;
+  overflow-x: auto;
+  overflow-y: hidden;
+  padding: 24px 20px;
+  box-sizing: border-box;
+  scrollbar-width: thin;
+  scrollbar-color: #FF9900 #141414;
+  -webkit-overflow-scrolling: touch;
+  cursor: grab;
 }
 
-.brand-icon-wrap {
-  width: 50px !important;
-  height: 38px !important;
-  display: flex !important;
-  align-items: center !important;
-  justify-content: center !important;
-  transition: transform 0.2s ease !important;
+.brand-carousel-viewport:active {
+  cursor: grabbing;
 }
 
-.brand-unit:hover .brand-icon-wrap {
-  transform: scale(1.12) !important;
+.brand-carousel-viewport::-webkit-scrollbar {
+  height: 5px;
+}
+.brand-carousel-viewport::-webkit-scrollbar-track {
+  background: #141414;
+  border-radius: 4px;
+}
+.brand-carousel-viewport::-webkit-scrollbar-thumb {
+  background: #333333;
+  border-radius: 4px;
+}
+.brand-carousel-viewport::-webkit-scrollbar-thumb:hover {
+  background: #FF9900;
 }
 
-.brand-name-tag {
-  color: #A3A3A3 !important;
-  font-family: monospace, -apple-system, sans-serif !important;
-  font-size: 11px !important;
-  font-weight: 700 !important;
-  letter-spacing: 0.8px !important;
-  text-transform: uppercase !important;
-  text-align: center !important;
-  transition: color 0.2s ease !important;
+.brand-carousel-track {
+  display: flex;
+  align-items: center;
+  gap: 36px;
+  width: max-content;
 }
 
-.brand-unit:hover .brand-name-tag {
-  color: #FF9900 !important;
+.brand-item-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  min-width: 100px;
+  user-select: none;
+  flex-shrink: 0;
+  transition: transform 0.2s ease;
+  cursor: pointer;
 }
 
-/* Barra de scroll horizontal estilizada en dark mode */
-.scroll-brand-track::-webkit-scrollbar {
-  height: 4px !important;
+.brand-item-card:hover {
+  transform: translateY(-3px);
 }
-.scroll-brand-track::-webkit-scrollbar-track {
-  background: #111111 !important;
+
+.brand-svg-emblem {
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
-.scroll-brand-track::-webkit-scrollbar-thumb {
-  background: #333333 !important;
-  border-radius: 4px !important;
+
+.brand-item-title {
+  color: #9CA3AF;
+  font-family: monospace, -apple-system, BlinkMacSystemFont, sans-serif;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.8px;
+  text-transform: uppercase;
+  text-align: center;
+  white-space: nowrap;
+  transition: color 0.2s ease;
 }
-.scroll-brand-track::-webkit-scrollbar-thumb:hover {
-  background: #FF9900 !important;
+
+.brand-item-card:hover .brand-item-title {
+  color: #FF9900;
 }
 
 /* ==========================================================================
