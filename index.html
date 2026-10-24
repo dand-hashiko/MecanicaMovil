@@ -568,74 +568,250 @@
             </div>
           </article>
 
-          <!-- Item 3 -->
-          <article class="service-acc-item">
-            <button class="service-acc-trigger" aria-expanded="false">
-              <span class="acc-title">CAMIONES</span>
-              <div class="acc-icon-group">
-                <svg decoding="async" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-                  stroke-linecap="round" stroke-linejoin="round" class="service-icon">
-                  <path d="M10 17h4V5H2v12h3" />
-                  <path d="M20 17h2v-3.34a4 4 0 0 0-1.17-2.83L19 9h-5v8h1" />
-                  <circle cx="7.5" cy="17.5" r="2.5" />
-                  <circle cx="17.5" cy="17.5" r="2.5" />
-                </svg>
-                <svg class="chevron-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-                  stroke-linecap="round" stroke-linejoin="round">
+          <!-- ======================= ACORDEÓN: CAMIONES ======================= -->
+          <div class="category-accordion-item" style="margin-bottom: 12px; border: 1px solid #222222; border-radius: 6px; overflow: hidden; background-color: #121212;">
+            
+            <button type="button" class="category-trigger" onclick="toggleCategoryAccordion(this)" style="width: 100%; display: flex; align-items: center; justify-content: space-between; padding: 16px 20px; background: transparent; border: none; cursor: pointer; text-align: left;">
+              <span style="color: #FFFFFF; font-weight: 900; font-size: 14px; letter-spacing: 0.5px; text-transform: uppercase;">
+                CAMIONES
+              </span>
+              <div style="display: flex; align-items: center; gap: 12px;">
+                <!-- Icono camión ámbar -->
+                <span style="color: #FF9900; font-size: 16px;">🚚</span>
+                <svg class="chevron-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#888888" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="transition: transform 0.3s ease;">
                   <polyline points="6 9 12 15 18 9"></polyline>
                 </svg>
               </div>
             </button>
-            <div class="service-acc-panel">
-              <div class="panel-inner">
-                <p class="card-desc">Servicio integral de todos los sistemas, en patio o camino.</p>
-                <ul class="card-list">
-                  <li><span class="bullet-arrow">›</span> Servicio integral completo de todos los sistemas</li>
-                  <li><span class="bullet-arrow">›</span> Sistemas de inyección</li>
-                  <li><span class="bullet-arrow">›</span> Frenos y sistemas de aire</li>
-                  <li><span class="bullet-arrow">›</span> Mantenimiento y continuidad operativa</li>
-                </ul>
-                <button class="btn btn-amber mt-3 w-100 service-cta-btn" data-target-type="Camión">
-                  ASISTENCIA CAMIONES →
-                </button>
-              </div>
-            </div>
-          </article>
 
-          <!-- Item 4 -->
-          <article class="service-acc-item">
-            <button class="service-acc-trigger" aria-expanded="false">
-              <span class="acc-title">MAQUINARIA</span>
-              <div class="acc-icon-group">
-                <svg decoding="async" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-                  stroke-linecap="round" stroke-linejoin="round" class="service-icon">
-                  <path d="M2 18h20" />
-                  <path d="M5 18V9h5l4 4h4v5" />
-                  <path d="M8 9V5a1 1 0 0 1 1-1h6a1 1 0 0 1 1 1v4" />
-                  <circle cx="6" cy="18" r="2" />
-                  <circle cx="18" cy="18" r="2" />
-                </svg>
-                <svg class="chevron-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-                  stroke-linecap="round" stroke-linejoin="round">
+            <div class="category-panel" style="max-height: 0; overflow: hidden; transition: max-height 0.4s cubic-bezier(0.4, 0, 0.2, 1); background-color: #0A0A0A; border-top: 1px solid transparent;">
+              <div style="padding: 24px 16px 20px 16px;">
+                
+                <div class="logo-marquee-container" style="overflow: hidden; width: 100%; position: relative;">
+                  <div class="logo-marquee-track trucks-track" style="display: flex; gap: 34px; width: max-content; align-items: center;">
+
+                    <!-- MERCEDES TRUCKS -->
+                    <div class="brand-showcase-item">
+                      <div class="brand-logo-box">
+                        <svg width="34" height="34" viewBox="0 0 24 24" fill="#FFFFFF"><path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm0 1.5c5.799 0 10.5 4.701 10.5 10.5S17.799 22.5 12 22.5 1.5 17.799 1.5 12 6.201 1.5 12 1.5zm0 2.25L9.621 11.25H3.636C5.07 7.02 8.28 3.75 12 3.75zm1.5 7.5l-1.5-6.75c3.72 0 6.93 3.27 8.364 7.5h-5.985zm-2.079 1.5H3.141c.429 4.86 4.305 8.745 9.174 9.204L11.421 12.75zm1.158 0l1.104 9.404c4.869-.459 8.745-4.344 9.174-9.204h-8.278z"/></svg>
+                      </div>
+                      <span class="brand-label">MERCEDES</span>
+                    </div>
+
+                    <!-- VOLVO TRUCKS -->
+                    <div class="brand-showcase-item">
+                      <div class="brand-logo-box">
+                        <svg width="34" height="34" viewBox="0 0 24 24" fill="#FFFFFF"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10c0-1.58-.37-3.07-1.03-4.4L18.41 9A7.95 7.95 0 0120 12c0 4.41-3.59 8-8 8s-8-3.59-8-8 3.59-8 8-8c1.64 0 3.16.5 4.43 1.35l1.41-1.41A9.94 9.94 0 0012 2zm7.41 0l-2.12 2.12H21.5V2h-2.09zM22 0h-5v2h2.59L17.3 4.29A9.94 9.94 0 0012 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10a9.92 9.92 0 00-.86-4.04L22 4.41V7h2V0h-2z"/></svg>
+                      </div>
+                      <span class="brand-label">VOLVO</span>
+                    </div>
+
+                    <!-- SCANIA -->
+                    <div class="brand-showcase-item">
+                      <div class="brand-logo-box">
+                        <svg width="34" height="34" viewBox="0 0 24 24" fill="#3B82F6"><path d="M12 2L3 6v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V6l-9-4zm0 2.18l7 3.11v5.11c0 4.54-3.08 8.78-7 9.87-3.92-1.09-7-5.33-7-9.87V7.29l7-3.11zM11 7v6h2V7h-2zm0 8v2h2v-2h-2z"/></svg>
+                      </div>
+                      <span class="brand-label">SCANIA</span>
+                    </div>
+
+                    <!-- CHEVROLET TRUCKS -->
+                    <div class="brand-showcase-item">
+                      <div class="brand-logo-box">
+                        <svg width="40" height="20" viewBox="0 0 24 24" fill="#EAB308"><path d="M9 3h6v4h6v6h-6v8H9v-8H3V7h6V3z"/></svg>
+                      </div>
+                      <span class="brand-label">CHEVROLET</span>
+                    </div>
+
+                    <!-- HYUNDAI TRUCKS -->
+                    <div class="brand-showcase-item">
+                      <div class="brand-logo-box">
+                        <svg width="36" height="24" viewBox="0 0 24 24" fill="#3B82F6"><path d="M12 2C5.37 2 0 6.48 0 12s5.37 10 12 10 12-4.48 12-10S18.63 2 12 2zm0 1.8c4.95 0 9.08 3.19 9.96 7.4h-3.41c-.48-2.61-2.91-4.6-6.55-4.6s-6.07 1.99-6.55 4.6H1.94C2.82 6.99 6.95 3.8 12 3.8z"/></svg>
+                      </div>
+                      <span class="brand-label">HYUNDAI</span>
+                    </div>
+
+                    <!-- VOLKSWAGEN -->
+                    <div class="brand-showcase-item">
+                      <div class="brand-logo-box">
+                        <svg width="32" height="32" viewBox="0 0 24 24" fill="#38BDF8"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 1.6c4.64 0 8.4 3.76 8.4 8.4 0 1.9-.63 3.65-1.7 5.06l-4.7-9.52h-2.1l-2.05 4.38-2.05-4.38h-2.1l-4.7 9.52A8.34 8.34 0 013.6 12c0-4.64 3.76-8.4 8.4-8.4z"/></svg>
+                      </div>
+                      <span class="brand-label">VOLKSWAGEN</span>
+                    </div>
+
+                    <!-- JAC TRUCKS -->
+                    <div class="brand-showcase-item">
+                      <div class="brand-logo-box">
+                        <svg width="34" height="34" viewBox="0 0 24 24" fill="#EF4444"><path d="M12 2L14.9 8.26L21.79 9.27L16.8 14.14L17.98 21.02L12 17.77L6.02 21.02L7.2 14.14L2.21 9.27L9.1 8.26L12 2Z"/></svg>
+                      </div>
+                      <span class="brand-label">JAC</span>
+                    </div>
+
+                    <!-- FOTON -->
+                    <div class="brand-showcase-item">
+                      <div class="brand-logo-box">
+                        <svg width="32" height="32" viewBox="0 0 24 24" fill="#9CA3AF"><circle cx="12" cy="12" r="10" stroke="#9CA3AF" stroke-width="2" fill="none"/><polygon points="12,5 18,17 6,17" fill="#9CA3AF"/></svg>
+                      </div>
+                      <span class="brand-label">FOTON</span>
+                    </div>
+
+                    <!-- DONGFENG -->
+                    <div class="brand-showcase-item">
+                      <div class="brand-logo-box">
+                        <svg width="32" height="32" viewBox="0 0 24 24" fill="#EF4444"><circle cx="12" cy="12" r="10" stroke="#EF4444" stroke-width="2" fill="none"/><path d="M12 6c-3.31 0-6 2.69-6 6 0 2.21 1.79 4 4 4s4-1.79 4-4c0-1.1-.9-2-2-2s-2 .9-2 2" stroke="#EF4444" stroke-width="2" fill="none"/></svg>
+                      </div>
+                      <span class="brand-label">DONGFENG</span>
+                    </div>
+
+                    <!-- MACK TRUCKS -->
+                    <div class="brand-showcase-item">
+                      <div class="brand-logo-box">
+                        <svg width="34" height="34" viewBox="0 0 24 24" fill="#E5E7EB"><path d="M19 13h-2V9h2a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v2a2 2 0 002 2h2v4H5a2 2 0 00-2 2v4a2 2 0 002 2h14a2 2 0 002-2v-4a2 2 0 00-2-2zM5 5h14v2H5V5zm6 4h2v4h-2V9zm-6 8v-2h14v2H5z"/></svg>
+                      </div>
+                      <span class="brand-label">MACK</span>
+                    </div>
+
+                    <!-- REPETICIÓN PARA LOOP INFINITO SIN INTERRUPCIONES -->
+                    <div class="brand-showcase-item" aria-hidden="true"><div class="brand-logo-box"><svg width="34" height="34" viewBox="0 0 24 24" fill="#FFFFFF"><path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm0 1.5c5.799 0 10.5 4.701 10.5 10.5S17.799 22.5 12 22.5 1.5 17.799 1.5 12 6.201 1.5 12 1.5zm0 2.25L9.621 11.25H3.636C5.07 7.02 8.28 3.75 12 3.75zm1.5 7.5l-1.5-6.75c3.72 0 6.93 3.27 8.364 7.5h-5.985zm-2.079 1.5H3.141c.429 4.86 4.305 8.745 9.174 9.204L11.421 12.75zm1.158 0l1.104 9.404c4.869-.459 8.745-4.344 9.174-9.204h-8.278z"/></svg></div><span class="brand-label">MERCEDES</span></div>
+                    <div class="brand-showcase-item" aria-hidden="true"><div class="brand-logo-box"><svg width="34" height="34" viewBox="0 0 24 24" fill="#FFFFFF"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10c0-1.58-.37-3.07-1.03-4.4L18.41 9A7.95 7.95 0 0120 12c0 4.41-3.59 8-8 8s-8-3.59-8-8 3.59-8 8-8c1.64 0 3.16.5 4.43 1.35l1.41-1.41A9.94 9.94 0 0012 2zm7.41 0l-2.12 2.12H21.5V2h-2.09zM22 0h-5v2h2.59L17.3 4.29A9.94 9.94 0 0012 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10a9.92 9.92 0 00-.86-4.04L22 4.41V7h2V0h-2z"/></svg></div><span class="brand-label">VOLVO</span></div>
+                    <div class="brand-showcase-item" aria-hidden="true"><div class="brand-logo-box"><svg width="34" height="34" viewBox="0 0 24 24" fill="#3B82F6"><path d="M12 2L3 6v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V6l-9-4zm0 2.18l7 3.11v5.11c0 4.54-3.08 8.78-7 9.87-3.92-1.09-7-5.33-7-9.87V7.29l7-3.11zM11 7v6h2V7h-2zm0 8v2h2v-2h-2z"/></svg></div><span class="brand-label">SCANIA</span></div>
+                    <div class="brand-showcase-item" aria-hidden="true"><div class="brand-logo-box"><svg width="40" height="20" viewBox="0 0 24 24" fill="#EAB308"><path d="M9 3h6v4h6v6h-6v8H9v-8H3V7h6V3z"/></svg></div><span class="brand-label">CHEVROLET</span></div>
+                    <div class="brand-showcase-item" aria-hidden="true"><div class="brand-logo-box"><svg width="36" height="24" viewBox="0 0 24 24" fill="#3B82F6"><path d="M12 2C5.37 2 0 6.48 0 12s5.37 10 12 10 12-4.48 12-10S18.63 2 12 2zm0 1.8c4.95 0 9.08 3.19 9.96 7.4h-3.41c-.48-2.61-2.91-4.6-6.55-4.6s-6.07 1.99-6.55 4.6H1.94C2.82 6.99 6.95 3.8 12 3.8z"/></svg></div><span class="brand-label">HYUNDAI</span></div>
+                    <div class="brand-showcase-item" aria-hidden="true"><div class="brand-logo-box"><svg width="32" height="32" viewBox="0 0 24 24" fill="#38BDF8"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 1.6c4.64 0 8.4 3.76 8.4 8.4 0 1.9-.63 3.65-1.7 5.06l-4.7-9.52h-2.1l-2.05 4.38-2.05-4.38h-2.1l-4.7 9.52A8.34 8.34 0 013.6 12c0-4.64 3.76-8.4 8.4-8.4z"/></svg></div><span class="brand-label">VOLKSWAGEN</span></div>
+                    <div class="brand-showcase-item" aria-hidden="true"><div class="brand-logo-box"><svg width="34" height="34" viewBox="0 0 24 24" fill="#EF4444"><path d="M12 2L14.9 8.26L21.79 9.27L16.8 14.14L17.98 21.02L12 17.77L6.02 21.02L7.2 14.14L2.21 9.27L9.1 8.26L12 2Z"/></svg></div><span class="brand-label">JAC</span></div>
+                    <div class="brand-showcase-item" aria-hidden="true"><div class="brand-logo-box"><svg width="32" height="32" viewBox="0 0 24 24" fill="#9CA3AF"><circle cx="12" cy="12" r="10" stroke="#9CA3AF" stroke-width="2" fill="none"/><polygon points="12,5 18,17 6,17" fill="#9CA3AF"/></svg></div><span class="brand-label">FOTON</span></div>
+                    <div class="brand-showcase-item" aria-hidden="true"><div class="brand-logo-box"><svg width="32" height="32" viewBox="0 0 24 24" fill="#EF4444"><circle cx="12" cy="12" r="10" stroke="#EF4444" stroke-width="2" fill="none"/><path d="M12 6c-3.31 0-6 2.69-6 6 0 2.21 1.79 4 4 4s4-1.79 4-4c0-1.1-.9-2-2-2s-2 .9-2 2" stroke="#EF4444" stroke-width="2" fill="none"/></svg></div><span class="brand-label">DONGFENG</span></div>
+                    <div class="brand-showcase-item" aria-hidden="true"><div class="brand-logo-box"><svg width="34" height="34" viewBox="0 0 24 24" fill="#E5E7EB"><path d="M19 13h-2V9h2a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v2a2 2 0 002 2h2v4H5a2 2 0 00-2 2v4a2 2 0 002 2h14a2 2 0 002-2v-4a2 2 0 00-2-2zM5 5h14v2H5V5zm6 4h2v4h-2V9zm-6 8v-2h14v2H5z"/></svg></div><span class="brand-label">MACK</span></div>
+
+                  </div>
+                </div>
+
+              </div>
+            </div>
+
+          </div>
+
+
+          <!-- ======================= ACORDEÓN: MAQUINARIA ======================= -->
+          <div class="category-accordion-item" style="margin-bottom: 12px; border: 1px solid #222222; border-radius: 6px; overflow: hidden; background-color: #121212;">
+            
+            <button type="button" class="category-trigger" onclick="toggleCategoryAccordion(this)" style="width: 100%; display: flex; align-items: center; justify-content: space-between; padding: 16px 20px; background: transparent; border: none; cursor: pointer; text-align: left;">
+              <span style="color: #FFFFFF; font-weight: 900; font-size: 14px; letter-spacing: 0.5px; text-transform: uppercase;">
+                MAQUINARIA
+              </span>
+              <div style="display: flex; align-items: center; gap: 12px;">
+                <!-- Icono tractor/maquinaria verde -->
+                <span style="color: #10B981; font-size: 16px;">🚜</span>
+                <svg class="chevron-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#888888" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="transition: transform 0.3s ease;">
                   <polyline points="6 9 12 15 18 9"></polyline>
                 </svg>
               </div>
             </button>
-            <div class="service-acc-panel">
-              <div class="panel-inner">
-                <p class="card-desc">Equipos de obra, agrícolas y de movimiento de tierra.</p>
-                <ul class="card-list">
-                  <li><span class="bullet-arrow">›</span> Motores diésel</li>
-                  <li><span class="bullet-arrow">›</span> Revisión de sistemas hidráulicos</li>
-                  <li><span class="bullet-arrow">›</span> Reparación de componentes hidráulicos</li>
-                  <li><span class="bullet-arrow">›</span> Mantenimiento correctivo y preventivo</li>
-                </ul>
-                <button class="btn btn-amber mt-3 w-100 service-cta-btn" data-target-type="Maquinaria">
-                  REVISIÓN DE MAQUINARIA →
-                </button>
+
+            <div class="category-panel" style="max-height: 0; overflow: hidden; transition: max-height 0.4s cubic-bezier(0.4, 0, 0.2, 1); background-color: #0A0A0A; border-top: 1px solid transparent;">
+              <div style="padding: 24px 16px 20px 16px;">
+                
+                <div class="logo-marquee-container" style="overflow: hidden; width: 100%; position: relative;">
+                  <div class="logo-marquee-track machinery-track" style="display: flex; gap: 34px; width: max-content; align-items: center;">
+
+                    <!-- CATERPILLAR / CAT -->
+                    <div class="brand-showcase-item">
+                      <div class="brand-logo-box">
+                        <svg width="40" height="24" viewBox="0 0 40 24">
+                          <polygon points="12,2 28,2 36,22 4,22" fill="#FFCC00"/>
+                          <text x="20" y="18" font-family="Arial, sans-serif" font-weight="900" font-size="12" fill="#0D0D0D" text-anchor="middle">CAT</text>
+                        </svg>
+                      </div>
+                      <span class="brand-label">CATERPILLAR</span>
+                    </div>
+
+                    <!-- KOMATSU -->
+                    <div class="brand-showcase-item">
+                      <div class="brand-logo-box">
+                        <span style="font-family: Impact, Arial Black, sans-serif; font-size: 19px; color: #3B82F6; letter-spacing: 0.5px;">KOMATSU</span>
+                      </div>
+                      <span class="brand-label">KOMATSU</span>
+                    </div>
+
+                    <!-- BOBCAT -->
+                    <div class="brand-showcase-item">
+                      <div class="brand-logo-box">
+                        <svg width="32" height="32" viewBox="0 0 24 24" fill="#EF4444">
+                          <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 14h-2v-2h2v2zm0-4h-2V7h2v5z"/>
+                          <circle cx="12" cy="12" r="9" stroke="#EF4444" stroke-width="1.5" fill="none"/>
+                        </svg>
+                      </div>
+                      <span class="brand-label">BOBCAT</span>
+                    </div>
+
+                    <!-- KUBOTA -->
+                    <div class="brand-showcase-item">
+                      <div class="brand-logo-box">
+                        <span style="font-family: Arial, sans-serif; font-weight: 900; font-size: 16px; color: #10B981; letter-spacing: 1px;">Kubota</span>
+                      </div>
+                      <span class="brand-label">KUBOTA</span>
+                    </div>
+
+                    <!-- LIEBHERR -->
+                    <div class="brand-showcase-item">
+                      <div class="brand-logo-box">
+                        <span style="font-family: Impact, Arial Black, sans-serif; font-size: 18px; color: #E5E7EB; letter-spacing: 0.8px;">LIEBHERR</span>
+                      </div>
+                      <span class="brand-label">LIEBHERR</span>
+                    </div>
+
+                    <!-- DOOSAN -->
+                    <div class="brand-showcase-item">
+                      <div class="brand-logo-box">
+                        <span style="font-family: Arial Black, Impact, sans-serif; font-size: 17px; color: #38BDF8; letter-spacing: 0.5px;">DOOSAN</span>
+                      </div>
+                      <span class="brand-label">DOOSAN</span>
+                    </div>
+
+                    <!-- SANY -->
+                    <div class="brand-showcase-item">
+                      <div class="brand-logo-box">
+                        <svg width="32" height="32" viewBox="0 0 24 24" fill="#EF4444">
+                          <circle cx="12" cy="12" r="10" stroke="#EF4444" stroke-width="2" fill="none"/>
+                          <path d="M12 4L14 11H10L12 4z M5 18L10 13L7 11L5 18z M19 18L14 13L17 11L19 18z" fill="#EF4444"/>
+                        </svg>
+                      </div>
+                      <span class="brand-label">SANY</span>
+                    </div>
+
+                    <!-- ATLAS COPCO -->
+                    <div class="brand-showcase-item">
+                      <div class="brand-logo-box">
+                        <span style="font-family: Arial, sans-serif; font-weight: 900; font-size: 13px; color: #0EA5E9; border: 1.5px solid #0EA5E9; padding: 2px 5px; border-radius: 3px;">AtlasCopco</span>
+                      </div>
+                      <span class="brand-label">ATLAS COPCO</span>
+                    </div>
+
+                    <!-- CUMMINS -->
+                    <div class="brand-showcase-item">
+                      <div class="brand-logo-box">
+                        <span style="font-family: Arial Black, sans-serif; font-size: 22px; font-weight: 900; color: #EF4444; border-bottom: 2px solid #EF4444; line-height: 1;">C</span>
+                      </div>
+                      <span class="brand-label">CUMMINS</span>
+                    </div>
+
+                    <!-- REPETICIÓN PARA LOOP INFINITO SIN INTERRUPCIONES -->
+                    <div class="brand-showcase-item" aria-hidden="true"><div class="brand-logo-box"><svg width="40" height="24" viewBox="0 0 40 24"><polygon points="12,2 28,2 36,22 4,22" fill="#FFCC00"/><text x="20" y="18" font-family="Arial, sans-serif" font-weight="900" font-size="12" fill="#0D0D0D" text-anchor="middle">CAT</text></svg></div><span class="brand-label">CATERPILLAR</span></div>
+                    <div class="brand-showcase-item" aria-hidden="true"><div class="brand-logo-box"><span style="font-family: Impact, Arial Black, sans-serif; font-size: 19px; color: #3B82F6;">KOMATSU</span></div><span class="brand-label">KOMATSU</span></div>
+                    <div class="brand-showcase-item" aria-hidden="true"><div class="brand-logo-box"><svg width="32" height="32" viewBox="0 0 24 24" fill="#EF4444"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 14h-2v-2h2v2zm0-4h-2V7h2v5z"/><circle cx="12" cy="12" r="9" stroke="#EF4444" stroke-width="1.5" fill="none"/></svg></div><span class="brand-label">BOBCAT</span></div>
+                    <div class="brand-showcase-item" aria-hidden="true"><div class="brand-logo-box"><span style="font-family: Arial, sans-serif; font-weight: 900; font-size: 16px; color: #10B981; letter-spacing: 1px;">Kubota</span></div><span class="brand-label">KUBOTA</span></div>
+                    <div class="brand-showcase-item" aria-hidden="true"><div class="brand-logo-box"><span style="font-family: Impact, Arial Black, sans-serif; font-size: 18px; color: #E5E7EB; letter-spacing: 0.8px;">LIEBHERR</span></div><span class="brand-label">LIEBHERR</span></div>
+                    <div class="brand-showcase-item" aria-hidden="true"><div class="brand-logo-box"><span style="font-family: Arial Black, Impact, sans-serif; font-size: 17px; color: #38BDF8; letter-spacing: 0.5px;">DOOSAN</span></div><span class="brand-label">DOOSAN</span></div>
+                    <div class="brand-showcase-item" aria-hidden="true"><div class="brand-logo-box"><svg width="32" height="32" viewBox="0 0 24 24" fill="#EF4444"><circle cx="12" cy="12" r="10" stroke="#EF4444" stroke-width="2" fill="none"/><path d="M12 4L14 11H10L12 4z M5 18L10 13L7 11L5 18z M19 18L14 13L17 11L19 18z" fill="#EF4444"/></svg></div><span class="brand-label">SANY</span></div>
+                    <div class="brand-showcase-item" aria-hidden="true"><div class="brand-logo-box"><span style="font-family: Arial, sans-serif; font-weight: 900; font-size: 13px; color: #0EA5E9; border: 1.5px solid #0EA5E9; padding: 2px 5px; border-radius: 3px;">AtlasCopco</span></div><span class="brand-label">ATLAS COPCO</span></div>
+                    <div class="brand-showcase-item" aria-hidden="true"><div class="brand-logo-box"><span style="font-family: Arial Black, sans-serif; font-size: 22px; font-weight: 900; color: #EF4444; border-bottom: 2px solid #EF4444; line-height: 1;">C</span></div><span class="brand-label">CUMMINS</span></div>
+
+                  </div>
+                </div>
+
               </div>
             </div>
-          </article>
+
+          </div>
 
           <!-- Item 5 -->
           <article class="service-acc-item">
@@ -752,122 +928,7 @@
       </div>
     </section>
 
-
-
-    <!-- 5. HOW IT WORKS (SECCIÓN 04 // CÓMO FUNCIONA) -->
-    <section class="section workflow-section" id="como-funciona">
-      <div class="container">
-        <div class="workflow-layout">
-          <!-- Left Visual: Vertical Image -->
-          <div class="workflow-visual">
-            <div class="industrial-frame">
-              <div class="frame-corner corner-tl" aria-hidden="true"></div>
-              <div class="frame-corner corner-tr" aria-hidden="true"></div>
-              <div class="frame-corner corner-bl" aria-hidden="true"></div>
-              <div class="frame-corner corner-br" aria-hidden="true"></div>
-
-              <div class="frame-badge-top">
-                <span class="tech-tag">PROTOCOLO DE ATENCIÓN // PASO A PASO</span>
-                <span class="tech-coords">SOPORTE ÁGIL</span>
-              </div>
-
-              <div class="protocol-image-container image-wrapper vertical-wrapper" style="position: relative; width: 100%; height: 100%; min-height: 480px; overflow: hidden; border-radius: 4px;">
-                <img src="esteCamion si.jpeg" 
-                     alt="Mantenimiento y diagnóstico de camión y motor diésel en terreno con capot abierto" 
-                     class="protocol-bg-image workflow-img process-image-fleet" 
-                     style="width: 100%; height: 100%; object-fit: cover; object-position: center; display: block; filter: grayscale(0.15) brightness(0.8);" 
-                     loading="lazy">
-                
-                <!-- Dark edge-fading gradient to merge seamlessly into the dark interface -->
-                <div class="image-gradient-overlay img-overlay-industrial" style="position: absolute; inset: 0; background: linear-gradient(180deg, rgba(13, 13, 13, 0.4) 0%, rgba(13, 13, 13, 0.1) 40%, rgba(13, 13, 13, 0.7) 100%); pointer-events: none;"></div>
-                <div class="step-progress-badge">
-                  <span class="step-badge-num">4</span>
-                  <span class="step-badge-text">PASOS PARA SOLUCIONAR TU PROBLEMA</span>
-                </div>
-              </div>
-
-              <div class="frame-meta-bottom">
-                <div class="meta-unit">
-                  <span class="unit-title">RESOLUCIÓN</span>
-                  <span class="unit-data">SIN GRÚAS NI TRASLADOS INNECESARIOS</span>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <!-- Right Content: 4 Steps -->
-          <div class="workflow-content">
-
-            <h2 class="section-title">
-              CUATRO PASOS Y EL TRABAJO ESTÁ EN MARCHA
-            </h2>
-
-            <div class="steps-timeline">
-              <!-- Step 01 -->
-              <div class="step-item">
-                <div class="step-indicator">
-                  <span class="step-number">01</span>
-                  <span class="step-line" aria-hidden="true"></span>
-                </div>
-                <div class="step-info">
-                  <h3 class="step-title">CONTACTO Y UBICACIÓN</h3>
-                  <p class="step-desc">
-                    Envío de falla y punto geográfico vía WhatsApp.
-                  </p>
-                </div>
-              </div>
-
-              <!-- Step 02 -->
-              <div class="step-item">
-                <div class="step-indicator">
-                  <span class="step-number">02</span>
-                  <span class="step-line" aria-hidden="true"></span>
-                </div>
-                <div class="step-info">
-                  <h3 class="step-title">EVALUACIÓN PREVIA</h3>
-                  <p class="step-desc">
-                    Presupuesto claro y confirmación de factibilidad sin sorpresas.
-                  </p>
-                </div>
-              </div>
-
-              <!-- Step 03 -->
-              <div class="step-item">
-                <div class="step-indicator">
-                  <span class="step-number">03</span>
-                  <span class="step-line" aria-hidden="true"></span>
-                </div>
-                <div class="step-info">
-                  <h3 class="step-title">DESPACHO A TERRENO</h3>
-                  <p class="step-desc">
-                    Salida de móvil equipado a tu casa, empresa o ruta.
-                  </p>
-                </div>
-              </div>
-
-              <!-- Step 04 -->
-              <div class="step-item">
-                <div class="step-indicator">
-                  <span class="step-number">04</span>
-                </div>
-                <div class="step-info">
-                  <h3 class="step-title">REPARACIÓN Y ENTREGA</h3>
-                  <p class="step-desc">
-                    Pruebas operativas, garantía técnica y factura inmediata.
-                  </p>
-                </div>
-              </div>
-            </div>
-
-
-          </div>
-        </div>
-      </div>
-    </section>
-
-
-
-    <!-- 6. COVERAGE & COMMUNES (SECCIÓN 05 // COBERTURA) -->
+     <!-- 6. COVERAGE & COMMUNES (SECCIÓN 05 // COBERTURA) -->
     <section class="section coverage-section" id="cobertura" data-section="coverage">
       <!-- Soft top atmospheric gradient fade -->
       <div class="fade-top" aria-hidden="true"></div>
@@ -929,7 +990,7 @@
             <div class="communes-card-header">
               <div class="communes-header-title">
                 <span class="icon-geo" aria-hidden="true">📍</span>
-                <h3 class="communes-heading">COMUNAS CON COBERTURA (52 TOTAL)</h3>
+                <h3 class="communes-heading">COMUNAS CON COBERTURA (46 TOTAL)</h3>
               </div>
               <div class="communes-filter-wrap">
                 <input type="text" id="commune-search" placeholder="Buscar comuna..."
@@ -939,14 +1000,12 @@
 
             <!-- Exhaustive 52 Communes Grid -->
             <div class="communes-list" id="communes-grid">
-              <div class="commune-pill"><span class="commune-dot" aria-hidden="true">•</span><span class="commune-name">ALHUÉ</span></div>
               <div class="commune-pill"><span class="commune-dot" aria-hidden="true">•</span><span class="commune-name">BUIN</span></div>
               <div class="commune-pill"><span class="commune-dot" aria-hidden="true">•</span><span class="commune-name">CALERA DE TANGO</span></div>
               <div class="commune-pill"><span class="commune-dot" aria-hidden="true">•</span><span class="commune-name">CERRILLOS</span></div>
               <div class="commune-pill"><span class="commune-dot" aria-hidden="true">•</span><span class="commune-name">CERRO NAVIA</span></div>
               <div class="commune-pill"><span class="commune-dot" aria-hidden="true">•</span><span class="commune-name">COLINA</span></div>
               <div class="commune-pill"><span class="commune-dot" aria-hidden="true">•</span><span class="commune-name">CONCHALÍ</span></div>
-              <div class="commune-pill"><span class="commune-dot" aria-hidden="true">•</span><span class="commune-name">CURACAVÍ</span></div>
               <div class="commune-pill"><span class="commune-dot" aria-hidden="true">•</span><span class="commune-name">EL BOSQUE</span></div>
               <div class="commune-pill"><span class="commune-dot" aria-hidden="true">•</span><span class="commune-name">EL MONTE</span></div>
               <div class="commune-pill"><span class="commune-dot" aria-hidden="true">•</span><span class="commune-name">ESTACIÓN CENTRAL</span></div>
@@ -965,8 +1024,6 @@
               <div class="commune-pill"><span class="commune-dot" aria-hidden="true">•</span><span class="commune-name">LO PRADO</span></div>
               <div class="commune-pill"><span class="commune-dot" aria-hidden="true">•</span><span class="commune-name">MACUL</span></div>
               <div class="commune-pill"><span class="commune-dot" aria-hidden="true">•</span><span class="commune-name">MAIPÚ</span></div>
-              <div class="commune-pill"><span class="commune-dot" aria-hidden="true">•</span><span class="commune-name">MARÍA PINTO</span></div>
-              <div class="commune-pill"><span class="commune-dot" aria-hidden="true">•</span><span class="commune-name">MELIPILLA</span></div>
               <div class="commune-pill"><span class="commune-dot" aria-hidden="true">•</span><span class="commune-name">ÑUÑOA</span></div>
               <div class="commune-pill"><span class="commune-dot" aria-hidden="true">•</span><span class="commune-name">PADRE HURTADO</span></div>
               <div class="commune-pill"><span class="commune-dot" aria-hidden="true">•</span><span class="commune-name">PAINE</span></div>
@@ -983,13 +1040,11 @@
               <div class="commune-pill"><span class="commune-dot" aria-hidden="true">•</span><span class="commune-name">RENCA</span></div>
               <div class="commune-pill"><span class="commune-dot" aria-hidden="true">•</span><span class="commune-name">SAN BERNARDO</span></div>
               <div class="commune-pill"><span class="commune-dot" aria-hidden="true">•</span><span class="commune-name">SAN JOAQUÍN</span></div>
-              <div class="commune-pill"><span class="commune-dot" aria-hidden="true">•</span><span class="commune-name">SAN JOSÉ DE MAIPO</span></div>
               <div class="commune-pill"><span class="commune-dot" aria-hidden="true">•</span><span class="commune-name">SAN MIGUEL</span></div>
               <div class="commune-pill"><span class="commune-dot" aria-hidden="true">•</span><span class="commune-name">SAN PEDRO</span></div>
               <div class="commune-pill"><span class="commune-dot" aria-hidden="true">•</span><span class="commune-name">SAN RAMÓN</span></div>
               <div class="commune-pill"><span class="commune-dot" aria-hidden="true">•</span><span class="commune-name">SANTIAGO CENTRO</span></div>
               <div class="commune-pill"><span class="commune-dot" aria-hidden="true">•</span><span class="commune-name">TALAGANTE</span></div>
-              <div class="commune-pill"><span class="commune-dot" aria-hidden="true">•</span><span class="commune-name">TILTIL</span></div>
               <div class="commune-pill"><span class="commune-dot" aria-hidden="true">•</span><span class="commune-name">VITACURA</span></div>
             </div>
 
@@ -1009,6 +1064,106 @@
       <div class="fade-bottom" aria-hidden="true"></div>
     </section>
 
+
+
+
+    <!-- 5. HOW IT WORKS (SECCIÓN 04 // PROTOCOLO 4 PASOS) -->
+    <section id="como-funciona" class="protocol-section" style="background-color: #0D0D0D; padding: 70px 24px;">
+      <div style="max-width: 1200px; margin: 0 auto;">
+        
+        <!-- Encabezado de Sección -->
+        <div style="text-align: center; margin-bottom: 44px;">
+          <span style="color: #FF9900; font-family: monospace; font-size: 11.5px; font-weight: 800; letter-spacing: 1.2px; text-transform: uppercase;">
+            PROTOCOLO DE ATENCIÓN // PASO A PASO
+          </span>
+          <h2 style="color: #FFFFFF; font-size: clamp(24px, 3.5vw, 40px); font-weight: 900; margin: 8px 0 0 0; text-transform: uppercase; letter-spacing: -0.5px;">
+            CUATRO PASOS Y EL TRABAJO ESTÁ EN MARCHA
+          </h2>
+        </div>
+
+        <!-- Grilla de 4 Tarjetas -->
+        <div class="steps-grid" style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px;">
+          
+          <!-- Paso 01 -->
+          <div class="step-card" style="background-color: #121212; border: 1px solid #242424; border-radius: 6px; overflow: hidden; display: flex; flex-direction: column;">
+            <div style="width: 100%; height: 180px; overflow: hidden; background-color: #1a1a1a;">
+              <img src="images.jpeg" alt="Contacto y Ubicación" style="width: 100%; height: 100%; object-fit: cover; display: block;">
+            </div>
+            <div style="padding: 20px; display: flex; flex-direction: column; flex-grow: 1;">
+              <span style="color: #FF9900; font-family: monospace; font-size: 13px; font-weight: 800; border: 1px solid rgba(255, 153, 0, 0.4); border-radius: 3px; padding: 2px 8px; width: fit-content; margin-bottom: 12px;">
+                01
+              </span>
+              <h3 style="color: #FFFFFF; font-size: 15px; font-weight: 800; margin: 0 0 8px 0; text-transform: uppercase; letter-spacing: 0.5px;">
+                CONTACTO Y UBICACIÓN
+              </h3>
+              <p style="color: #8C8C8C; font-size: 13px; line-height: 1.5; margin: 0;">
+                Envío de falla y punto geográfico vía WhatsApp.
+              </p>
+            </div>
+          </div>
+
+          <!-- Paso 02 -->
+          <div class="step-card" style="background-color: #121212; border: 1px solid #242424; border-radius: 6px; overflow: hidden; display: flex; flex-direction: column;">
+            <div style="width: 100%; height: 180px; overflow: hidden; background-color: #1a1a1a;">
+              <img src="camion.jpg" alt="Evaluación Previa" style="width: 100%; height: 100%; object-fit: cover; display: block;">
+            </div>
+            <div style="padding: 20px; display: flex; flex-direction: column; flex-grow: 1;">
+              <span style="color: #FF9900; font-family: monospace; font-size: 13px; font-weight: 800; border: 1px solid rgba(255, 153, 0, 0.4); border-radius: 3px; padding: 2px 8px; width: fit-content; margin-bottom: 12px;">
+                02
+              </span>
+              <h3 style="color: #FFFFFF; font-size: 15px; font-weight: 800; margin: 0 0 8px 0; text-transform: uppercase; letter-spacing: 0.5px;">
+                EVALUACIÓN PREVIA
+              </h3>
+              <p style="color: #8C8C8C; font-size: 13px; line-height: 1.5; margin: 0;">
+                Presupuesto claro y confirmación de factibilidad sin sorpresas.
+              </p>
+            </div>
+          </div>
+
+          <!-- Paso 03 -->
+          <div class="step-card" style="background-color: #121212; border: 1px solid #242424; border-radius: 6px; overflow: hidden; display: flex; flex-direction: column;">
+            <div style="width: 100%; height: 180px; overflow: hidden; background-color: #1a1a1a;">
+              <img src="65177771d1bb61.94791321.jpg" alt="Despacho a Terreno" style="width: 100%; height: 100%; object-fit: cover; display: block;">
+            </div>
+            <div style="padding: 20px; display: flex; flex-direction: column; flex-grow: 1;">
+              <span style="color: #FF9900; font-family: monospace; font-size: 13px; font-weight: 800; border: 1px solid rgba(255, 153, 0, 0.4); border-radius: 3px; padding: 2px 8px; width: fit-content; margin-bottom: 12px;">
+                03
+              </span>
+              <h3 style="color: #FFFFFF; font-size: 15px; font-weight: 800; margin: 0 0 8px 0; text-transform: uppercase; letter-spacing: 0.5px;">
+                DESPACHO A TERRENO
+              </h3>
+              <p style="color: #8C8C8C; font-size: 13px; line-height: 1.5; margin: 0;">
+                Salida de móvil equipado a tu casa, empresa o ruta.
+              </p>
+            </div>
+          </div>
+
+          <!-- Paso 04 -->
+          <div class="step-card" style="background-color: #121212; border: 1px solid #242424; border-radius: 6px; overflow: hidden; display: flex; flex-direction: column;">
+            <div style="width: 100%; height: 180px; overflow: hidden; background-color: #1a1a1a;">
+              <img src="mecanicaPesada.jpg" alt="Reparación y Entrega" style="width: 100%; height: 100%; object-fit: cover; display: block;">
+            </div>
+            <div style="padding: 20px; display: flex; flex-direction: column; flex-grow: 1;">
+              <span style="color: #FF9900; font-family: monospace; font-size: 13px; font-weight: 800; border: 1px solid rgba(255, 153, 0, 0.4); border-radius: 3px; padding: 2px 8px; width: fit-content; margin-bottom: 12px;">
+                04
+              </span>
+              <h3 style="color: #FFFFFF; font-size: 15px; font-weight: 800; margin: 0 0 8px 0; text-transform: uppercase; letter-spacing: 0.5px;">
+                REPARACIÓN Y ENTREGA
+              </h3>
+              <p style="color: #8C8C8C; font-size: 13px; line-height: 1.5; margin: 0;">
+                Pruebas operativas, garantía técnica y factura inmediata.
+              </p>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+
+
+   
     <!-- 7. FAQ SECTION (SECCIÓN 06 // PREGUNTAS FRECUENTES) -->
     <section id="faq" class="section faq-section">
       <div id="preguntas" style="position: absolute; top: -80px; left: 0; height: 1px; width: 1px; pointer-events: none; opacity: 0;"></div>
@@ -1273,14 +1428,12 @@
                       </ul>
                       <select class="form-control input-comuna native-hidden-select" required aria-hidden="true" tabindex="-1">
                         <option value="" disabled selected>Selecciona la comuna...</option>
-                        <option value="Alhué">Alhué</option>
                         <option value="Buin">Buin</option>
                         <option value="Calera de Tango">Calera de Tango</option>
                         <option value="Cerrillos">Cerrillos</option>
                         <option value="Cerro Navia">Cerro Navia</option>
                         <option value="Colina">Colina</option>
                         <option value="Conchalí">Conchalí</option>
-                        <option value="Curacaví">Curacaví</option>
                         <option value="El Bosque">El Bosque</option>
                         <option value="El Monte">El Monte</option>
                         <option value="Estación Central">Estación Central</option>
@@ -1299,8 +1452,6 @@
                         <option value="Lo Prado">Lo Prado</option>
                         <option value="Macul">Macul</option>
                         <option value="Maipú">Maipú</option>
-                        <option value="María Pinto">María Pinto</option>
-                        <option value="Melipilla">Melipilla</option>
                         <option value="Ñuñoa">Ñuñoa</option>
                         <option value="Padre Hurtado">Padre Hurtado</option>
                         <option value="Paine">Paine</option>
@@ -1317,13 +1468,11 @@
                         <option value="Renca">Renca</option>
                         <option value="San Bernardo">San Bernardo</option>
                         <option value="San Joaquín">San Joaquín</option>
-                        <option value="San José de Maipo">San José de Maipo</option>
                         <option value="San Miguel">San Miguel</option>
                         <option value="San Pedro">San Pedro</option>
                         <option value="San Ramón">San Ramón</option>
                         <option value="Santiago Centro">Santiago Centro</option>
                         <option value="Talagante">Talagante</option>
-                        <option value="Tiltil">Tiltil</option>
                         <option value="Vitacura">Vitacura</option>
                       </select>
                     </div>
@@ -1430,37 +1579,24 @@
     </div>
   </footer>
 
-  <!-- Flotante de Contacto de Alta Conversión -->
-  <aside class="floating-cta-container floating-contact-container floating-actions" id="floating-dock" aria-label="Contacto directo">
+  <!-- Botones Flotantes Minimalistas: Solo Iconos con Luz Radiante -->
+  <div class="radiant-floating-actions" aria-label="Contacto directo">
     
-    <!-- Botón 1: Llamada Telefónica Directa -->
-    <a href="tel:+56953797437" class="floating-cta-btn phone-btn floating-call-btn" id="copy-phone-btn" title="Llamar a Central Técnica">
-      <div class="cta-icon-wrap">
-        <!-- SVG Auricular Telefónico Técnico -->
-        <svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor">
-          <path d="M6.62 10.79a15.053 15.053 0 006.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/>
-        </svg>
-      </div>
-      <span class="phone-number" id="call-btn-text">+56 9 5379 7437</span>
-      <!-- Indicador de en línea / operativo -->
-      <span class="online-status-badge">
-        <span class="status-dot"></span>
-        <span class="status-wave"></span>
-      </span>
+    <!-- Icono 1: Llamada Directa -->
+    <a href="tel:+56953797437" class="radiant-icon-btn call-glow" title="Llamar al Servicio Técnico" aria-label="Llamar">
+      <svg width="30" height="30" viewBox="0 0 24 24" fill="currentColor">
+        <path d="M6.62 10.79a15.053 15.053 0 006.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/>
+      </svg>
     </a>
 
-    <!-- Botón 2: WhatsApp Oficial con Pulso Radar -->
-    <a href="https://wa.me/56953797437" target="_blank" rel="noopener noreferrer" class="floating-cta-btn whatsapp-btn floating-whatsapp-btn" title="Contactar por WhatsApp">
-      <div class="cta-icon-wrap ws-icon-wrap">
-        <!-- SVG Oficial de WhatsApp -->
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
-          <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
-        </svg>
-      </div>
-      <span class="cta-label">WHATSAPP EN VIVO</span>
+    <!-- Icono 2: WhatsApp Directo -->
+    <a href="https://wa.me/56953797437" target="_blank" rel="noopener noreferrer" class="radiant-icon-btn wa-glow" title="Contactar por WhatsApp" aria-label="WhatsApp">
+      <svg width="32" height="32" viewBox="0 0 24 24" fill="currentColor">
+        <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+      </svg>
     </a>
 
-  </aside>
+  </div>
 
   <!-- TOAST NOTIFICATION CONTAINER -->
   <div id="toast-notification" class="toast-notification" role="status" aria-live="polite">

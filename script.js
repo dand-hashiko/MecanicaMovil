@@ -650,4 +650,173 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 });
 
+// ==========================================================================
+// ==========================================================================
+// ACORDEÓN DE CATEGORÍAS Y CARRUSELES DE MARCAS (CAMIONES & MAQUINARIA)
+// ==========================================================================
+window.toggleCategoryAccordion = function(button) {
+  const item = button.closest('.category-accordion-item');
+  if (!item) return;
+  const panel = item.querySelector('.category-panel');
+  if (!panel) return;
+  const chevron = button.querySelector('.chevron-icon');
+
+  const isActive = item.classList.contains('active') || item.classList.contains('is-open');
+
+  // Cerrar otros acordeones si se desea comportamiento único
+  document.querySelectorAll('.category-accordion-item').forEach(openItem => {
+    if (openItem !== item && (openItem.classList.contains('active') || openItem.classList.contains('is-open'))) {
+      openItem.classList.remove('active', 'is-open');
+      const otherPanel = openItem.querySelector('.category-panel');
+      const otherChevron = openItem.querySelector('.chevron-icon');
+      if (otherPanel) {
+        otherPanel.style.maxHeight = null;
+        otherPanel.style.borderTopColor = 'transparent';
+      }
+      if (otherChevron) {
+        otherChevron.style.transform = 'rotate(0deg)';
+        otherChevron.style.stroke = '#888888';
+      }
+      openItem.style.borderColor = '#222222';
+    }
+  });
+
+  if (isActive) {
+    panel.style.maxHeight = null;
+    panel.style.borderTopColor = 'transparent';
+    item.classList.remove('active', 'is-open');
+    item.style.borderColor = '#222222';
+    if (chevron) {
+      chevron.style.transform = 'rotate(0deg)';
+      chevron.style.stroke = '#888888';
+    }
+  } else {
+    item.classList.add('active', 'is-open');
+    item.style.borderColor = 'rgba(255, 153, 0, 0.5)';
+    panel.style.borderTopColor = '#222222';
+    panel.style.maxHeight = (panel.scrollHeight + 35) + 'px';
+    if (chevron) {
+      chevron.style.transform = 'rotate(180deg)';
+      chevron.style.stroke = '#FF9900';
+    }
+  }
+};
+
+// Soporte de interacción táctil para pausar/reanudar los carruseles marquee
+document.addEventListener('DOMContentLoaded', () => {
+  document.querySelectorAll('.logo-marquee-container').forEach(container => {
+    const track = container.querySelector('.logo-marquee-track');
+    if (!track) return;
+    container.addEventListener('touchstart', () => {
+      track.style.animationPlayState = 'paused';
+    }, { passive: true });
+    container.addEventListener('touchend', () => {
+      setTimeout(() => {
+        track.style.animationPlayState = 'running';
+      }, 1200);
+    }, { passive: true });
+  });
+});
+
+
+function initMiniBrandCarousels() {
+  const wrappers = document.querySelectorAll('.mini-carousel-wrapper');
+  wrappers.forEach(wrapper => {
+    let isDown = false;
+    let startX = 0;
+    let scrollLeft = 0;
+    let isHovered = false;
+    let scrollDirection = 1;
+
+    // Arrastre con mouse (drag to scroll)
+    wrapper.addEventListener('mousedown', (e) => {
+      isDown = true;
+      wrapper.classList.add('is-dragging');
+      startX = e.pageX - wrapper.offsetLeft;
+      scrollLeft = wrapper.scrollLeft;
+    });
+
+    wrapper.addEventListener('mouseleave', () => {
+      isDown = false;
+      isHovered = false;
+      wrapper.classList.remove('is-dragging');
+    });
+
+    wrapper.addEventListener('mouseenter', () => {
+      isHovered = true;
+    });
+
+    window.addEventListener('mouseup', () => {
+      if (isDown) {
+        isDown = false;
+        wrapper.classList.remove('is-dragging');
+      }
+    });
+
+    wrapper.addEventListener('mousemove', (e) => {
+      if (!isDown) return;
+      e.preventDefault();
+      const x = e.pageX - wrapper.offsetLeft;
+      const walk = (x - startX) * 1.5;
+      wrapper.scrollLeft = scrollLeft - walk;
+    });
+
+    // Soporte táctil / touch swipe
+    wrapper.addEventListener('touchstart', () => {
+      isHovered = true;
+    }, { passive: true });
+
+    wrapper.addEventListener('touchend', () => {
+      setTimeout(() => { isHovered = false; }, 1500);
+    }, { passive: true });
+
+    // Avance fluido continuo tipo marquee
+    function stepMarquee() {
+      if (!isDown && !isHovered) {
+        const maxScroll = wrapper.scrollWidth - wrapper.clientWidth;
+        if (maxScroll > 0) {
+          wrapper.scrollLeft += 0.5 * scrollDirection;
+          if (wrapper.scrollLeft >= maxScroll - 1) {
+            scrollDirection = -1;
+          } else if (wrapper.scrollLeft <= 1) {
+            scrollDirection = 1;
+          }
+        }
+      }
+      requestAnimationFrame(stepMarquee);
+    }
+    requestAnimationFrame(stepMarquee);
+  });
+
+  // Interacción al hacer clic en cualquier insignia de marca
+  document.querySelectorAll('.brand-pill').forEach(pill => {
+    pill.addEventListener('click', () => {
+      const brandName = pill.textContent.trim();
+      const formInput = document.querySelector('.input-marca');
+      const itemContainer = pill.closest('.category-accordion-item');
+      const isTruck = itemContainer && itemContainer.textContent.includes('CAMIONES');
+      
+      if (formInput) {
+        formInput.value = brandName;
+        const targetType = isTruck ? 'Camión' : 'Maquinaria';
+        const typeBtn = Array.from(document.querySelectorAll('.vehicle-type-btn')).find(b => b.dataset.value === targetType);
+        if (typeBtn) typeBtn.click();
+        
+        const contactSection = document.getElementById('contacto');
+        if (contactSection) {
+          contactSection.scrollIntoView({ behavior: 'smooth' });
+          formInput.focus();
+        }
+      }
+    });
+  });
+}
+
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', initMiniBrandCarousels);
+} else {
+  initMiniBrandCarousels();
+}
+
+
 
