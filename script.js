@@ -705,247 +705,231 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 
-function initMiniBrandCarousels() {
-  const wrappers = document.querySelectorAll('.mini-carousel-wrapper');
-  wrappers.forEach(wrapper => {
-    let isDown = false;
-    let startX = 0;
-    let scrollLeft = 0;
-    let isHovered = false;
-    let scrollDirection = 1;
-
-    // Arrastre con mouse (drag to scroll)
-    wrapper.addEventListener('mousedown', (e) => {
-      isDown = true;
-      wrapper.classList.add('is-dragging');
-      startX = e.pageX - wrapper.offsetLeft;
-      scrollLeft = wrapper.scrollLeft;
-    });
-
-    wrapper.addEventListener('mouseleave', () => {
-      isDown = false;
-      isHovered = false;
-      wrapper.classList.remove('is-dragging');
-    });
-
-    wrapper.addEventListener('mouseenter', () => {
-      isHovered = true;
-    });
-
-    window.addEventListener('mouseup', () => {
-      if (isDown) {
-        isDown = false;
-        wrapper.classList.remove('is-dragging');
-      }
-    });
-
-    wrapper.addEventListener('mousemove', (e) => {
-      if (!isDown) return;
-      e.preventDefault();
-      const x = e.pageX - wrapper.offsetLeft;
-      const walk = (x - startX) * 1.5;
-      wrapper.scrollLeft = scrollLeft - walk;
-    });
-
-    // Soporte táctil / touch swipe
-    wrapper.addEventListener('touchstart', () => {
-      isHovered = true;
-    }, { passive: true });
-
-    wrapper.addEventListener('touchend', () => {
-      setTimeout(() => { isHovered = false; }, 1500);
-    }, { passive: true });
-
-    // Avance fluido continuo tipo marquee
-    function stepMarquee() {
-      if (!isDown && !isHovered) {
-        const maxScroll = wrapper.scrollWidth - wrapper.clientWidth;
-        if (maxScroll > 0) {
-          wrapper.scrollLeft += 0.5 * scrollDirection;
-          if (wrapper.scrollLeft >= maxScroll - 1) {
-            scrollDirection = -1;
-          } else if (wrapper.scrollLeft <= 1) {
-            scrollDirection = 1;
-          }
-        }
-      }
-      requestAnimationFrame(stepMarquee);
-    }
-    requestAnimationFrame(stepMarquee);
-  });
-
-  // Interacción al hacer clic en cualquier insignia de marca
-  document.querySelectorAll('.brand-pill').forEach(pill => {
-    pill.addEventListener('click', () => {
-      const brandName = pill.textContent.trim();
-      const formInput = document.querySelector('.input-marca');
-      const itemContainer = pill.closest('.category-accordion-item');
-      const isTruck = itemContainer && itemContainer.textContent.includes('CAMIONES');
-      
-      if (formInput) {
-        formInput.value = brandName;
-        const targetType = isTruck ? 'Camión' : 'Maquinaria';
-        const typeBtn = Array.from(document.querySelectorAll('.vehicle-type-btn')).find(b => b.dataset.value === targetType);
-        if (typeBtn) typeBtn.click();
-        
-        const contactSection = document.getElementById('contacto');
-        if (contactSection) {
-          contactSection.scrollIntoView({ behavior: 'smooth' });
-          formInput.focus();
-        }
-      }
-    });
-  });
-}
-
-if (document.readyState === 'loading') {
-  document.addEventListener('DOMContentLoaded', initMiniBrandCarousels);
-} else {
-  initMiniBrandCarousels();
-}
-
 // ==========================================================================
-// RENDERIZADO DINÁMICO DE LAS 76 MARCAS VECTORIALES (CAMIONES Y MAQUINARIA)
+// RESTAURACIÓN DE INSIGNIAS AUTOMOTRICES REALES CON EMBLEMAS ORIGINALES
 // ==========================================================================
-function renderAllHeavyBrands() {
-  // Lista completa 1: 28 Marcas de Camiones y Tractocamiones
-  const camionesBrands = [
-    { name: "ASTRA", badge: "ASTRA", color: "#EF4444", shape: "shield" },
-    { name: "CHEVROLET CAMIONES", badge: "CHEVY", color: "#EAB308", shape: "cross" },
-    { name: "DAF", badge: "DAF", color: "#3B82F6", shape: "rect" },
-    { name: "DONGFENG", badge: "DFM", color: "#EF4444", shape: "circle" },
-    { name: "FAW CAMIONES", badge: "FAW", color: "#38BDF8", shape: "wings" },
-    { name: "FREIGHTLINER", badge: "FTL", color: "#E5E7EB", shape: "rect" },
-    { name: "FUSO", badge: "FUSO", color: "#EF4444", shape: "diamond" },
-    { name: "FOTON", badge: "FOTON", color: "#38BDF8", shape: "triangle" },
-    { name: "HINO", badge: "HINO", color: "#EF4444", shape: "horns" },
-    { name: "HYUNDAI CAMIONES", badge: "H", color: "#3B82F6", shape: "oval" },
-    { name: "INTERNATIONAL", badge: "INTL", color: "#FF9900", shape: "diamond" },
-    { name: "ISUZU", badge: "ISUZU", color: "#EF4444", shape: "rect" },
-    { name: "IVECO", badge: "IVECO", color: "#3B82F6", shape: "rect" },
-    { name: "JAC CAMIONES", badge: "JAC", color: "#EF4444", shape: "star" },
-    { name: "JMC CAMIONES", badge: "JMC", color: "#EF4444", shape: "triangle" },
-    { name: "KENWORTH", badge: "KW", color: "#EF4444", shape: "circle" },
-    { name: "MACK", badge: "MACK", color: "#E5E7EB", shape: "oval" },
-    { name: "MAN", badge: "MAN", color: "#38BDF8", shape: "arch" },
-    { name: "MAXUS", badge: "MAXUS", color: "#38BDF8", shape: "triangle" },
-    { name: "MERCEDES-BENZ", badge: "MB", color: "#FFFFFF", shape: "star3" },
-    { name: "PETERBILT", badge: "PETE", color: "#EF4444", shape: "oval" },
-    { name: "RENAULT TRUCKS", badge: "RENAULT", color: "#EF4444", shape: "diamond" },
-    { name: "SCANIA", badge: "SCANIA", color: "#3B82F6", shape: "circle" },
-    { name: "SHACMAN", badge: "SHAC", color: "#38BDF8", shape: "shield" },
-    { name: "SINOTRUK", badge: "CNHTC", color: "#10B981", shape: "triangle" },
-    { name: "VW CAMIONES Y BUSES", badge: "VW", color: "#38BDF8", shape: "circle" },
-    { name: "VOLVO TRUCKS", badge: "VOLVO", color: "#FFFFFF", shape: "iron" },
-    { name: "YUTONG", badge: "YUTONG", color: "#3B82F6", shape: "arch" }
+(function injectRealEmblems() {
+  const CDN = "https://raw.githubusercontent.com/filippofilip95/car-logos-dataset/master/logos/optimized";
+  const W = (url) => `https://wsrv.nl/?url=${encodeURIComponent(url)}&output=png&w=160&fit=contain`;
+
+  // 1. VEHÍCULOS LIVIANOS / SUV / PICK-UP (90 MARCAS CON SUS LOGOS REALES)
+  const livianos = [
+    { name: "ACURA", img: `${CDN}/acura.png` },
+    { name: "ALFA ROMEO", img: `${CDN}/alfa-romeo.png` },
+    { name: "ASTON MARTIN", img: `${CDN}/aston-martin.png` },
+    { name: "AUDI", img: `${CDN}/audi.png` },
+    { name: "AVATR", img: W("https://upload.wikimedia.org/wikipedia/commons/2/2f/Avatr_Technology_logo.png") },
+    { name: "BAIC", img: `${CDN}/baic.png` },
+    { name: "BENTLEY", img: `${CDN}/bentley.png` },
+    { name: "BESTUNE", img: `${CDN}/faw.png` },
+    { name: "BMW", img: `${CDN}/bmw.png` },
+    { name: "BYD", img: `${CDN}/byd.png` },
+    { name: "CADILLAC", img: `${CDN}/cadillac.png` },
+    { name: "CHANGAN", img: `${CDN}/changan.png` },
+    { name: "CHERY", img: `${CDN}/chery.png` },
+    { name: "CHEVROLET", img: `${CDN}/chevrolet.png` },
+    { name: "CHRYSLER", img: `${CDN}/chrysler.png` },
+    { name: "CITROËN", img: `${CDN}/citroen.png` },
+    { name: "CUPRA", img: `${CDN}/cupra.png` },
+    { name: "DEEPAL", img: W("https://upload.wikimedia.org/wikipedia/commons/f/f6/Deepal_logo.png") },
+    { name: "DFSK", img: W("https://upload.wikimedia.org/wikipedia/commons/e/e4/DFSK_logo.svg") },
+    { name: "DODGE", img: `${CDN}/dodge.png` },
+    { name: "DONGFENG", img: `${CDN}/dongfeng.png` },
+    { name: "FAW", img: `${CDN}/faw.png` },
+    { name: "FERRARI", img: `${CDN}/ferrari.png` },
+    { name: "FIAT", img: `${CDN}/fiat.png` },
+    { name: "FORD", img: `${CDN}/ford.png` },
+    { name: "FORTHING", img: `${CDN}/dongfeng.png` },
+    { name: "FOTON", img: `${CDN}/foton.png` },
+    { name: "GAC / AION", img: `${CDN}/gac-group.png` },
+    { name: "GEELY", img: `${CDN}/geely.png` },
+    { name: "GENESIS", img: `${CDN}/genesis.png` },
+    { name: "GMC", img: `${CDN}/gmc.png` },
+    { name: "GREAT WALL", img: `${CDN}/great-wall.png` },
+    { name: "HAVAL", img: `${CDN}/haval.png` },
+    { name: "HONDA", img: `${CDN}/honda.png` },
+    { name: "HONGQI", img: `${CDN}/hongqi.png` },
+    { name: "HYUNDAI", img: `${CDN}/hyundai.png` },
+    { name: "INFINITI", img: `${CDN}/infiniti.png` },
+    { name: "ISUZU", img: `${CDN}/isuzu.png` },
+    { name: "JAC", img: `${CDN}/jac.png` },
+    { name: "JAECOO", img: W("https://upload.wikimedia.org/wikipedia/commons/9/9c/Jaecoo_Logo.png") },
+    { name: "JAGUAR", img: `${CDN}/jaguar.png` },
+    { name: "JEEP", img: `${CDN}/jeep.png` },
+    { name: "JETOUR", img: W("https://upload.wikimedia.org/wikipedia/commons/3/37/Jetour_logo.svg") },
+    { name: "JMC", img: `${CDN}/jmc.png` },
+    { name: "KAIYI", img: W("https://upload.wikimedia.org/wikipedia/commons/8/86/Kaiyi_Auto_logo.png") },
+    { name: "KARRY", img: `${CDN}/chery.png` },
+    { name: "KGM / SSANGYONG", img: `${CDN}/ssangyong.png` },
+    { name: "KIA", img: `${CDN}/kia.png` },
+    { name: "KYC", img: `${CDN}/changan.png` },
+    { name: "LADA", img: `${CDN}/lada.png` },
+    { name: "LAMBORGHINI", img: `${CDN}/lamborghini.png` },
+    { name: "LAND ROVER", img: `${CDN}/land-rover.png` },
+    { name: "LEAPMOTOR", img: W("https://upload.wikimedia.org/wikipedia/commons/3/36/Leapmotor_logo.svg") },
+    { name: "LEXUS", img: `${CDN}/lexus.png` },
+    { name: "LIFAN", img: `${CDN}/lifan.png` },
+    { name: "LINCOLN", img: `${CDN}/lincoln.png` },
+    { name: "LIVAN", img: `${CDN}/geely.png` },
+    { name: "LUCID", img: `${CDN}/lucid.png` },
+    { name: "LYNK & CO", img: W("https://upload.wikimedia.org/wikipedia/commons/8/8c/Lynk_%26_Co_logo.svg") },
+    { name: "MASERATI", img: `${CDN}/maserati.png` },
+    { name: "MAXUS", img: `${CDN}/maxus.png` },
+    { name: "MAZDA", img: `${CDN}/mazda.png` },
+    { name: "MCLAREN", img: `${CDN}/mclaren.png` },
+    { name: "MERCEDES-BENZ", img: `${CDN}/mercedes-benz.png` },
+    { name: "MG", img: `${CDN}/mg.png` },
+    { name: "MINI", img: `${CDN}/mini.png` },
+    { name: "MITSUBISHI", img: `${CDN}/mitsubishi.png` },
+    { name: "NISSAN", img: `${CDN}/nissan.png` },
+    { name: "OMODA", img: W("https://upload.wikimedia.org/wikipedia/commons/e/ec/Omoda_logo.svg") },
+    { name: "OPEL", img: `${CDN}/opel.png` },
+    { name: "PEUGEOT", img: `${CDN}/peugeot.png` },
+    { name: "POLESTAR", img: `${CDN}/polestar.png` },
+    { name: "PORSCHE", img: `${CDN}/porsche.png` },
+    { name: "RAM", img: `${CDN}/ram.png` },
+    { name: "RENAULT", img: `${CDN}/renault.png` },
+    { name: "RIDDARA", img: `${CDN}/geely.png` },
+    { name: "RIVIAN", img: `${CDN}/rivian.png` },
+    { name: "ROLLS-ROYCE", img: `${CDN}/rolls-royce.png` },
+    { name: "SEAT", img: `${CDN}/seat.png` },
+    { name: "SERES", img: W("https://upload.wikimedia.org/wikipedia/commons/6/69/Seres_logo.svg") },
+    { name: "ŠKODA", img: `${CDN}/skoda.png` },
+    { name: "SMART", img: `${CDN}/smart.png` },
+    { name: "SOUEAST", img: `${CDN}/soueast.png` },
+    { name: "SUBARU", img: `${CDN}/subaru.png` },
+    { name: "SUZUKI", img: `${CDN}/suzuki.png` },
+    { name: "TESLA", img: `${CDN}/tesla.png` },
+    { name: "TOYOTA", img: `${CDN}/toyota.png` },
+    { name: "VOLKSWAGEN", img: `${CDN}/volkswagen.png` },
+    { name: "VOLVO", img: `${CDN}/volvo.png` },
+    { name: "ZEEKR", img: W("https://upload.wikimedia.org/wikipedia/commons/d/d4/Zeekr_logo.svg") },
+    { name: "ZNA", img: `${CDN}/dongfeng.png` }
   ];
 
-  // Lista completa 2: 48 Marcas de Maquinaria Pesada, Construcción e Industrial
-  const maquinariaBrands = [
-    { name: "AMMANN YANMAR", badge: "AMMANN", color: "#EF4444", shape: "triangle" },
-    { name: "ATLAS COPCO", badge: "ATLAS", color: "#0EA5E9", shape: "rect" },
-    { name: "BOBCAT", badge: "BOBCAT", color: "#EF4444", shape: "shield" },
-    { name: "BOMAG", badge: "BOMAG", color: "#FBBF24", shape: "diamond" },
-    { name: "CASE CONSTRUCTION", badge: "CASE", color: "#D97706", shape: "rect" },
-    { name: "CAT (CATERPILLAR)", badge: "CAT", color: "#FFCC00", shape: "triangle" },
-    { name: "CLARK", badge: "CLARK", color: "#84CC16", shape: "oval" },
-    { name: "CNH INDUSTRIAL", badge: "CNH", color: "#EF4444", shape: "rect" },
-    { name: "CUMMINS", badge: "C", color: "#EF4444", shape: "circle" },
-    { name: "DAEWOO HEAVY", badge: "DAEWOO", color: "#38BDF8", shape: "arch" },
-    { name: "DOOSAN", badge: "DOOSAN", color: "#0EA5E9", shape: "rect" },
-    { name: "HITACHI", badge: "HITACHI", color: "#F97316", shape: "circle" },
-    { name: "HYSTER", badge: "HYSTER", color: "#FBBF24", shape: "shield" },
-    { name: "IHI", badge: "IHI", color: "#3B82F6", shape: "rect" },
-    { name: "JCB", badge: "JCB", color: "#FBBF24", shape: "rect" },
-    { name: "JOHN DEERE", badge: "DEERE", color: "#22C55E", shape: "shield" },
-    { name: "KAWASAKI", badge: "KHI", color: "#EF4444", shape: "rect" },
-    { name: "KOBELCO", badge: "KOBELCO", color: "#0EA5E9", shape: "circle" },
-    { name: "KOMATSU", badge: "KOMATSU", color: "#2563EB", shape: "rect" },
-    { name: "KUBOTA", badge: "KUBOTA", color: "#10B981", shape: "oval" },
-    { name: "KYB (KAYABA)", badge: "KYB", color: "#EF4444", shape: "diamond" },
-    { name: "LIEBHERR", badge: "LIEBHERR", color: "#FBBF24", shape: "rect" },
-    { name: "LIUGONG", badge: "LIUGONG", color: "#3B82F6", shape: "shield" },
-    { name: "LONKING", badge: "LONKING", color: "#38BDF8", shape: "diamond" },
-    { name: "LOVOL", badge: "LOVOL", color: "#E5E7EB", shape: "oval" },
-    { name: "MANITOU", badge: "MANITOU", color: "#EF4444", shape: "circle" },
-    { name: "METSO", badge: "METSO", color: "#F97316", shape: "arch" },
-    { name: "MITSUBISHI HEAVY", badge: "MHI", color: "#EF4444", shape: "diamond" },
-    { name: "NABTESCO", badge: "NABTESCO", color: "#0EA5E9", shape: "rect" },
-    { name: "NACHI", badge: "NACHI", color: "#EF4444", shape: "circle" },
-    { name: "NEW HOLLAND", badge: "NH", color: "#FBBF24", shape: "wings" },
-    { name: "OM PIMESPO", badge: "OM", color: "#3B82F6", shape: "oval" },
-    { name: "PALFINGER", badge: "PALFINGER", color: "#FBBF24", shape: "rect" },
-    { name: "REXROTH (BOSCH)", badge: "REXROTH", color: "#38BDF8", shape: "circle" },
-    { name: "SANY", badge: "SANY", color: "#EF4444", shape: "star3" },
-    { name: "SDLG", badge: "SDLG", color: "#EF4444", shape: "triangle" },
-    { name: "SHANTUI", badge: "SHANTUI", color: "#FBBF24", shape: "shield" },
-    { name: "SUMITOMO", badge: "SUMITOMO", color: "#0EA5E9", shape: "diamond" },
-    { name: "SUNWARD", badge: "SUNWARD", color: "#2563EB", shape: "rect" },
-    { name: "TAKEUCHI", badge: "TAKEUCHI", color: "#EF4444", shape: "rect" },
-    { name: "TEREX", badge: "TEREX", color: "#EF4444", shape: "triangle" },
-    { name: "TOYOTA INDUSTRIAL", badge: "TOYOTA", color: "#EF4444", shape: "oval" },
-    { name: "VOLVO CE", badge: "VOLVO", color: "#FFFFFF", shape: "iron" },
-    { name: "XCMG", badge: "XCMG", color: "#FBBF24", shape: "diamond" },
-    { name: "XGMA", badge: "XGMA", color: "#3B82F6", shape: "shield" },
-    { name: "YALE", badge: "YALE", color: "#FBBF24", shape: "circle" },
-    { name: "YANMAR", badge: "YANMAR", color: "#EF4444", shape: "wings" },
-    { name: "YUCHAI HEAVY", badge: "YUCHAI", color: "#EF4444", shape: "circle" },
-    { name: "ZOOMLION", badge: "ZOOMLION", color: "#84CC16", shape: "rect" }
+  // 2. CAMIONES Y TRACTOCAMIONES (28 MARCAS CON SUS LOGOS REALES)
+  const camiones = [
+    { name: "ASTRA", img: W("https://upload.wikimedia.org/wikipedia/commons/b/b3/Astra_Veicoli_Industriali_logo.svg") },
+    { name: "CHEVROLET CAMIONES", img: `${CDN}/chevrolet.png` },
+    { name: "DAF", img: `${CDN}/daf.png` },
+    { name: "DONGFENG", img: `${CDN}/dongfeng.png` },
+    { name: "FAW", img: `${CDN}/faw.png` },
+    { name: "FREIGHTLINER", img: `${CDN}/freightliner.png` },
+    { name: "FUSO", img: `${CDN}/fuso.png` },
+    { name: "FOTON", img: `${CDN}/foton.png` },
+    { name: "HINO", img: `${CDN}/hino.png` },
+    { name: "HYUNDAI CAMIONES", img: `${CDN}/hyundai.png` },
+    { name: "INTERNATIONAL", img: W("https://upload.wikimedia.org/wikipedia/commons/4/41/Navistar_International_logo.svg") },
+    { name: "ISUZU", img: `${CDN}/isuzu.png` },
+    { name: "IVECO", img: `${CDN}/iveco.png` },
+    { name: "JAC CAMIONES", img: `${CDN}/jac.png` },
+    { name: "JMC CAMIONES", img: `${CDN}/jmc.png` },
+    { name: "KENWORTH", img: `${CDN}/kenworth.png` },
+    { name: "MACK", img: `${CDN}/mack.png` },
+    { name: "MAN", img: `${CDN}/man.png` },
+    { name: "MAXUS", img: `${CDN}/maxus.png` },
+    { name: "MERCEDES-BENZ", img: `${CDN}/mercedes-benz.png` },
+    { name: "PETERBILT", img: `${CDN}/peterbilt.png` },
+    { name: "RENAULT TRUCKS", img: `${CDN}/renault.png` },
+    { name: "SCANIA", img: `${CDN}/scania.png` },
+    { name: "SHACMAN", img: W("https://upload.wikimedia.org/wikipedia/commons/7/75/Shaanxi_Automobile_Group_logo.svg") },
+    { name: "SINOTRUK", img: W("https://upload.wikimedia.org/wikipedia/commons/2/2c/Sinotruk_logo.svg") },
+    { name: "VOLKSWAGEN", img: `${CDN}/volkswagen.png` },
+    { name: "VOLVO TRUCKS", img: `${CDN}/volvo.png` },
+    { name: "YUTONG", img: W("https://upload.wikimedia.org/wikipedia/commons/0/07/Yutong_logo.svg") }
   ];
 
-  function createSvgEmblem(item) {
-    const c = item.color;
-    const text = item.badge;
-    const fontSize = text.length > 6 ? 7.5 : text.length > 4 ? 9 : 11;
+  // 3. MAQUINARIA PESADA, CONSTRUCCIÓN E INDUSTRIAL (48 MARCAS CON SUS LOGOS REALES)
+  const maquinaria = [
+    { name: "AMMANN YANMAR", img: W("https://upload.wikimedia.org/wikipedia/commons/3/3c/Yanmar_logo.svg") },
+    { name: "ATLAS COPCO", img: W("https://upload.wikimedia.org/wikipedia/commons/a/ae/Atlas_Copco_logo.svg") },
+    { name: "BOBCAT", img: W("https://upload.wikimedia.org/wikipedia/commons/e/e0/Bobcat_Company_logo.svg") },
+    { name: "BOMAG", img: W("https://upload.wikimedia.org/wikipedia/commons/4/47/Bomag_Logo.svg") },
+    { name: "CASE CONSTRUCTION", img: W("https://upload.wikimedia.org/wikipedia/commons/3/30/Case_Construction_logo.svg") },
+    { name: "CAT (CATERPILLAR)", img: W("https://upload.wikimedia.org/wikipedia/commons/a/a2/Caterpillar_logo.svg") },
+    { name: "CLARK", img: W("https://upload.wikimedia.org/wikipedia/commons/b/b5/Clark_Material_Handling_Company_logo.svg") },
+    { name: "CNH INDUSTRIAL", img: W("https://upload.wikimedia.org/wikipedia/commons/9/96/CNH_Industrial_logo.svg") },
+    { name: "CUMMINS", img: W("https://upload.wikimedia.org/wikipedia/commons/8/83/Cummins_logo.svg") },
+    { name: "DAEWOO HEAVY", img: `${CDN}/daewoo.png` },
+    { name: "DOOSAN", img: W("https://upload.wikimedia.org/wikipedia/commons/d/df/Doosan_logo.svg") },
+    { name: "HITACHI", img: W("https://upload.wikimedia.org/wikipedia/commons/8/87/Hitachi_logo.svg") },
+    { name: "HYSTER", img: W("https://upload.wikimedia.org/wikipedia/commons/7/77/Hyster_logo.svg") },
+    { name: "IHI", img: W("https://upload.wikimedia.org/wikipedia/commons/9/90/IHI_Corporation_logo.svg") },
+    { name: "JCB", img: W("https://upload.wikimedia.org/wikipedia/commons/9/90/JCB_logo.svg") },
+    { name: "JOHN DEERE", img: W("https://upload.wikimedia.org/wikipedia/commons/b/b3/John_Deere_logo.svg") },
+    { name: "KAWASAKI", img: W("https://upload.wikimedia.org/wikipedia/commons/4/45/Kawasaki_Heavy_Industries_logo.svg") },
+    { name: "KOBELCO", img: W("https://upload.wikimedia.org/wikipedia/commons/8/84/Kobelco_logo.svg") },
+    { name: "KOMATSU", img: W("https://upload.wikimedia.org/wikipedia/commons/c/c5/Komatsu_logo.svg") },
+    { name: "KUBOTA", img: W("https://upload.wikimedia.org/wikipedia/commons/5/5a/Kubota_logo.svg") },
+    { name: "KYB (KAYABA)", img: W("https://upload.wikimedia.org/wikipedia/commons/8/89/KYB_Corporation_logo.svg") },
+    { name: "LIEBHERR", img: W("https://upload.wikimedia.org/wikipedia/commons/9/90/Liebherr_Logo.svg") },
+    { name: "LIUGONG", img: W("https://upload.wikimedia.org/wikipedia/commons/d/d7/LiuGong_logo.svg") },
+    { name: "LONKING", img: W("https://upload.wikimedia.org/wikipedia/commons/2/2f/Lonking_logo.png") },
+    { name: "LOVOL", img: W("https://upload.wikimedia.org/wikipedia/commons/f/f6/Lovol_logo.png") },
+    { name: "MANITOU", img: W("https://upload.wikimedia.org/wikipedia/commons/f/fc/Manitou_Group_logo.svg") },
+    { name: "METSO", img: W("https://upload.wikimedia.org/wikipedia/commons/4/47/Metso_Outotec_logo.svg") },
+    { name: "MITSUBISHI HEAVY", img: `${CDN}/mitsubishi.png` },
+    { name: "NABTESCO", img: W("https://upload.wikimedia.org/wikipedia/commons/5/59/Nabtesco_logo.svg") },
+    { name: "NACHI", img: W("https://upload.wikimedia.org/wikipedia/commons/1/1a/Nachi-Fujikoshi_logo.svg") },
+    { name: "NEW HOLLAND", img: W("https://upload.wikimedia.org/wikipedia/commons/0/0d/New_Holland_Agriculture_logo.svg") },
+    { name: "OM PIMESPO", img: W("https://upload.wikimedia.org/wikipedia/commons/1/14/KION_Group_logo.svg") },
+    { name: "PALFINGER", img: W("https://upload.wikimedia.org/wikipedia/commons/d/d5/Palfinger_logo.svg") },
+    { name: "REXROTH (BOSCH)", img: W("https://upload.wikimedia.org/wikipedia/commons/b/b3/Bosch_Rexroth_logo.svg") },
+    { name: "SANY", img: W("https://upload.wikimedia.org/wikipedia/commons/7/75/Sany_Heavy_Industry_logo.svg") },
+    { name: "SDLG", img: W("https://upload.wikimedia.org/wikipedia/commons/7/71/SDLG_logo.png") },
+    { name: "SHANTUI", img: W("https://upload.wikimedia.org/wikipedia/commons/e/ec/Shantui_logo.png") },
+    { name: "SUMITOMO", img: W("https://upload.wikimedia.org/wikipedia/commons/5/50/Sumitomo_Group_logo.svg") },
+    { name: "SUNWARD", img: W("https://upload.wikimedia.org/wikipedia/commons/9/97/Sunward_logo.png") },
+    { name: "TAKEUCHI", img: W("https://upload.wikimedia.org/wikipedia/commons/e/e4/Takeuchi_logo.svg") },
+    { name: "TEREX", img: W("https://upload.wikimedia.org/wikipedia/commons/2/22/Terex_logo.svg") },
+    { name: "TOYOTA INDUSTRIAL", img: `${CDN}/toyota.png` },
+    { name: "VOLVO CE", img: `${CDN}/volvo.png` },
+    { name: "XCMG", img: W("https://upload.wikimedia.org/wikipedia/commons/b/b0/XCMG_logo.svg") },
+    { name: "XGMA", img: W("https://upload.wikimedia.org/wikipedia/commons/e/e8/XGMA_logo.png") },
+    { name: "YALE", img: W("https://upload.wikimedia.org/wikipedia/commons/a/af/Yale_Materials_Handling_logo.svg") },
+    { name: "YANMAR", img: W("https://upload.wikimedia.org/wikipedia/commons/3/3c/Yanmar_logo.svg") },
+    { name: "YUCHAI HEAVY", img: W("https://upload.wikimedia.org/wikipedia/commons/5/51/Yuchai_logo.png") },
+    { name: "ZOOMLION", img: W("https://upload.wikimedia.org/wikipedia/commons/0/05/Zoomlion_logo.svg") }
+  ];
 
-    let geometry = `<rect x="4" y="6" width="56" height="26" rx="4" fill="none" stroke="${c}" stroke-width="2"/>`;
-    if (item.shape === "circle") {
-      geometry = `<circle cx="32" cy="19" r="15" fill="none" stroke="${c}" stroke-width="2.2"/>`;
-    } else if (item.shape === "oval") {
-      geometry = `<ellipse cx="32" cy="19" rx="26" ry="13" fill="none" stroke="${c}" stroke-width="2"/>`;
-    } else if (item.shape === "diamond") {
-      geometry = `<polygon points="32,3 58,19 32,35 6,19" fill="none" stroke="${c}" stroke-width="2"/>`;
-    } else if (item.shape === "triangle") {
-      geometry = `<polygon points="32,3 58,34 6,34" fill="none" stroke="${c}" stroke-width="2"/>`;
-    } else if (item.shape === "shield") {
-      geometry = `<path d="M12,5 H52 V19 C52,28 32,35 32,35 C32,35 12,28 12,19 Z" fill="none" stroke="${c}" stroke-width="2"/>`;
-    } else if (item.shape === "star3" || item.shape === "star") {
-      geometry = `<circle cx="32" cy="19" r="15" fill="none" stroke="${c}" stroke-width="2"/><path d="M32,4 V19 M32,19 L19,27 M32,19 L45,27" stroke="${c}" stroke-width="1.8"/>`;
-    } else if (item.shape === "iron") {
-      geometry = `<circle cx="30" cy="20" r="13" fill="none" stroke="${c}" stroke-width="2.2"/><path d="M39,11 L48,4 M42,4 H48 V10" fill="none" stroke="${c}" stroke-width="2"/>`;
-    } else if (item.shape === "cross") {
-      geometry = `<path d="M22,8 H42 V14 H54 V24 H42 V30 H22 V24 H10 V14 H22 Z" fill="none" stroke="${c}" stroke-width="2"/>`;
-    } else if (item.shape === "horns") {
-      geometry = `<ellipse cx="32" cy="22" rx="20" ry="11" fill="none" stroke="${c}" stroke-width="2"/><path d="M14,14 C20,24 32,24 32,24 C32,24 44,24 50,14" fill="none" stroke="${c}" stroke-width="2"/>`;
-    } else if (item.shape === "wings") {
-      geometry = `<path d="M10,22 Q32,10 54,22 Q32,6 10,22 Z M16,25 Q32,16 48,25" fill="none" stroke="${c}" stroke-width="1.8"/>`;
-    } else if (item.shape === "arch") {
-      geometry = `<path d="M10,32 V19 C10,9 54,9 54,19 V32" fill="none" stroke="${c}" stroke-width="2.2"/>`;
-    }
+  function buildTrack(targetId, list) {
+    const el = document.getElementById(targetId);
+    if (!el) return;
 
-    return `
-      <svg width="64" height="38" viewBox="0 0 64 38" xmlns="http://www.w3.org/2000/svg">
-        ${geometry}
-        <text x="32" y="22.5" font-family="Arial Black, Impact, sans-serif" font-size="${fontSize}" font-weight="900" fill="#FFFFFF" text-anchor="middle" letter-spacing="0.5">${text}</text>
-      </svg>
-    `;
-  }
+    // Se duplica el array para lograr el loop continuo infinito sin cortes
+    const trackItems = [...list, ...list];
+    const targetType = targetId.includes('camiones') ? 'Camión' : targetId.includes('maquinaria') ? 'Maquinaria' : 'Auto particular';
 
-  function populateTrack(trackId, list) {
-    const track = document.getElementById(trackId);
-    if (!track) return;
-    const targetType = trackId.includes('camiones') ? 'Camión' : 'Maquinaria';
-    track.innerHTML = list.map(item => `
-      <div class="brand-item-card" data-brand="${item.name}" data-target-type="${targetType}">
-        <div class="brand-svg-emblem">${createSvgEmblem(item)}</div>
-        <span class="brand-item-title">${item.name}</span>
+    const itemsHtml = trackItems.map(item => `
+      <div class="brand-item-real" data-brand="${item.name}" data-target-type="${targetType}">
+        <div class="brand-real-logo-box">
+          <img src="${item.img}" alt="${item.name}" loading="lazy" onerror="this.style.opacity='0.5';">
+        </div>
+        <span class="brand-real-name">${item.name}</span>
       </div>
     `).join('');
 
-    // Interacción al hacer clic en cualquier tarjeta de marca
-    track.querySelectorAll('.brand-item-card').forEach(card => {
+    let trackEl = el.classList.contains('brand-marquee-inner')
+      ? el
+      : el.querySelector('.brand-marquee-inner');
+
+    if (trackEl) {
+      trackEl.innerHTML = itemsHtml;
+    } else {
+      el.innerHTML = `
+        <div class="brand-carousel-viewport">
+          <div class="brand-marquee-inner">
+            ${itemsHtml}
+          </div>
+        </div>
+      `;
+      trackEl = el.querySelector('.brand-marquee-inner');
+    }
+
+    // Auto-completar formulario al pulsar una marca
+    (trackEl || el).querySelectorAll('.brand-item-real').forEach(card => {
       card.addEventListener('click', () => {
-        const brandName = card.dataset.brand || card.querySelector('.brand-item-title').textContent.trim();
+        const brandName = card.dataset.brand || card.querySelector('.brand-real-name').textContent.trim();
         const formInput = document.querySelector('.input-marca');
 
         if (formInput) {
@@ -963,39 +947,92 @@ function renderAllHeavyBrands() {
     });
   }
 
-  populateTrack("track-camiones", camionesBrands);
-  populateTrack("track-maquinaria", maquinariaBrands);
+  // Soporte de arrastre táctil y mouse drag sin scrollbars
+  function enableDragAndTouch() {
+    document.querySelectorAll('.brand-carousel-viewport').forEach(viewport => {
+      const track = viewport.querySelector('.brand-marquee-inner');
+      if (!track) return;
 
-  // Activar Drag-to-Scroll con el mouse y rueda horizontal en ambos carruseles
-  document.querySelectorAll('.brand-carousel-viewport').forEach(viewport => {
-    let isDown = false, startX, scrollLeft;
-    viewport.addEventListener('mousedown', e => {
-      isDown = true;
-      startX = e.pageX - viewport.offsetLeft;
-      scrollLeft = viewport.scrollLeft;
-    });
-    viewport.addEventListener('mouseleave', () => isDown = false);
-    viewport.addEventListener('mouseup', () => isDown = false);
-    viewport.addEventListener('mousemove', e => {
-      if (!isDown) return;
-      e.preventDefault();
-      const x = e.pageX - viewport.offsetLeft;
-      viewport.scrollLeft = scrollLeft - (x - startX) * 1.8;
-    });
-    viewport.addEventListener('wheel', e => {
-      if (Math.abs(e.deltaY) > Math.abs(e.deltaX)) {
-        e.preventDefault();
-        viewport.scrollLeft += e.deltaY;
+      let isDown = false;
+      let startX = 0;
+      let baseTranslate = 0;
+
+      function getTranslateX() {
+        const style = window.getComputedStyle(track);
+        if (window.DOMMatrixReadOnly) {
+          try {
+            const matrix = new DOMMatrixReadOnly(style.transform);
+            return matrix.m41 || 0;
+          } catch (e) {
+            return 0;
+          }
+        }
+        return 0;
       }
-    }, { passive: false });
-  });
-}
 
-if (document.readyState === 'loading') {
-  document.addEventListener('DOMContentLoaded', renderAllHeavyBrands);
-} else {
-  renderAllHeavyBrands();
-}
+      // Soporte Touch (Móvil)
+      viewport.addEventListener('touchstart', (e) => {
+        track.style.animationPlayState = 'paused';
+        isDown = true;
+        startX = e.touches[0].pageX;
+        baseTranslate = getTranslateX();
+      }, { passive: true });
+
+      viewport.addEventListener('touchmove', (e) => {
+        if (!isDown) return;
+        const diff = e.touches[0].pageX - startX;
+        track.style.transform = `translateX(${baseTranslate + diff}px)`;
+      }, { passive: true });
+
+      viewport.addEventListener('touchend', () => {
+        isDown = false;
+        setTimeout(() => {
+          track.style.animationPlayState = 'running';
+          track.style.transform = '';
+        }, 1200);
+      }, { passive: true });
+
+      // Soporte Drag Mouse (Desktop)
+      viewport.addEventListener('mousedown', (e) => {
+        isDown = true;
+        track.style.cursor = 'grabbing';
+        track.style.animationPlayState = 'paused';
+        startX = e.pageX;
+        baseTranslate = getTranslateX();
+      });
+
+      window.addEventListener('mouseup', () => {
+        if (!isDown) return;
+        isDown = false;
+        track.style.cursor = 'grab';
+        setTimeout(() => {
+          track.style.animationPlayState = 'running';
+          track.style.transform = '';
+        }, 800);
+      });
+
+      viewport.addEventListener('mousemove', (e) => {
+        if (!isDown) return;
+        e.preventDefault();
+        const diff = e.pageX - startX;
+        track.style.transform = `translateX(${baseTranslate + diff}px)`;
+      });
+    });
+  }
+
+  function start() {
+    buildTrack("track-livianos", livianos);
+    buildTrack("track-camiones", camiones);
+    buildTrack("track-maquinaria", maquinaria);
+    enableDragAndTouch();
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', start);
+  } else {
+    start();
+  }
+})();
 
 
 
