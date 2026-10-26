@@ -706,232 +706,208 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
 // ==========================================================================
-// RESTAURACIÓN DE INSIGNIAS AUTOMOTRICES REALES CON EMBLEMAS ORIGINALES
+// CORRECCIÓN FINAL Y DEFINITIVA DE LOS 3 CARRUSELES: EMBLEMAS OFICIALES REALES
 // ==========================================================================
-(function injectRealEmblems() {
-  const CDN = "https://raw.githubusercontent.com/filippofilip95/car-logos-dataset/master/logos/optimized";
-  const W = (url) => `https://wsrv.nl/?url=${encodeURIComponent(url)}&output=png&w=160&fit=contain`;
-
-  // 1. VEHÍCULOS LIVIANOS / SUV / PICK-UP (90 MARCAS CON SUS LOGOS REALES)
+(function initRockSolidCarousels() {
   const livianos = [
-    { name: "ACURA", img: `${CDN}/acura.png` },
-    { name: "ALFA ROMEO", img: `${CDN}/alfa-romeo.png` },
-    { name: "ASTON MARTIN", img: `${CDN}/aston-martin.png` },
-    { name: "AUDI", img: `${CDN}/audi.png` },
-    { name: "AVATR", img: W("https://upload.wikimedia.org/wikipedia/commons/2/2f/Avatr_Technology_logo.png") },
-    { name: "BAIC", img: `${CDN}/baic.png` },
-    { name: "BENTLEY", img: `${CDN}/bentley.png` },
-    { name: "BESTUNE", img: `${CDN}/faw.png` },
-    { name: "BMW", img: `${CDN}/bmw.png` },
-    { name: "BYD", img: `${CDN}/byd.png` },
-    { name: "CADILLAC", img: `${CDN}/cadillac.png` },
-    { name: "CHANGAN", img: `${CDN}/changan.png` },
-    { name: "CHERY", img: `${CDN}/chery.png` },
-    { name: "CHEVROLET", img: `${CDN}/chevrolet.png` },
-    { name: "CHRYSLER", img: `${CDN}/chrysler.png` },
-    { name: "CITROËN", img: `${CDN}/citroen.png` },
-    { name: "CUPRA", img: `${CDN}/cupra.png` },
-    { name: "DEEPAL", img: W("https://upload.wikimedia.org/wikipedia/commons/f/f6/Deepal_logo.png") },
-    { name: "DFSK", img: W("https://upload.wikimedia.org/wikipedia/commons/e/e4/DFSK_logo.svg") },
-    { name: "DODGE", img: `${CDN}/dodge.png` },
-    { name: "DONGFENG", img: `${CDN}/dongfeng.png` },
-    { name: "FAW", img: `${CDN}/faw.png` },
-    { name: "FERRARI", img: `${CDN}/ferrari.png` },
-    { name: "FIAT", img: `${CDN}/fiat.png` },
-    { name: "FORD", img: `${CDN}/ford.png` },
-    { name: "FORTHING", img: `${CDN}/dongfeng.png` },
-    { name: "FOTON", img: `${CDN}/foton.png` },
-    { name: "GAC / AION", img: `${CDN}/gac-group.png` },
-    { name: "GEELY", img: `${CDN}/geely.png` },
-    { name: "GENESIS", img: `${CDN}/genesis.png` },
-    { name: "GMC", img: `${CDN}/gmc.png` },
-    { name: "GREAT WALL", img: `${CDN}/great-wall.png` },
-    { name: "HAVAL", img: `${CDN}/haval.png` },
-    { name: "HONDA", img: `${CDN}/honda.png` },
-    { name: "HONGQI", img: `${CDN}/hongqi.png` },
-    { name: "HYUNDAI", img: `${CDN}/hyundai.png` },
-    { name: "INFINITI", img: `${CDN}/infiniti.png` },
-    { name: "ISUZU", img: `${CDN}/isuzu.png` },
-    { name: "JAC", img: `${CDN}/jac.png` },
-    { name: "JAECOO", img: W("https://upload.wikimedia.org/wikipedia/commons/9/9c/Jaecoo_Logo.png") },
-    { name: "JAGUAR", img: `${CDN}/jaguar.png` },
-    { name: "JEEP", img: `${CDN}/jeep.png` },
-    { name: "JETOUR", img: W("https://upload.wikimedia.org/wikipedia/commons/3/37/Jetour_logo.svg") },
-    { name: "JMC", img: `${CDN}/jmc.png` },
-    { name: "KAIYI", img: W("https://upload.wikimedia.org/wikipedia/commons/8/86/Kaiyi_Auto_logo.png") },
-    { name: "KARRY", img: `${CDN}/chery.png` },
-    { name: "KGM / SSANGYONG", img: `${CDN}/ssangyong.png` },
-    { name: "KIA", img: `${CDN}/kia.png` },
-    { name: "KYC", img: `${CDN}/changan.png` },
-    { name: "LADA", img: `${CDN}/lada.png` },
-    { name: "LAMBORGHINI", img: `${CDN}/lamborghini.png` },
-    { name: "LAND ROVER", img: `${CDN}/land-rover.png` },
-    { name: "LEAPMOTOR", img: W("https://upload.wikimedia.org/wikipedia/commons/3/36/Leapmotor_logo.svg") },
-    { name: "LEXUS", img: `${CDN}/lexus.png` },
-    { name: "LIFAN", img: `${CDN}/lifan.png` },
-    { name: "LINCOLN", img: `${CDN}/lincoln.png` },
-    { name: "LIVAN", img: `${CDN}/geely.png` },
-    { name: "LUCID", img: `${CDN}/lucid.png` },
-    { name: "LYNK & CO", img: W("https://upload.wikimedia.org/wikipedia/commons/8/8c/Lynk_%26_Co_logo.svg") },
-    { name: "MASERATI", img: `${CDN}/maserati.png` },
-    { name: "MAXUS", img: `${CDN}/maxus.png` },
-    { name: "MAZDA", img: `${CDN}/mazda.png` },
-    { name: "MCLAREN", img: `${CDN}/mclaren.png` },
-    { name: "MERCEDES-BENZ", img: `${CDN}/mercedes-benz.png` },
-    { name: "MG", img: `${CDN}/mg.png` },
-    { name: "MINI", img: `${CDN}/mini.png` },
-    { name: "MITSUBISHI", img: `${CDN}/mitsubishi.png` },
-    { name: "NISSAN", img: `${CDN}/nissan.png` },
-    { name: "OMODA", img: W("https://upload.wikimedia.org/wikipedia/commons/e/ec/Omoda_logo.svg") },
-    { name: "OPEL", img: `${CDN}/opel.png` },
-    { name: "PEUGEOT", img: `${CDN}/peugeot.png` },
-    { name: "POLESTAR", img: `${CDN}/polestar.png` },
-    { name: "PORSCHE", img: `${CDN}/porsche.png` },
-    { name: "RAM", img: `${CDN}/ram.png` },
-    { name: "RENAULT", img: `${CDN}/renault.png` },
-    { name: "RIDDARA", img: `${CDN}/geely.png` },
-    { name: "RIVIAN", img: `${CDN}/rivian.png` },
-    { name: "ROLLS-ROYCE", img: `${CDN}/rolls-royce.png` },
-    { name: "SEAT", img: `${CDN}/seat.png` },
-    { name: "SERES", img: W("https://upload.wikimedia.org/wikipedia/commons/6/69/Seres_logo.svg") },
-    { name: "ŠKODA", img: `${CDN}/skoda.png` },
-    { name: "SMART", img: `${CDN}/smart.png` },
-    { name: "SOUEAST", img: `${CDN}/soueast.png` },
-    { name: "SUBARU", img: `${CDN}/subaru.png` },
-    { name: "SUZUKI", img: `${CDN}/suzuki.png` },
-    { name: "TESLA", img: `${CDN}/tesla.png` },
-    { name: "TOYOTA", img: `${CDN}/toyota.png` },
-    { name: "VOLKSWAGEN", img: `${CDN}/volkswagen.png` },
-    { name: "VOLVO", img: `${CDN}/volvo.png` },
-    { name: "ZEEKR", img: W("https://upload.wikimedia.org/wikipedia/commons/d/d4/Zeekr_logo.svg") },
-    { name: "ZNA", img: `${CDN}/dongfeng.png` }
+    { name: "ACURA", img: "./logos/acura.png" },
+    { name: "ALFA ROMEO", img: "./logos/alfa_romeo.png" },
+    { name: "ASTON MARTIN", img: "./logos/aston_martin.png" },
+    { name: "AUDI", img: "./logos/audi.png" },
+    { name: "AVATR", img: "./logos/avatr.svg" },
+    { name: "BAIC", img: "./logos/baic.png" },
+    { name: "BENTLEY", img: "./logos/bentley.png" },
+    { name: "BESTUNE", img: "./logos/bestune.png" },
+    { name: "BMW", img: "./logos/bmw.png" },
+    { name: "BYD", img: "./logos/byd.png" },
+    { name: "CADILLAC", img: "./logos/cadillac.png" },
+    { name: "CHANGAN", img: "./logos/changan.png" },
+    { name: "CHERY", img: "./logos/chery.png" },
+    { name: "CHEVROLET", img: "./logos/chevrolet.png" },
+    { name: "CHRYSLER", img: "./logos/chrysler.png" },
+    { name: "CITROËN", img: "./logos/citroen.png" },
+    { name: "CUPRA", img: "./logos/cupra.png" },
+    { name: "DEEPAL", img: "./logos/deepal.svg" },
+    { name: "DFSK", img: "./logos/dfsk.svg" },
+    { name: "DODGE", img: "./logos/dodge.png" },
+    { name: "DONGFENG", img: "./logos/dongfeng.png" },
+    { name: "FAW", img: "./logos/faw.png" },
+    { name: "FERRARI", img: "./logos/ferrari.png" },
+    { name: "FIAT", img: "./logos/fiat.png" },
+    { name: "FORD", img: "./logos/ford.png" },
+    { name: "FORTHING", img: "./logos/forthing.png" },
+    { name: "FOTON", img: "./logos/foton.png" },
+    { name: "GAC / AION", img: "./logos/gac_aion.png" },
+    { name: "GEELY", img: "./logos/geely.png" },
+    { name: "GENESIS", img: "./logos/genesis.png" },
+    { name: "GMC", img: "./logos/gmc.png" },
+    { name: "GREAT WALL", img: "./logos/great_wall.png" },
+    { name: "HAVAL", img: "./logos/haval.png" },
+    { name: "HONDA", img: "./logos/honda.png" },
+    { name: "HONGQI", img: "./logos/hongqi.png" },
+    { name: "HYUNDAI", img: "./logos/hyundai.png" },
+    { name: "INFINITI", img: "./logos/infiniti.png" },
+    { name: "ISUZU", img: "./logos/isuzu.png" },
+    { name: "JAC", img: "./logos/jac.png" },
+    { name: "JAECOO", img: "./logos/jaecoo.svg" },
+    { name: "JAGUAR", img: "./logos/jaguar.png" },
+    { name: "JEEP", img: "./logos/jeep.png" },
+    { name: "JETOUR", img: "./logos/jetour.png" },
+    { name: "JMC", img: "./logos/jmc.png" },
+    { name: "KAIYI", img: "./logos/kaiyi.png" },
+    { name: "KARRY", img: "./logos/karry.png" },
+    { name: "KGM / SSANGYONG", img: "./logos/kgm_ssangyong.png" },
+    { name: "KIA", img: "./logos/kia.png" },
+    { name: "KYC", img: "./logos/kyc.png" },
+    { name: "LADA", img: "./logos/lada.png" },
+    { name: "LAMBORGHINI", img: "./logos/lamborghini.png" },
+    { name: "LAND ROVER", img: "./logos/land_rover.png" },
+    { name: "LEAPMOTOR", img: "./logos/leapmotor.png" },
+    { name: "LEXUS", img: "./logos/lexus.png" },
+    { name: "LIFAN", img: "./logos/lifan.png" },
+    { name: "LINCOLN", img: "./logos/lincoln.png" },
+    { name: "LIVAN", img: "./logos/livan.png" },
+    { name: "LUCID", img: "./logos/lucid.png" },
+    { name: "LYNK & CO", img: "./logos/lynk_co.svg" },
+    { name: "MASERATI", img: "./logos/maserati.png" },
+    { name: "MAXUS", img: "./logos/maxus.png" },
+    { name: "MAZDA", img: "./logos/mazda.png" },
+    { name: "MCLAREN", img: "./logos/mclaren.png" },
+    { name: "MERCEDES-BENZ", img: "./logos/mercedes_benz.png" },
+    { name: "MG", img: "./logos/mg.png" },
+    { name: "MINI", img: "./logos/mini.png" },
+    { name: "MITSUBISHI", img: "./logos/mitsubishi.png" },
+    { name: "NISSAN", img: "./logos/nissan.png" },
+    { name: "OMODA", img: "./logos/omoda.png" },
+    { name: "OPEL", img: "./logos/opel.png" },
+    { name: "PEUGEOT", img: "./logos/peugeot.png" },
+    { name: "POLESTAR", img: "./logos/polestar.png" },
+    { name: "PORSCHE", img: "./logos/porsche.png" },
+    { name: "RAM", img: "./logos/ram.png" },
+    { name: "RENAULT", img: "./logos/renault.png" },
+    { name: "RIDDARA", img: "./logos/riddara.png" },
+    { name: "RIVIAN", img: "./logos/rivian.png" },
+    { name: "ROLLS-ROYCE", img: "./logos/rolls_royce.png" },
+    { name: "SEAT", img: "./logos/seat.png" },
+    { name: "SERES", img: "./logos/seres.png" },
+    { name: "ŠKODA", img: "./logos/skoda.png" },
+    { name: "SMART", img: "./logos/smart.png" },
+    { name: "SOUEAST", img: "./logos/soueast.png" },
+    { name: "SUBARU", img: "./logos/subaru.png" },
+    { name: "SUZUKI", img: "./logos/suzuki.png" },
+    { name: "TESLA", img: "./logos/tesla.png" },
+    { name: "TOYOTA", img: "./logos/toyota.png" },
+    { name: "VOLKSWAGEN", img: "./logos/volkswagen.png" },
+    { name: "VOLVO", img: "./logos/volvo.png" },
+    { name: "ZEEKR", img: "./logos/zeekr.png" },
+    { name: "ZNA", img: "./logos/zna.png" }
   ];
 
-  // 2. CAMIONES Y TRACTOCAMIONES (28 MARCAS CON SUS LOGOS REALES)
   const camiones = [
-    { name: "ASTRA", img: W("https://upload.wikimedia.org/wikipedia/commons/b/b3/Astra_Veicoli_Industriali_logo.svg") },
-    { name: "CHEVROLET CAMIONES", img: `${CDN}/chevrolet.png` },
-    { name: "DAF", img: `${CDN}/daf.png` },
-    { name: "DONGFENG", img: `${CDN}/dongfeng.png` },
-    { name: "FAW", img: `${CDN}/faw.png` },
-    { name: "FREIGHTLINER", img: `${CDN}/freightliner.png` },
-    { name: "FUSO", img: `${CDN}/fuso.png` },
-    { name: "FOTON", img: `${CDN}/foton.png` },
-    { name: "HINO", img: `${CDN}/hino.png` },
-    { name: "HYUNDAI CAMIONES", img: `${CDN}/hyundai.png` },
-    { name: "INTERNATIONAL", img: W("https://upload.wikimedia.org/wikipedia/commons/4/41/Navistar_International_logo.svg") },
-    { name: "ISUZU", img: `${CDN}/isuzu.png` },
-    { name: "IVECO", img: `${CDN}/iveco.png` },
-    { name: "JAC CAMIONES", img: `${CDN}/jac.png` },
-    { name: "JMC CAMIONES", img: `${CDN}/jmc.png` },
-    { name: "KENWORTH", img: `${CDN}/kenworth.png` },
-    { name: "MACK", img: `${CDN}/mack.png` },
-    { name: "MAN", img: `${CDN}/man.png` },
-    { name: "MAXUS", img: `${CDN}/maxus.png` },
-    { name: "MERCEDES-BENZ", img: `${CDN}/mercedes-benz.png` },
-    { name: "PETERBILT", img: `${CDN}/peterbilt.png` },
-    { name: "RENAULT TRUCKS", img: `${CDN}/renault.png` },
-    { name: "SCANIA", img: `${CDN}/scania.png` },
-    { name: "SHACMAN", img: W("https://upload.wikimedia.org/wikipedia/commons/7/75/Shaanxi_Automobile_Group_logo.svg") },
-    { name: "SINOTRUK", img: W("https://upload.wikimedia.org/wikipedia/commons/2/2c/Sinotruk_logo.svg") },
-    { name: "VOLKSWAGEN", img: `${CDN}/volkswagen.png` },
-    { name: "VOLVO TRUCKS", img: `${CDN}/volvo.png` },
-    { name: "YUTONG", img: W("https://upload.wikimedia.org/wikipedia/commons/0/07/Yutong_logo.svg") }
+    { name: "ASTRA", img: "./logos/astra.svg" },
+    { name: "CHEVROLET", img: "./logos/chevrolet.png" },
+    { name: "DAF", img: "./logos/daf.png" },
+    { name: "DONGFENG", img: "./logos/dongfeng.png" },
+    { name: "FAW", img: "./logos/faw.png" },
+    { name: "FREIGHTLINER", img: "./logos/freightliner.png" },
+    { name: "FUSO", img: "./logos/fuso.svg" },
+    { name: "FOTON", img: "./logos/foton.png" },
+    { name: "HINO", img: "./logos/hino.png" },
+    { name: "HYUNDAI", img: "./logos/hyundai.png" },
+    { name: "INTERNATIONAL", img: "./logos/international.png" },
+    { name: "ISUZU", img: "./logos/isuzu.png" },
+    { name: "IVECO", img: "./logos/iveco.png" },
+    { name: "JAC", img: "./logos/jac.png" },
+    { name: "JMC", img: "./logos/jmc.png" },
+    { name: "KENWORTH", img: "./logos/kenworth.png" },
+    { name: "MACK", img: "./logos/mack.png" },
+    { name: "MAN", img: "./logos/man.png" },
+    { name: "MAXUS", img: "./logos/maxus.png" },
+    { name: "MERCEDES-BENZ", img: "./logos/mercedes_benz.png" },
+    { name: "PETERBILT", img: "./logos/peterbilt.png" },
+    { name: "RENAULT TRUCKS", img: "./logos/renault_trucks.png" },
+    { name: "SCANIA", img: "./logos/scania.png" },
+    { name: "SHACMAN", img: "./logos/shacman.png" },
+    { name: "SINOTRUK", img: "./logos/sinotruk.png" },
+    { name: "VOLKSWAGEN", img: "./logos/volkswagen.png" },
+    { name: "VOLVO TRUCKS", img: "./logos/volvo_trucks.png" },
+    { name: "YUTONG", img: "./logos/yutong.png" }
   ];
 
-  // 3. MAQUINARIA PESADA, CONSTRUCCIÓN E INDUSTRIAL (48 MARCAS CON SUS LOGOS REALES)
   const maquinaria = [
-    { name: "AMMANN YANMAR", img: W("https://upload.wikimedia.org/wikipedia/commons/3/3c/Yanmar_logo.svg") },
-    { name: "ATLAS COPCO", img: W("https://upload.wikimedia.org/wikipedia/commons/a/ae/Atlas_Copco_logo.svg") },
-    { name: "BOBCAT", img: W("https://upload.wikimedia.org/wikipedia/commons/e/e0/Bobcat_Company_logo.svg") },
-    { name: "BOMAG", img: W("https://upload.wikimedia.org/wikipedia/commons/4/47/Bomag_Logo.svg") },
-    { name: "CASE CONSTRUCTION", img: W("https://upload.wikimedia.org/wikipedia/commons/3/30/Case_Construction_logo.svg") },
-    { name: "CAT (CATERPILLAR)", img: W("https://upload.wikimedia.org/wikipedia/commons/a/a2/Caterpillar_logo.svg") },
-    { name: "CLARK", img: W("https://upload.wikimedia.org/wikipedia/commons/b/b5/Clark_Material_Handling_Company_logo.svg") },
-    { name: "CNH INDUSTRIAL", img: W("https://upload.wikimedia.org/wikipedia/commons/9/96/CNH_Industrial_logo.svg") },
-    { name: "CUMMINS", img: W("https://upload.wikimedia.org/wikipedia/commons/8/83/Cummins_logo.svg") },
-    { name: "DAEWOO HEAVY", img: `${CDN}/daewoo.png` },
-    { name: "DOOSAN", img: W("https://upload.wikimedia.org/wikipedia/commons/d/df/Doosan_logo.svg") },
-    { name: "HITACHI", img: W("https://upload.wikimedia.org/wikipedia/commons/8/87/Hitachi_logo.svg") },
-    { name: "HYSTER", img: W("https://upload.wikimedia.org/wikipedia/commons/7/77/Hyster_logo.svg") },
-    { name: "IHI", img: W("https://upload.wikimedia.org/wikipedia/commons/9/90/IHI_Corporation_logo.svg") },
-    { name: "JCB", img: W("https://upload.wikimedia.org/wikipedia/commons/9/90/JCB_logo.svg") },
-    { name: "JOHN DEERE", img: W("https://upload.wikimedia.org/wikipedia/commons/b/b3/John_Deere_logo.svg") },
-    { name: "KAWASAKI", img: W("https://upload.wikimedia.org/wikipedia/commons/4/45/Kawasaki_Heavy_Industries_logo.svg") },
-    { name: "KOBELCO", img: W("https://upload.wikimedia.org/wikipedia/commons/8/84/Kobelco_logo.svg") },
-    { name: "KOMATSU", img: W("https://upload.wikimedia.org/wikipedia/commons/c/c5/Komatsu_logo.svg") },
-    { name: "KUBOTA", img: W("https://upload.wikimedia.org/wikipedia/commons/5/5a/Kubota_logo.svg") },
-    { name: "KYB (KAYABA)", img: W("https://upload.wikimedia.org/wikipedia/commons/8/89/KYB_Corporation_logo.svg") },
-    { name: "LIEBHERR", img: W("https://upload.wikimedia.org/wikipedia/commons/9/90/Liebherr_Logo.svg") },
-    { name: "LIUGONG", img: W("https://upload.wikimedia.org/wikipedia/commons/d/d7/LiuGong_logo.svg") },
-    { name: "LONKING", img: W("https://upload.wikimedia.org/wikipedia/commons/2/2f/Lonking_logo.png") },
-    { name: "LOVOL", img: W("https://upload.wikimedia.org/wikipedia/commons/f/f6/Lovol_logo.png") },
-    { name: "MANITOU", img: W("https://upload.wikimedia.org/wikipedia/commons/f/fc/Manitou_Group_logo.svg") },
-    { name: "METSO", img: W("https://upload.wikimedia.org/wikipedia/commons/4/47/Metso_Outotec_logo.svg") },
-    { name: "MITSUBISHI HEAVY", img: `${CDN}/mitsubishi.png` },
-    { name: "NABTESCO", img: W("https://upload.wikimedia.org/wikipedia/commons/5/59/Nabtesco_logo.svg") },
-    { name: "NACHI", img: W("https://upload.wikimedia.org/wikipedia/commons/1/1a/Nachi-Fujikoshi_logo.svg") },
-    { name: "NEW HOLLAND", img: W("https://upload.wikimedia.org/wikipedia/commons/0/0d/New_Holland_Agriculture_logo.svg") },
-    { name: "OM PIMESPO", img: W("https://upload.wikimedia.org/wikipedia/commons/1/14/KION_Group_logo.svg") },
-    { name: "PALFINGER", img: W("https://upload.wikimedia.org/wikipedia/commons/d/d5/Palfinger_logo.svg") },
-    { name: "REXROTH (BOSCH)", img: W("https://upload.wikimedia.org/wikipedia/commons/b/b3/Bosch_Rexroth_logo.svg") },
-    { name: "SANY", img: W("https://upload.wikimedia.org/wikipedia/commons/7/75/Sany_Heavy_Industry_logo.svg") },
-    { name: "SDLG", img: W("https://upload.wikimedia.org/wikipedia/commons/7/71/SDLG_logo.png") },
-    { name: "SHANTUI", img: W("https://upload.wikimedia.org/wikipedia/commons/e/ec/Shantui_logo.png") },
-    { name: "SUMITOMO", img: W("https://upload.wikimedia.org/wikipedia/commons/5/50/Sumitomo_Group_logo.svg") },
-    { name: "SUNWARD", img: W("https://upload.wikimedia.org/wikipedia/commons/9/97/Sunward_logo.png") },
-    { name: "TAKEUCHI", img: W("https://upload.wikimedia.org/wikipedia/commons/e/e4/Takeuchi_logo.svg") },
-    { name: "TEREX", img: W("https://upload.wikimedia.org/wikipedia/commons/2/22/Terex_logo.svg") },
-    { name: "TOYOTA INDUSTRIAL", img: `${CDN}/toyota.png` },
-    { name: "VOLVO CE", img: `${CDN}/volvo.png` },
-    { name: "XCMG", img: W("https://upload.wikimedia.org/wikipedia/commons/b/b0/XCMG_logo.svg") },
-    { name: "XGMA", img: W("https://upload.wikimedia.org/wikipedia/commons/e/e8/XGMA_logo.png") },
-    { name: "YALE", img: W("https://upload.wikimedia.org/wikipedia/commons/a/af/Yale_Materials_Handling_logo.svg") },
-    { name: "YANMAR", img: W("https://upload.wikimedia.org/wikipedia/commons/3/3c/Yanmar_logo.svg") },
-    { name: "YUCHAI HEAVY", img: W("https://upload.wikimedia.org/wikipedia/commons/5/51/Yuchai_logo.png") },
-    { name: "ZOOMLION", img: W("https://upload.wikimedia.org/wikipedia/commons/0/05/Zoomlion_logo.svg") }
+    { name: "AMMANN YANMAR", img: "./logos/ammann_yanmar.svg" },
+    { name: "ATLAS COPCO", img: "./logos/atlas_copco.svg" },
+    { name: "BOBCAT", img: "./logos/bobcat.png" },
+    { name: "BOMAG", img: "./logos/bomag.svg" },
+    { name: "CASE", img: "./logos/case.svg" },
+    { name: "CAT", img: "./logos/cat.svg" },
+    { name: "CLARK", img: "./logos/clark.jpg" },
+    { name: "CNH INDUSTRIAL", img: "./logos/cnh_industrial.svg" },
+    { name: "CUMMINS", img: "./logos/cummins.svg" },
+    { name: "DAEWOO HEAVY", img: "./logos/daewoo_heavy.png" },
+    { name: "DOOSAN", img: "./logos/doosan.svg" },
+    { name: "HITACHI", img: "./logos/hitachi.svg" },
+    { name: "HYSTER", img: "./logos/hyster.svg" },
+    { name: "IHI", img: "./logos/ihi.svg" },
+    { name: "JCB", img: "./logos/jcb.svg" },
+    { name: "JOHN DEERE", img: "./logos/john_deere.svg" },
+    { name: "KAWASAKI", img: "./logos/kawasaki.svg" },
+    { name: "KOBELCO", img: "./logos/kobelco.svg" },
+    { name: "KOMATSU", img: "./logos/komatsu.svg" },
+    { name: "KUBOTA", img: "./logos/kubota.svg" },
+    { name: "KYB", img: "./logos/kyb.svg" },
+    { name: "LIEBHERR", img: "./logos/liebherr.svg" },
+    { name: "LIUGONG", img: "./logos/liugong.svg" },
+    { name: "LONKING", img: "./logos/lonking.svg" },
+    { name: "LOVOL", img: "./logos/lovol.png" },
+    { name: "MANITOU", img: "./logos/manitou.svg" },
+    { name: "METSO", img: "./logos/metso.svg" },
+    { name: "MITSUBISHI HEAVY", img: "./logos/mitsubishi_heavy.png" },
+    { name: "NABTESCO", img: "./logos/nabtesco.svg" },
+    { name: "NACHI", img: "./logos/nachi.svg" },
+    { name: "NEW HOLLAND", img: "./logos/new_holland.png" },
+    { name: "OM PIMESPO", img: "./logos/om_pimespo.svg" },
+    { name: "PALFINGER", img: "./logos/palfinger.svg" },
+    { name: "REXROTH", img: "./logos/rexroth.svg" },
+    { name: "SANY", img: "./logos/sany.svg" },
+    { name: "SDLG", img: "./logos/sdlg.svg" },
+    { name: "SHANTUI", img: "./logos/shantui.svg" },
+    { name: "SUMITOMO", img: "./logos/sumitomo.svg" },
+    { name: "SUNWARD", img: "./logos/sunward.png" },
+    { name: "TAKEUCHI", img: "./logos/takeuchi.svg" },
+    { name: "TEREX", img: "./logos/terex.svg" },
+    { name: "TOYOTA INDUSTRIAL", img: "./logos/toyota_industrial.png" },
+    { name: "VOLVO CE", img: "./logos/volvo_ce.png" },
+    { name: "XCMG", img: "./logos/xcmg.svg" },
+    { name: "XGMA", img: "./logos/xgma.png" },
+    { name: "YALE", img: "./logos/yale.png" },
+    { name: "YANMAR", img: "./logos/yanmar.svg" },
+    { name: "YUCHAI", img: "./logos/yuchai.png" },
+    { name: "ZOOMLION", img: "./logos/zoomlion.png" }
   ];
 
   function buildTrack(targetId, list) {
     const el = document.getElementById(targetId);
     if (!el) return;
 
-    // Se duplica el array para lograr el loop continuo infinito sin cortes
-    const trackItems = [...list, ...list];
+    // Se duplica para loop continuo infinito
+    const items = [...list, ...list];
     const targetType = targetId.includes('camiones') ? 'Camión' : targetId.includes('maquinaria') ? 'Maquinaria' : 'Auto particular';
 
-    const itemsHtml = trackItems.map(item => `
-      <div class="brand-item-real" data-brand="${item.name}" data-target-type="${targetType}">
-        <div class="brand-real-logo-box">
-          <img src="${item.img}" alt="${item.name}" loading="lazy" onerror="this.style.opacity='0.5';">
+    el.innerHTML = items.map(item => `
+      <div class="brand-item-clean" data-brand="${item.name}">
+        <div class="brand-logo-frame-clean">
+          <img src="${item.img}" alt="${item.name}" loading="lazy" onerror="this.style.display='none';">
         </div>
-        <span class="brand-real-name">${item.name}</span>
+        <span class="brand-label-clean">${item.name}</span>
       </div>
     `).join('');
 
-    let trackEl = el.classList.contains('brand-marquee-inner')
-      ? el
-      : el.querySelector('.brand-marquee-inner');
-
-    if (trackEl) {
-      trackEl.innerHTML = itemsHtml;
-    } else {
-      el.innerHTML = `
-        <div class="brand-carousel-viewport">
-          <div class="brand-marquee-inner">
-            ${itemsHtml}
-          </div>
-        </div>
-      `;
-      trackEl = el.querySelector('.brand-marquee-inner');
-    }
-
-    // Auto-completar formulario al pulsar una marca
-    (trackEl || el).querySelectorAll('.brand-item-real').forEach(card => {
+    // Click para autocompletar formulario
+    el.querySelectorAll('.brand-item-clean').forEach(card => {
       card.addEventListener('click', () => {
-        const brandName = card.dataset.brand || card.querySelector('.brand-real-name').textContent.trim();
+        const brandName = card.dataset.brand || card.querySelector('.brand-label-clean').textContent.trim();
         const formInput = document.querySelector('.input-marca');
-
         if (formInput) {
           formInput.value = brandName;
           const typeBtn = Array.from(document.querySelectorAll('.vehicle-type-btn')).find(b => b.dataset.value === targetType);
@@ -947,76 +923,60 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // Soporte de arrastre táctil y mouse drag sin scrollbars
-  function enableDragAndTouch() {
+  // CONTROL DE ARRASTRE MANUAL (DRAG & TOUCH) SIN BARRAS VISIBLES
+  function initDragAndTouch() {
     document.querySelectorAll('.brand-carousel-viewport').forEach(viewport => {
-      const track = viewport.querySelector('.brand-marquee-inner');
-      if (!track) return;
-
       let isDown = false;
-      let startX = 0;
-      let baseTranslate = 0;
+      let startX, scrollLeft;
+      const track = viewport.querySelector('.brand-marquee-inner');
 
-      function getTranslateX() {
-        const style = window.getComputedStyle(track);
-        if (window.DOMMatrixReadOnly) {
-          try {
-            const matrix = new DOMMatrixReadOnly(style.transform);
-            return matrix.m41 || 0;
-          } catch (e) {
-            return 0;
-          }
-        }
-        return 0;
-      }
-
-      // Soporte Touch (Móvil)
-      viewport.addEventListener('touchstart', (e) => {
-        track.style.animationPlayState = 'paused';
-        isDown = true;
-        startX = e.touches[0].pageX;
-        baseTranslate = getTranslateX();
-      }, { passive: true });
-
-      viewport.addEventListener('touchmove', (e) => {
-        if (!isDown) return;
-        const diff = e.touches[0].pageX - startX;
-        track.style.transform = `translateX(${baseTranslate + diff}px)`;
-      }, { passive: true });
-
-      viewport.addEventListener('touchend', () => {
-        isDown = false;
-        setTimeout(() => {
-          track.style.animationPlayState = 'running';
-          track.style.transform = '';
-        }, 1200);
-      }, { passive: true });
-
-      // Soporte Drag Mouse (Desktop)
       viewport.addEventListener('mousedown', (e) => {
         isDown = true;
-        track.style.cursor = 'grabbing';
-        track.style.animationPlayState = 'paused';
-        startX = e.pageX;
-        baseTranslate = getTranslateX();
+        viewport.classList.add('is-dragging');
+        startX = e.pageX - viewport.offsetLeft;
+        scrollLeft = viewport.scrollLeft;
       });
 
-      window.addEventListener('mouseup', () => {
-        if (!isDown) return;
+      viewport.addEventListener('mouseleave', () => {
         isDown = false;
-        track.style.cursor = 'grab';
-        setTimeout(() => {
-          track.style.animationPlayState = 'running';
-          track.style.transform = '';
-        }, 800);
+        viewport.classList.remove('is-dragging');
+      });
+
+      viewport.addEventListener('mouseup', () => {
+        isDown = false;
+        viewport.classList.remove('is-dragging');
       });
 
       viewport.addEventListener('mousemove', (e) => {
         if (!isDown) return;
         e.preventDefault();
-        const diff = e.pageX - startX;
-        track.style.transform = `translateX(${baseTranslate + diff}px)`;
+        const x = e.pageX - viewport.offsetLeft;
+        const walk = (x - startX) * 1.6;
+        viewport.scrollLeft = scrollLeft - walk;
       });
+
+      // Soporte táctil móvil fluido
+      let touchStartX = 0;
+      let touchScrollLeft = 0;
+      viewport.addEventListener('touchstart', (e) => {
+        viewport.classList.add('is-dragging');
+        if (e.touches && e.touches[0]) {
+          touchStartX = e.touches[0].pageX - viewport.offsetLeft;
+          touchScrollLeft = viewport.scrollLeft;
+        }
+      }, { passive: true });
+
+      viewport.addEventListener('touchmove', (e) => {
+        if (e.touches && e.touches[0]) {
+          const x = e.touches[0].pageX - viewport.offsetLeft;
+          const walk = (x - touchStartX) * 1.5;
+          viewport.scrollLeft = touchScrollLeft - walk;
+        }
+      }, { passive: true });
+
+      viewport.addEventListener('touchend', () => {
+        viewport.classList.remove('is-dragging');
+      }, { passive: true });
     });
   }
 
@@ -1024,7 +984,7 @@ document.addEventListener('DOMContentLoaded', () => {
     buildTrack("track-livianos", livianos);
     buildTrack("track-camiones", camiones);
     buildTrack("track-maquinaria", maquinaria);
-    enableDragAndTouch();
+    initDragAndTouch();
   }
 
   if (document.readyState === 'loading') {

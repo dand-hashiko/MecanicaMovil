@@ -3872,17 +3872,22 @@ nav .header-btn-group {
 }
 
 /* ==========================================================================
-   RESTAURACIÓN DE INSIGNIAS AUTOMOTRICES REALES CON EMBLEMAS ORIGINALES
+   CORRECCIÓN FINAL Y DEFINITIVA DE LOS 3 CARRUSELES: EMBLEMAS OFICIALES REALES
    ========================================================================== */
-/* Contenedor sin barras inferiores */
+/* Contenedor sin barras de desplazamiento visibles */
 .brand-carousel-viewport {
   width: 100% !important;
+  max-width: 100% !important;
   overflow: hidden !important;
   padding: 24px 0 !important;
   position: relative !important;
   user-select: none !important;
+  cursor: grab !important;
   scrollbar-width: none !important;
   -ms-overflow-style: none !important;
+}
+.brand-carousel-viewport:active {
+  cursor: grabbing !important;
 }
 .brand-carousel-viewport::-webkit-scrollbar {
   display: none !important;
@@ -3896,23 +3901,35 @@ nav .header-btn-group {
   flex-direction: row !important;
   flex-wrap: nowrap !important;
   align-items: center !important;
-  gap: 52px !important;
+  gap: 54px !important;
   width: max-content !important;
-  animation: marquee-slide 60s linear infinite !important;
+  will-change: transform !important;
   white-space: nowrap !important;
 }
 
-.brand-carousel-viewport:hover .brand-marquee-inner {
+/* Velocidad calibrada: 110s para movimiento pausado y elegante */
+#track-livianos.brand-marquee-inner {
+  animation: marquee-scroll-smooth 110s linear infinite !important;
+}
+#track-camiones.brand-marquee-inner {
+  animation: marquee-scroll-smooth 85s linear infinite !important;
+}
+#track-maquinaria.brand-marquee-inner {
+  animation: marquee-scroll-smooth 95s linear infinite !important;
+}
+
+.brand-carousel-viewport:hover .brand-marquee-inner,
+.brand-carousel-viewport.is-dragging .brand-marquee-inner {
   animation-play-state: paused !important;
 }
 
-@keyframes marquee-slide {
+@keyframes marquee-scroll-smooth {
   0% { transform: translateX(0); }
   100% { transform: translateX(-50%); }
 }
 
 /* Ficha de cada marca */
-.brand-item-real {
+.brand-item-clean {
   display: inline-flex !important;
   flex-direction: column !important;
   align-items: center !important;
@@ -3924,8 +3941,8 @@ nav .header-btn-group {
   transition: transform 0.25s ease !important;
 }
 
-/* Marco del logo: fondo 100% transparente, sin bordes ni cajas */
-.brand-real-logo-box {
+/* Marco para los emblemas oficiales */
+.brand-logo-frame-clean {
   width: 80px !important;
   height: 52px !important;
   display: flex !important;
@@ -3934,7 +3951,8 @@ nav .header-btn-group {
   background: transparent !important;
 }
 
-.brand-real-logo-box img {
+.brand-logo-frame-clean img,
+.brand-logo-frame-clean svg {
   max-width: 100% !important;
   max-height: 100% !important;
   width: auto !important;
@@ -3944,18 +3962,19 @@ nav .header-btn-group {
   transition: transform 0.25s ease, filter 0.25s ease !important;
 }
 
-/* Efecto Hover: Resplandor Ámbar idéntico al sitio original */
-.brand-item-real:hover {
+/* Resplandor ámbar en Hover */
+.brand-item-clean:hover {
   transform: translateY(-3px) !important;
 }
 
-.brand-item-real:hover .brand-real-logo-box img {
+.brand-item-clean:hover .brand-logo-frame-clean img,
+.brand-item-clean:hover .brand-logo-frame-clean svg {
   transform: scale(1.15) !important;
-  filter: drop-shadow(0 0 10px #FF9900) drop-shadow(0 0 20px rgba(255, 153, 0, 0.65)) !important;
+  filter: drop-shadow(0 0 10px #FF9900) drop-shadow(0 0 20px rgba(255, 153, 0, 0.7)) !important;
 }
 
-/* Nombre de la marca abajo */
-.brand-real-name {
+/* Nombre de la marca debajo */
+.brand-label-clean {
   color: #9CA3AF !important;
   font-family: monospace, -apple-system, sans-serif !important;
   font-size: 11px !important;
@@ -3967,11 +3986,12 @@ nav .header-btn-group {
   transition: color 0.25s ease, text-shadow 0.25s ease !important;
 }
 
-.brand-item-real:hover .brand-real-name {
+.brand-item-clean:hover .brand-label-clean {
   color: #FF9900 !important;
   text-shadow: 0 0 8px rgba(255, 153, 0, 0.5) !important;
 }
 
+/* Difuminado suave en los bordes laterales */
 .brand-carousel-viewport::before,
 .brand-carousel-viewport::after {
   content: "" !important;
@@ -3990,6 +4010,7 @@ nav .header-btn-group {
   right: 0 !important;
   background: linear-gradient(to left, #0A0A0A, transparent) !important;
 }
+
 
 
 
